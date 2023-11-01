@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using System.IO;
+using System.Text;
 
 public class DataManager : MonoBehaviour
 {
-    public List<PatternData> early_Patterns;
-    public List<PatternData> mid_Patterns;
-    public List<PatternData> late_Patterns;
-    public PatternData patternA;
-
-    private void Start()
+    // Json 파일을 통해 PatternData를 가져오는 과정
+    // Json 파일의 이름 규칙은 다음과 같다. (예) St0_Phase2_Pattern0
+    public static PatternData GetPatternData(int stage, int phase, int pattern)
     {
-        string test = JsonUtility.ToJson(patternA);
-        Debug.Log(test);
-        PatternData map2 = JsonUtility.FromJson<PatternData>(test);
-        Debug.Log(map2.p_Data[1].width);
+        PatternData data = new PatternData();
+        string path = Application.dataPath + $"/Resources/St{stage}_Phase{phase}_Pattern{pattern}.json" ;
+        string jsonData = File.ReadAllText(path);
+        data = JsonUtility.FromJson<PatternData>(jsonData);
+        return data;
     }
 }
+
 
 [System.Serializable]
 public class PatternData
@@ -42,3 +41,4 @@ public class PatternData
         public float y_pos;
     }
 }
+

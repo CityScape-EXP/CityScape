@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a952ea6a358104693fd0f82d809457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingPanel: {fileID: 0}
+  audioPanel: {fileID: 0}
 --- !u!4 &145313895
 Transform:
   m_ObjectHideFlags: 0
@@ -201,9 +203,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec128cbd78802e45b2da006bb81a87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earlyPatterns: []
+  middlePatterns: []
+  latePatterns: []
+  acmPattern: 0
   prefebElements:
   - m_Name: Platform
     m_Prefeb: {fileID: 6792495905665241148, guid: 46be4fb2571ebff46b4297d0a4019e90, type: 3}
+  - m_Name: Enemy0
+    m_Prefeb: {fileID: 8715609804402053396, guid: f86bba966fa4c0c4f9885aa458180e20, type: 3}
+  - m_Name: Enemy1
+    m_Prefeb: {fileID: 5292050168988759920, guid: b2497ee0b676f0e4c8b8f5b19237e417, type: 3}
+  exPattern:
+    p_Data:
+    - floor: 1
+      pos: 0
+      width: 1
+    - floor: 2
+      pos: 10
+      width: 1
+    - floor: 1
+      pos: 20
+      width: 1
+    e_Data: []
 --- !u!1 &394994599
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,23 @@ public class PrefebElement
     public GameObject m_Prefeb;
 }
 
+[System.Serializable]
+public class LevelData
+{
+    public List<PatternData> earlyPatterns;
+    public List<PatternData> middlePatterns;
+    public List<PatternData> latePatterns;
+}
+
 public class MapBuilder : MonoBehaviour
 {
-    public List<PrefebElement> prefebElements;
+    public LevelData levelData;
+    // 패턴 누적수 (초, 중, 후반 나누는 분기점)
     public int acmPattern = 0;
+    // Prefeb 리스트
+    public List<PrefebElement> prefebElements;
+
+    PatternData exPattern;
 
     GameObject GetPrefeb(string s)
     {
@@ -25,7 +38,8 @@ public class MapBuilder : MonoBehaviour
 
     private void Start()
     {
-
+        exPattern = DataManager.GetPatternData(0, 0, 0);
+        DrawPattern(exPattern);
     }
 
     private void DrawPattern(PatternData pd)
