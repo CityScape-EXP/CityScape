@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null; //�̱��� ������ // �ܺο��� GameManager�� �����Ҷ� �̰� ����ٰ� ����
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject audioPanel;
+    public PoolManager pool;
 
     void Awake()
     {

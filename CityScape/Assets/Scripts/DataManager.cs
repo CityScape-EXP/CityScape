@@ -14,9 +14,9 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         string test = JsonUtility.ToJson(patternA);
-        Debug.Log(test);
+        // Debug.Log(test); 烙矫 林籍 贸府
         PatternData map2 = JsonUtility.FromJson<PatternData>(test);
-        Debug.Log(map2.p_Data[1].width);
+        // Debug.Log(map2.p_Data[1].width); 烙矫 林籍 贸府
     }
 }
 
