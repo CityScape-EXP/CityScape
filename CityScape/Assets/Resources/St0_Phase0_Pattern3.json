@@ -7,15 +7,10 @@
         },
         {
             "floor": 2,
-            "pos": 12.5,
-            "width": 1
-        },
-        {
-            "floor": 1,
-            "pos": 17.5,
+            "pos": 0,
             "width": 1
         }
     ],
     "e_Data": [],
-    "patternTime": 11
+    "patternTime" : 5
 }

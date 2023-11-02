@@ -22,10 +22,14 @@ public class MapBuilder : MonoBehaviour
     public LevelData levelData;
     // 패턴 누적수 (초, 중, 후반 나누는 분기점)
     public int acmPattern = 0;
+    int nowPhase = 0;
+    float patternStartTime = 0f;
+    float nowPatternTime = 0f;
     // Prefeb 리스트
     public List<PrefebElement> prefebElements;
 
-    PatternData exPattern;
+    // 테스트용 패턴
+    public PatternData exPattern;
 
     GameObject GetPrefeb(string s)
     {
@@ -36,10 +40,25 @@ public class MapBuilder : MonoBehaviour
             return null;
     }
 
-    private void Start()
+    private void Update()
     {
-        exPattern = DataManager.GetPatternData(0, 0, 0);
-        DrawPattern(exPattern);
+        // 패턴에 할당된 시간이 지났다면
+        if(Time.time - patternStartTime > nowPatternTime)
+        {
+            //초반, 중반, 후반 분기 결정
+            // 5개, 8개, 6개로 가정
+            if (acmPattern < 5) nowPhase = 0;
+            else if (acmPattern < 13) nowPhase = 1;
+            else if (acmPattern < 19) nowPhase = 2;
+            else Debug.Log("스테이지 클리어");
+
+            PatternData nowPattern = DataManager.GetPatternData(0, nowPhase, Random.Range(0, 4));
+            DrawPattern(nowPattern);
+
+            nowPatternTime = nowPattern.patternTime;
+            patternStartTime = Time.time;
+            acmPattern++;
+        }
     }
 
     private void DrawPattern(PatternData pd)
@@ -51,7 +70,7 @@ public class MapBuilder : MonoBehaviour
             for(int i = 0; i< platform.width; i++)
             {
                 // platform 클래스 데이터를 이용하여 prefeb Instantiate
-                Instantiate(platformPrefab, new Vector3(platform.pos + i, platform.floor * 1.5f, 0), Quaternion.identity);
+                Instantiate(platformPrefab, new Vector3(platform.pos + 20 + i, platform.floor * 1.5f, 0), Quaternion.identity);
             }
         }
         foreach (var enemy in pd.e_Data)

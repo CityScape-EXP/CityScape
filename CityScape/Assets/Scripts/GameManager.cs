@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        
+    }
+
     public void ShowSettingPanel()
     {
         settingPanel.SetActive(true);

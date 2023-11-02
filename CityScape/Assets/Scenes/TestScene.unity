@@ -182,15 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70eae2c59bb1e84f9ae7edd35266b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  early_Patterns: []
-  mid_Patterns: []
-  late_Patterns: []
-  patternA:
-    p_Data:
-    - floor: 1
-      pos: 12.5
-      width: 8
-    e_Data: []
 --- !u!114 &145313897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,9 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec128cbd78802e45b2da006bb81a87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earlyPatterns: []
-  middlePatterns: []
-  latePatterns: []
+  levelData:
+    earlyPatterns: []
+    middlePatterns: []
+    latePatterns: []
   acmPattern: 0
   prefebElements:
   - m_Name: Platform
@@ -217,15 +209,13 @@ MonoBehaviour:
   exPattern:
     p_Data:
     - floor: 1
-      pos: 0
+      pos: 5
       width: 1
     - floor: 2
-      pos: 10
-      width: 1
-    - floor: 1
-      pos: 20
+      pos: 8
       width: 1
     e_Data: []
+    patternTime: 5
 --- !u!1 &394994599
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +726,7 @@ Transform:
   m_GameObject: {fileID: 1729707712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 1}
+  m_LocalScale: {x: 1000, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

@@ -24,7 +24,8 @@ public class PatternData
 {
     public List<PlatformData> p_Data = new List<PlatformData>();
     public List<EnemyData> e_Data = new List<EnemyData>();
-    
+    public int patternTime;
+
     [System.Serializable]
     public class PlatformData
     {
