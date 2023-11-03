@@ -15,11 +15,11 @@ public class PoolManager : MonoBehaviour
             pools[index] = new List<GameObject>(); // 풀 초기화
     }
 
-    public GameObject Get(int index)
+    public GameObject Get(int ObjectType)
     {
         GameObject select = null; // select: 받아올 오브젝트
 
-        foreach (GameObject item in pools[index]) // pools 안의 것들 순서대로 가져옴
+        foreach (GameObject item in pools[ObjectType]) // pools 안의 것들 순서대로 가져옴
         {
             if (!item.activeSelf) // 작동하고 있지 않다면
             {
@@ -31,16 +31,16 @@ public class PoolManager : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(prefabs[index]); // 프리펩 생성
-            pools[index].Add(select); // 풀 추가
+            select = Instantiate(prefabs[ObjectType]); // 프리펩 생성
+            pools[ObjectType].Add(select); // 풀 추가
         }
 
         return select;
     }
 
-    public void Clear(int index)
+    public void Clear(int ObjectType)
     {
-        foreach (GameObject item in pools[index])
+        foreach (GameObject item in pools[ObjectType])
             item.SetActive(false);
     }
 

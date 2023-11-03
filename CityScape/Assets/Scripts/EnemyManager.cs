@@ -6,7 +6,6 @@ public class EnemyManager : MonoBehaviour
 {
     float time;
 
-
     void Start()
     {
         onStage();
@@ -14,13 +13,12 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
     }
 
     void onStage()
     {
 
-        // GameManager.instance.pool.Get(0);
+        GameManager.instance.pool.Get(1);
     }
 
 }

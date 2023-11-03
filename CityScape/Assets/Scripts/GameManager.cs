@@ -9,8 +9,18 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject audioPanel;
+
     public PoolManager pool;
     public Player player;
+    public float surviveTime;
+    public bool isGameover;
+
+
+    private void Start()
+    {
+        surviveTime = 0;
+        isGameover = false;
+    }
 
     void Awake()
     {
@@ -24,6 +34,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void Update()
+    {
+        if (!isGameover)
+        {
+            surviveTime += Time.deltaTime;
+        }
+    }
+
     public void ShowSettingPanel()
     {
         settingPanel.SetActive(true);
@@ -33,4 +52,5 @@ public class GameManager : MonoBehaviour
     {
         audioPanel.SetActive(true);
     }
+
 }

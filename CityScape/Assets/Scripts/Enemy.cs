@@ -7,13 +7,26 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public float power;
-    public bool isLive = true; // 최초 Instantiate시 isLive = true
+    public bool isLive; // 최초 Instantiate시 isLive = true
 
-    public int EnemyIndex;
+    [SerializeField] float StartAppearTime;
+    [SerializeField] float StartAppearSpeed;
+    [SerializeField] float TimeLimit;
+
+    public float id;
+    public float prefabID;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     CapsuleCollider2D coll;
+
+    private void Start()
+    {
+        isLive = true;
+        StartCoroutine(StartAppearSec(StartAppearTime)); // 맵 밖에서 안으로 등장하는 시간
+        StartCoroutine(DissaperaSec(TimeLimit)); // TimeLimit 넘길시 사라짐
+
+    }
 
     private void Awake()
     {
@@ -22,25 +35,41 @@ public class Enemy : MonoBehaviour
         coll = GetComponent<CapsuleCollider2D>();
     }
 
-    private void FixedUpdate() // 일차적으로 플랫폼과 같이 움직이도록 구현했습니다
-    {
-        if (isLive) MovePosit();
-    }
-
-    void MovePosit()
-    {
-        rigid.MovePosition(transform.position + Vector3.left * speed * Time.deltaTime);
-        rigid.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 함
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isLive)
-        {
-            if (collision.collider.CompareTag("Bullet"))
-            {
+        if (isLive){
+            if (collision.collider.CompareTag("Bullet")){
                 health -= collision.collider.GetComponent<Bullet>().damage;
+                Debug.Log(health);
+
+                if (health < 0){
+                    isLive = false;
+                    Debug.Log("몬스터 사망!! XOXO"); // 죽음
+                    gameObject.SetActive(false); // 비활성화
+                }
             }
+        }
+    }
+
+    IEnumerator StartAppearSec(float seconds)
+    {
+        float endTime = Time.time + seconds;
+
+        while (Time.time < endTime)
+        {
+            rigid.MovePosition(transform.position + Vector3.left * StartAppearSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator DissaperaSec(float seconds)
+    {
+        float endTime = Time.time + seconds;
+
+        while (Time.time < endTime)
+        {
+            rigid.MovePosition(transform.position + Vector3.left * StartAppearSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 

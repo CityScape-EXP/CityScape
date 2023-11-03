@@ -10,23 +10,29 @@ public class Bullet : MonoBehaviour
     public float id;
     public float prefabID;
 
-    [SerializeField] private Vector3 FixPos;
-
     void Start()
     {
         coll = GetComponent<BoxCollider2D>();
-        transform.position = GameManager.instance.player.transform.position + FixPos; // 불렛 생성 위치: 플레이어 위치
     }
 
     private void FixedUpdate()
     { 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); // 불렛 오른쪽으로 이동
+
+        /*
+        if (transform.position.x > 12f){
+            GameManager.instance.pool.Clear(0);
+        }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // 충돌 감지
     {
-        if (collision.CompareTag("Monster")){ 
-            GameManager.instance.pool.Clear(0); // 프리펩 비활성화
+        if (collision.CompareTag("Monster")){
+            Debug.Log("충돌");
+            gameObject.SetActive(false);
         }
     }
+
+
 }
