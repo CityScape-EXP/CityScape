@@ -9,18 +9,18 @@ public class PoolManager : MonoBehaviour
 
     void Awake()
     {
-        pools = new List<GameObject>[prefabs.Length];
+        pools = new List<GameObject>[prefabs.Length]; // 풀 생성
 
         for (int index = 0; index < pools.Length; index++)
-            pools[index] = new List<GameObject>();
+            pools[index] = new List<GameObject>(); // 풀 초기화
     }
 
     public GameObject Get(int index)
     {
-        GameObject select = null;
+        GameObject select = null; // select: 받아올 오브젝트
 
-        foreach (GameObject item in pools[index])
-        { // pools 안의 것들 순서대로 가져옴
+        foreach (GameObject item in pools[index]) // pools 안의 것들 순서대로 가져옴
+        {
             if (!item.activeSelf) // 작동하고 있지 않다면
             {
                 select = item;
@@ -31,9 +31,8 @@ public class PoolManager : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(prefabs[index], transform);
-            select.transform.SetParent(Player.transform, false);
-            pools[index].Add(select);
+            select = Instantiate(prefabs[index]); // 프리펩 생성
+            pools[index].Add(select); // 풀 추가
         }
 
         return select;
@@ -51,4 +50,5 @@ public class PoolManager : MonoBehaviour
             foreach (GameObject item in pools[index])
                 item.SetActive(false);
     }
+    
 }

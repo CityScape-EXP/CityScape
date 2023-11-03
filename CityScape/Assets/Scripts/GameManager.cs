@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null; //�̱��� ������ // �ܺο��� GameManager�� �����Ҷ� �̰� ����ٰ� ����
+    public static GameManager instance = null;
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject audioPanel;
     public PoolManager pool;
+    public Player player;
 
     void Awake()
     {

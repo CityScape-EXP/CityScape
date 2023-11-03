@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    // 프리펩 10~ 20 은 Bullet을 저장함
+    public GameObject[] prefabs; // 인스펙터에서 초기화
+    public GameObject Player;
 
-    float time;
+    public float BulletSpawnTime;
 
-    private void Update()
+    private void Start()
     {
-        time += Time.deltaTime;
+        StartCoroutine(SpawnRoutine(GameManager.instance.pool.Get(0)));
+    }
+
+    IEnumerator SpawnRoutine(Object Obj)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
+            Instantiate(Obj, transform.position, Quaternion.identity); // 오브젝트 생성
+        }
     }
 }
