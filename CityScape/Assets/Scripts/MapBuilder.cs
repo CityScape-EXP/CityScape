@@ -52,7 +52,9 @@ public class MapBuilder : MonoBehaviour
             else if (acmPattern < 19) nowPhase = 2;
             else Debug.Log("스테이지 클리어");
 
-            PatternData nowPattern = DataManager.GetPatternData(0, nowPhase, Random.Range(0, 4));
+            int patternNum = Random.Range(0, 4);
+            Debug.Log($"패턴 {patternNum}번 실행!");
+            PatternData nowPattern = DataManager.GetPatternData(0, nowPhase, patternNum);
             DrawPattern(nowPattern);
 
             nowPatternTime = nowPattern.patternTime;
