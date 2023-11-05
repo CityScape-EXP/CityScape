@@ -28,17 +28,7 @@ public class MapBuilder : MonoBehaviour
     // Prefeb 리스트
     public List<PrefebElement> prefebElements;
 
-    // 테스트용 패턴
-    public PatternData exPattern;
 
-    GameObject GetPrefeb(string s)
-    {
-        PrefebElement prefebElement = prefebElements.Find(le => le.m_Name == s);
-        if (prefebElement != null)
-            return prefebElement.m_Prefeb;
-        else
-            return null;
-    }
 
     private void Update()
     {
@@ -61,6 +51,15 @@ public class MapBuilder : MonoBehaviour
             patternStartTime = Time.time;
             acmPattern++;
         }
+    }
+
+    GameObject GetPrefeb(string s)
+    {
+        PrefebElement prefebElement = prefebElements.Find(le => le.m_Name == s);
+        if (prefebElement != null)
+            return prefebElement.m_Prefeb;
+        else
+            return null;
     }
 
     private void DrawPattern(PatternData pd)
