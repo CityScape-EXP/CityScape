@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Floor
   - Platform
+  - Monster
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - UI
   - Platform
   - DownPlatform
-  - 
-  - 
+  - Bullet
+  - Monster
   - 
   - 
   - 
