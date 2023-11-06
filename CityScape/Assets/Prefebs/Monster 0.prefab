@@ -97,15 +97,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb51d3b041b23ad46aee3c70f230315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MonsterBulletManager: {fileID: 0}
+  id: 0
+  prefabID: 1
   speed: 3
   health: 10
   power: 1
   isLive: 0
   StartAppearTime: 3
-  StartAppearSpeed: 3
+  StartAppearSpeed: 2
   TimeLimit: 0
-  id: 0
-  prefabID: 1
 --- !u!70 &6826577570010469575
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

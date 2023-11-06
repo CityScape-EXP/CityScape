@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public MonsterBulletManager MonsterBulletManager;
+
+    public float id;
+    public float prefabID;
+
     public float speed;
     public float health;
     public float power;
@@ -12,9 +17,6 @@ public class Monster : MonoBehaviour
     [SerializeField] float StartAppearTime;
     [SerializeField] float StartAppearSpeed;
     [SerializeField] float TimeLimit;
-
-    public float id;
-    public float prefabID;
 
     Rigidbody2D rigid;
     CapsuleCollider2D coll;
@@ -32,15 +34,16 @@ public class Monster : MonoBehaviour
     {
         if (isLive)
         {
-            if (collision.CompareTag("Bullet"))
+            if (collision.CompareTag("PlayerBullet"))
             {
                 health -= collision.GetComponent<PlayerBullet>().damage;
-                Debug.Log(health);
+                Debug.Log(id + "번 몬스터 체력: " + health);
 
-                if (health < 0)
+                if (health < 1)
                 {
                     isLive = false;
                     Debug.Log("몬스터 사망!! XOXO"); // 죽음
+                    MonsterBulletManager.StopBullet(); // 총알 발사 중지
                     gameObject.SetActive(false); // 비활성화
                 }
             }

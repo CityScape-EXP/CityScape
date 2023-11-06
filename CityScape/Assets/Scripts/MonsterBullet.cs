@@ -31,5 +31,6 @@ public class MonsterBullet : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        else return;
     }
 }
