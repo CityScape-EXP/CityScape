@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public MonsterBulletManager MonsterBulletManager;
-
     public float id;
     public float prefabID;
 
@@ -16,7 +14,7 @@ public class Monster : MonoBehaviour
 
     [SerializeField] float StartAppearTime;
     [SerializeField] float StartAppearSpeed;
-    [SerializeField] float TimeLimit;
+    [SerializeField] float TimeLimit; // 몬스터 처치 시간 제한
 
     Rigidbody2D rigid;
     CapsuleCollider2D coll;
@@ -43,7 +41,6 @@ public class Monster : MonoBehaviour
                 {
                     isLive = false;
                     Debug.Log("몬스터 사망!! XOXO"); // 죽음
-                    MonsterBulletManager.StopBullet(); // 총알 발사 중지
                     gameObject.SetActive(false); // 비활성화
                 }
             }
@@ -71,6 +68,4 @@ public class Monster : MonoBehaviour
             yield return null;
         }
     }
-
-
 }

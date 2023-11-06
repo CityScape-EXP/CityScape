@@ -13,24 +13,34 @@ public class MonsterBulletManager : MonoBehaviour
     public float BulletWaitTime;
     public float BulletSpawnTime;
 
+    public bool isMonsterLive;
+
     private void Start()
     {
+        isMonsterLive = true; // Monster가 생존 상태로 시작
         StartCoroutine(SpawnRoutine());
     }
 
-    IEnumerator SpawnRoutine()
+    IEnumerator SpawnRoutine() // 총알 생성 루틴
     {
         yield return new WaitForSeconds(BulletWaitTime);
-        while (true)
-        {
-            GameObject Obj = GameManager.instance.pool.Get(3);
-            Obj.transform.position = Monster.transform.position + FixPos;
+
+        while (isMonsterLive)
+        { // 몬스터 생존 경우만 총알 생성
+            GameObject MonsterBullet = GameManager.instance.pool.Get(2);
+            MonsterBullet.transform.position = Monster.transform.position + FixPos;
             yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
         }
     }
 
-    public void StopBullet()
+    private void Update() // 몬스터 사망 여부 체크
     {
-        StopCoroutine(SpawnRoutine()); // 몬스터가 죽으면 총알 생성 루틴을 중지
+        if (Monster != null){
+            Monster MonsterObj = Monster.GetComponent<Monster>();
+            if (MonsterObj != null){
+                isMonsterLive = MonsterObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
+                Debug.Log("MonsterObj.isLive : " + MonsterObj.isLive);
+            }
+        }
     }
 }
