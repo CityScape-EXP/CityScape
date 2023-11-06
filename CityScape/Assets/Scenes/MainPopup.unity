@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 98103957}
   - component: {fileID: 98103956}
   m_Layer: 5
-  m_Name: EnforceButton
+  m_Name: ReinforceButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

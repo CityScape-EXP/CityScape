@@ -6,7 +6,7 @@ using System.Text;
 
 public class DataManager : MonoBehaviour
 {
-    static string savePath = Application.dataPath;
+    
 #if UNITY_ANDROID
     // 안드로이드 빌드 떄 사용
     // savePath = Application.persistantDataPath;
@@ -15,6 +15,7 @@ public class DataManager : MonoBehaviour
     // Json 파일의 이름 규칙은 다음과 같다. (예) St0_Phase2_Pattern0
     public static PatternData GetPatternData(int stage, int phase, int pattern)
     {
+        string savePath = Application.dataPath;
         PatternData data = new PatternData();
         string path = savePath + $"/Resources/St{stage}_Phase{phase}_Pattern{pattern}.json" ;
         string jsonData = File.ReadAllText(path);
@@ -24,6 +25,7 @@ public class DataManager : MonoBehaviour
 
     public static PlayerData GetPlayerData()
     {
+        string savePath = Application.dataPath;
         PlayerData data = new PlayerData();
         string path = savePath + $"/Resources/PlayerData.json";
         string jsonData = File.ReadAllText(path);
@@ -33,6 +35,7 @@ public class DataManager : MonoBehaviour
 
     public static GameData GetGameData()
     {
+        string savePath = Application.dataPath;
         GameData data = new GameData();
         string path = savePath + $"/Resources/GameData.json";
         string jsonData = File.ReadAllText(path);
@@ -42,12 +45,14 @@ public class DataManager : MonoBehaviour
 
     public static void SaveGameData(ref GameData gdata)
     {
+        string savePath = Application.dataPath;
         string data = JsonUtility.ToJson(gdata);
         File.WriteAllText(data, savePath + "/Resources/GameData.json");
     }
 
     public static void SavePlayerData(ref PlayerData pdata)
     {
+        string savePath = Application.dataPath;
         string data = JsonUtility.ToJson(pdata);
         File.WriteAllText(data, savePath + "/Resources/PlayerData.json");
     }
