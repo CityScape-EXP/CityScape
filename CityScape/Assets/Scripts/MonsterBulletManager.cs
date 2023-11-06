@@ -8,32 +8,29 @@ public class MonsterBulletManager : MonoBehaviour
     public GameObject Monster;
     public int id;
 
-    private Vector3 MonsterPosit;
     public Vector3 FixPos; // 총알 생성 위치 조정
 
+    public float BulletWaitTime;
     public float BulletSpawnTime;
-
 
     private void Start()
     {
-        MonsterPosit = Monster.transform.position + FixPos;
         StartCoroutine(SpawnRoutine());
-    }
-
-
-    private void Update()
-    {
-        MonsterPosit = Monster.transform.position + FixPos;
     }
 
     IEnumerator SpawnRoutine()
     {
+        yield return new WaitForSeconds(BulletWaitTime);
         while (true)
         {
             GameObject Obj = GameManager.instance.pool.Get(3);
-            Obj.transform.position = MonsterPosit;
-            Debug.Log(Monster.transform.position);
+            Obj.transform.position = Monster.transform.position + FixPos;
             yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
         }
+    }
+
+    public void StopBullet()
+    {
+        StopCoroutine(SpawnRoutine()); // 몬스터가 죽으면 총알 생성 루틴을 중지
     }
 }

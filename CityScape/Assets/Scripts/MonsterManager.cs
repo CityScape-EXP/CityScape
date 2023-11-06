@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class MonsterManager : MonoBehaviour
 {
     void Start()
     {
@@ -17,5 +17,4 @@ public class EnemyManager : MonoBehaviour
     {
         GameManager.instance.pool.Get(1);
     }
-
 }

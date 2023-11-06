@@ -11,8 +11,15 @@ public class Player : MonoBehaviour
 
     public float jumpPower;
     public float speed;
+    public float health;
+    public bool isLive;
 
     public bool isGround = true;
+
+    private void Start()
+    {
+        isLive = true;
+    }
 
     private void Awake()
     {
@@ -63,6 +70,24 @@ public class Player : MonoBehaviour
                 coll.isTrigger = false;
             }
         } 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isLive)
+        {
+            if (collision.CompareTag("MonsterBullet"))
+            {
+                health -= collision.GetComponent<MonsterBullet>().damage;
+                Debug.Log("플레이어 체력: " + health);
+
+                if (health < 1)
+                {
+                    isLive = false;
+                    Debug.Log("플레이어 사망!! XOXO"); // 죽음
+                }
+            }
+        }
     }
 
 }

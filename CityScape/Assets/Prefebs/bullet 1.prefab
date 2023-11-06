@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3840741490448591614}
   m_Layer: 8
   m_Name: bullet 1
-  m_TagString: Bullet
+  m_TagString: MonsterBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  damage: 1
+  damage: 2
   id: 0
   prefabID: 3
