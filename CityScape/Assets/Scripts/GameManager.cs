@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     {
         surviveTime = 0;
         isGameover = false;
+        gameData = DataManager.GetGameData();
+        playerData = DataManager.GetPlayerData();
     }
 
     void Awake()
@@ -36,17 +38,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        gameData = DataManager.GetGameData();
-        playerData = DataManager.GetPlayerData();
-    }
-
-    private void Update()
-    {
-        
+    }    
     void Update()
     {
         if (!isGameover)
