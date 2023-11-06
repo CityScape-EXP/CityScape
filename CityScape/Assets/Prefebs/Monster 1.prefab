@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4512605631849769789}
   - component: {fileID: 7278125840530149608}
   - component: {fileID: 5390192871527258492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monster 1
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -100,6 +100,11 @@ MonoBehaviour:
   health: 25
   power: 3
   isLive: 0
+  StartAppearTime: 0
+  StartAppearSpeed: 0
+  TimeLimit: 0
+  id: 0
+  prefabID: 0
 --- !u!70 &5390192871527258492
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

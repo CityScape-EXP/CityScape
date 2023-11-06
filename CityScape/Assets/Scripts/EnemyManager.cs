@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    float time;
-
     void Start()
     {
         onStage();
@@ -17,7 +15,6 @@ public class EnemyManager : MonoBehaviour
 
     void onStage()
     {
-
         GameManager.instance.pool.Get(1);
     }
 
