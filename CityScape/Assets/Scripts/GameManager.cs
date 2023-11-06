@@ -6,12 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null; //�̱��� ������ // �ܺο��� GameManager�� �����Ҷ� �̰� ����ٰ� ����
+    public static GameManager instance = null;
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject audioPanel;
     
     [SerializeField] GameData gameData;
     [SerializeField] PlayerData playerData;
+
+    public PoolManager pool;
+    public Player player;
+    public float surviveTime;
+    public bool isGameover;
+
+
+    private void Start()
+    {
+        surviveTime = 0;
+        isGameover = false;
+        gameData = DataManager.GetGameData();
+        playerData = DataManager.GetPlayerData();
+    }
 
     void Awake()
     {
@@ -24,17 +38,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
+    }    
+    void Update()
     {
-        gameData = DataManager.GetGameData();
-        playerData = DataManager.GetPlayerData();
-    }
-
-    private void Update()
-    {
-        
+        if (!isGameover)
+        {
+            surviveTime += Time.deltaTime;
+        }
     }
 
     public void ShowSettingPanel()
@@ -46,4 +56,5 @@ public class GameManager : MonoBehaviour
     {
         audioPanel.SetActive(true);
     }
+
 }

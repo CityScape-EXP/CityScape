@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8192938569084604895}
   - component: {fileID: 9181724613972956217}
   m_Layer: 8
-  m_Name: Bullet 0
-  m_TagString: Weapon
+  m_Name: bullet 0
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: b7d1e8c4f4aad4e43a570951be1cbe14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,8 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7f7f8d6935b649bc3fde5d4aa47da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  startPos: 0
+  moveSpeed: 10
+  damage: 1
+  id: 0
+  prefabID: 0
 --- !u!61 &9181724613972956217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,14 +110,14 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.06, y: 0.03}
+    oldSize: {x: 0.2, y: 0.1}
     newSize: {x: 0.06, y: 0.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
