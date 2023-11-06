@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletManager : MonoBehaviour
+public class PlayerBulletManager : MonoBehaviour
 {
     public GameObject[] prefabs; // 인스펙터에서 초기화
     public GameObject Player;

@@ -34,7 +34,7 @@ public class Monster : MonoBehaviour
         {
             if (collision.CompareTag("Bullet"))
             {
-                health -= collision.GetComponent<Bullet>().damage;
+                health -= collision.GetComponent<PlayerBullet>().damage;
                 Debug.Log(health);
 
                 if (health < 0)

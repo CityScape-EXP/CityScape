@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
     //BoxCollider2D coll;
     public float moveSpeed;
@@ -31,6 +31,4 @@ public class Bullet : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-
 }

@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  damage: 3
+  damage: 1
   id: 0
   prefabID: 0
-  FixPos: {x: 0.3, y: 0.3, z: 0}
 --- !u!61 &9181724613972956217
 BoxCollider2D:
   m_ObjectHideFlags: 0
