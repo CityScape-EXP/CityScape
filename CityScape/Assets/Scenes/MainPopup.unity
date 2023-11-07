@@ -3675,8 +3675,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 833163380}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnExitButton
         m_Mode: 1
         m_Arguments:
@@ -4215,8 +4215,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 833163380}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OffPausePanel
         m_Mode: 1
         m_Arguments:
@@ -4348,8 +4348,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 833163380}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: GoMenuButton
         m_Mode: 1
         m_Arguments:
