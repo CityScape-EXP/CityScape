@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Path;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageStart : MonoBehaviour
 {
-    public void StartStage1(){
+    public void StartStage1()
+    {
         SceneManager.LoadScene("TestScene");
     }
     public void StartStage2(){
