@@ -167,7 +167,7 @@ MonoBehaviour:
     playerMaxHp: 0
     playerOffence: 0
     playerAttackSpeed: 0
-  pool: {fileID: 1191721507}
+  BulletPool: {fileID: 1191721507}
   MonsterPool: {fileID: 400451080}
   player: {fileID: 394994606}
   surviveTime: 0
@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -550,8 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539dfb824a6a308458d2591300169036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 5501616621956362097, guid: 05ca61b0fcf113448b45c7ad9c7ac290, type: 3}
+  prefabs: []
   Player: {fileID: 394994599}
   id: 0
   FixPos: {x: 0, y: 0, z: 0}
@@ -568,7 +567,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &853149342
 GameObject:
@@ -611,7 +610,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1122987501
 GameObject:
@@ -709,7 +708,7 @@ Transform:
   m_Children:
   - {fileID: 1353150029}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191721506
 GameObject:
@@ -722,7 +721,7 @@ GameObject:
   - component: {fileID: 1191721508}
   - component: {fileID: 1191721507}
   m_Layer: 0
-  m_Name: PoolManager
+  m_Name: BulletPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,9 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 5501616621956362097, guid: 05ca61b0fcf113448b45c7ad9c7ac290, type: 3}
-  - {fileID: 8715609804402053396, guid: f86bba966fa4c0c4f9885aa458180e20, type: 3}
   - {fileID: 5501616621956362097, guid: b6f870cbe382cd545aa62b4e57d87e5e, type: 3}
-  - {fileID: 5292050168988759920, guid: b2497ee0b676f0e4c8b8f5b19237e417, type: 3}
 --- !u!4 &1191721508
 Transform:
   m_ObjectHideFlags: 0
@@ -870,8 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e669166c35dbba4cb733a41d851c5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 5501616621956362097, guid: b6f870cbe382cd545aa62b4e57d87e5e, type: 3}
+  prefabs: []
   Monster: {fileID: 8715609804402053396, guid: f86bba966fa4c0c4f9885aa458180e20, type: 3}
   id: 0
   FixPos: {x: 0, y: 0.7, z: 0}
@@ -974,7 +970,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1729707715
 BoxCollider2D:

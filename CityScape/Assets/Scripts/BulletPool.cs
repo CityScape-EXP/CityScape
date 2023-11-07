@@ -4,7 +4,6 @@ using UnityEngine;
 public class BulletPool : MonoBehaviour
 {
     public GameObject[] prefabs; // 인스펙터에서 초기화
-    //public GameObject Player;
     List<GameObject>[] pools;
 
     void Awake()
@@ -31,7 +30,8 @@ public class BulletPool : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(prefabs[ObjectType]); // 프리펩 생성
+            select = Instantiate(prefabs[ObjectType], gameObject.transform, true); // 프리펩 생성
+
             pools[ObjectType].Add(select); // 풀 추가
         }
 
