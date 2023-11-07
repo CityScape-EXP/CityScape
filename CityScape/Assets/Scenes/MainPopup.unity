@@ -2244,7 +2244,7 @@ GameObject:
   - component: {fileID: 833163381}
   - component: {fileID: 833163380}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2259,7 +2259,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 833163379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a952ea6a358104693fd0f82d809457, type: 3}
+  m_Script: {fileID: 11500000, guid: 01ef004966dbad341b8842afd3b98a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roadMainMenu: MainPopup
@@ -2272,21 +2272,6 @@ MonoBehaviour:
   continueButton: {fileID: 1714547591}
   restartButton: {fileID: 831231426}
   goToMenuButton: {fileID: 1729562252}
-  gameData:
-    isStageOpen: 
-    stageHighScore: 
-    money: 0
-    systemSetting_Audio0: 0
-    systemSetting_Audio1: 0
-    systemSetting_Audio2: 0
-  playerData:
-    playerMaxHp: 0
-    playerOffence: 0
-    playerAttackSpeed: 0
-  pool: {fileID: 0}
-  player: {fileID: 0}
-  surviveTime: 0
-  isGameover: 0
 --- !u!4 &833163381
 Transform:
   m_ObjectHideFlags: 0
@@ -3690,7 +3675,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 833163380}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnExitButton
         m_Mode: 1
@@ -4230,7 +4215,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 833163380}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OffPausePanel
         m_Mode: 1
@@ -4363,7 +4348,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 833163380}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: GoMenuButton
         m_Mode: 1
