@@ -1,10 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class MonsterPool : MonoBehaviour
 {
     public GameObject[] prefabs; // 인스펙터에서 초기화
-    public GameObject Player;
     List<GameObject>[] pools;
 
     void Awake()
@@ -31,7 +31,7 @@ public class PoolManager : MonoBehaviour
 
         if (!select)
         {
-            select = Instantiate(prefabs[ObjectType]); // 프리펩 생성
+            select = Instantiate(prefabs[ObjectType], gameObject.transform, true); // 프리펩 생성
             pools[ObjectType].Add(select); // 풀 추가
         }
 
@@ -50,5 +50,4 @@ public class PoolManager : MonoBehaviour
             foreach (GameObject item in pools[index])
                 item.SetActive(false);
     }
-    
 }

@@ -21,7 +21,7 @@ public class PlayerBulletManager : MonoBehaviour
     {
         while (true)
         {
-            GameObject Obj = GameManager.instance.pool.Get(0);
+            GameObject Obj = GameManager.instance.BulletPool.Get(0);
             Obj.transform.position = Player.transform.position + FixPos;
             yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
             
