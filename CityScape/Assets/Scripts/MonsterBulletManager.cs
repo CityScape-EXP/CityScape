@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterBulletManager : MonoBehaviour
 {
     public GameObject[] prefabs; // 인스펙터에서 초기화
-    public GameObject Monster;
+    GameObject MyMonster;
     public int id;
 
     public Vector3 FixPos; // 총알 생성 위치 조정
@@ -14,11 +14,12 @@ public class MonsterBulletManager : MonoBehaviour
     public float BulletSpawnTime;
 
     public bool isMonsterLive;
-    
+
 
     private void Start()
     {
         isMonsterLive = true; // Monster가 생존 상태로 시작
+        MyMonster = GameManager.instance.MonsterPool.Get(0);
         StartCoroutine(SpawnRoutine());
     }
 
@@ -29,20 +30,22 @@ public class MonsterBulletManager : MonoBehaviour
         while (isMonsterLive)
         { // 몬스터 생존 경우만 총알 생성
             GameObject MonsterBullet = GameManager.instance.BulletPool.Get(1);
-            MonsterBullet.transform.position = Monster.transform.position + FixPos;
+            MonsterBullet.transform.position = MyMonster.transform.position + FixPos;
             yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
         }
     }
 
     private void Update() // 몬스터 사망 여부 체크
     {
-        if (Monster != null){
-            Monster MonsterObj = Monster.GetComponent<Monster>();
-            if (MonsterObj != null){
+        if (MyMonster != null)
+        {
+            Monster MonsterObj = MyMonster.GetComponent<Monster>();
+            if (MonsterObj != null)
+            {
                 isMonsterLive = MonsterObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
                 Debug.Log("MonsterObj.isLive : " + MonsterObj.isLive);
             }
         }
-        Debug.Log("MBM Pos : " + Monster.transform.position);
+        Debug.Log("MBM Pos : " + MyMonster.transform.position);
     }
 }

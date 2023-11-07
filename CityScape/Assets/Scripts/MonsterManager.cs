@@ -15,6 +15,6 @@ public class MonsterManager : MonoBehaviour
 
     void onStage()
     {
-        GameManager.instance.MonsterPool.Get(0);
+        
     }
 }
