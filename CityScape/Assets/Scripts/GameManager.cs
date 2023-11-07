@@ -17,16 +17,6 @@ public class GameManager : MonoBehaviour
     public Player player;
     public float surviveTime;
     public bool isGameover;
-
-
-    private void Start()
-    {
-        surviveTime = 0;
-        isGameover = false;
-        gameData = DataManager.GetGameData();
-        playerData = DataManager.GetPlayerData();
-    }
-
     void Awake()
     {
         if (instance == null)
@@ -38,7 +28,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }    
+    }
+    private void Start()
+    {
+        surviveTime = 0;
+        isGameover = false;
+        gameData = DataManager.GetGameData();
+        playerData = DataManager.GetPlayerData();
+    }
     void Update()
     {
         if (!isGameover)
@@ -46,15 +43,4 @@ public class GameManager : MonoBehaviour
             surviveTime += Time.deltaTime;
         }
     }
-
-    public void ShowSettingPanel()
-    {
-        settingPanel.SetActive(true);
-    }
-
-    public void ShowAudioPanel()
-    {
-        audioPanel.SetActive(true);
-    }
-
 }
