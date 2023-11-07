@@ -25,7 +25,12 @@ public class Monster : MonoBehaviour
         coll = GetComponent<CapsuleCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
         StartCoroutine(StartAppearSec(StartAppearTime)); // 맵 밖에서 안으로 등장하는 시간
-        StartCoroutine(DissaperaSec(TimeLimit)); // TimeLimit 넘길시 사라짐
+        //StartCoroutine(DissaperaSec(TimeLimit)); // TimeLimit 넘길시 사라짐
+    }
+
+    private void Update()
+    {
+        Debug.Log("몬스터 위치: " + transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,7 +69,7 @@ public class Monster : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            rigid.MovePosition(transform.position + Vector3.left * StartAppearSpeed * Time.deltaTime);
+            rigid.MovePosition(transform.position + Vector3.right * StartAppearSpeed * Time.deltaTime);
             yield return null;
         }
     }
