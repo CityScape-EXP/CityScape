@@ -1,0 +1,16 @@
+{
+    "p_Data": [
+        {
+            "floor": 1,
+            "pos": 0,
+            "width": 1
+        },
+        {
+            "floor": 2,
+            "pos": 10.4,
+            "width": 1
+        }
+    ],
+    "e_Data": [],
+    "patternTime": 8
+}
