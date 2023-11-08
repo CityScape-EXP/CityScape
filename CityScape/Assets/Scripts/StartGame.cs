@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    public GameObject mainPopup;
+
     public void GameStart(){
-        SceneManager.LoadScene("MainPopup");
+        Instantiate(mainPopup, transform.position, Quaternion.identity);
     }
 }
