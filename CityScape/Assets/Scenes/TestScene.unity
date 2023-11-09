@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a952ea6a358104693fd0f82d809457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   gameData:
     isStageOpen: 
     stageHighScore: 
@@ -165,6 +166,8 @@ MonoBehaviour:
     playerMaxHp: 0
     playerOffence: 0
     playerAttackSpeed: 0
+=======
+>>>>>>> Stashed changes
   BulletPool: {fileID: 1191721507}
   MonsterPool: {fileID: 400451080}
   player: {fileID: 394994606}
