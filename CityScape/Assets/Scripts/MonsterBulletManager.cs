@@ -43,9 +43,9 @@ public class MonsterBulletManager : MonoBehaviour
             if (MonsterObj != null)
             {
                 isMonsterLive = MonsterObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
-                Debug.Log("MonsterObj.isLive : " + MonsterObj.isLive);
+                //Debug.Log("MonsterObj.isLive : " + MonsterObj.isLive);
             }
         }
-        Debug.Log("MBM Pos : " + MyMonster.transform.position);
+        //Debug.Log("MBM Pos : " + MyMonster.transform.position);
     }
 }
