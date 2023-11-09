@@ -1,76 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-
-/*  
- *  Reinforcement.cs
- *  각종 강화와 관련된 함수를 작성한다
- */
 public class Reinforcement : MonoBehaviour
 {
-    // 변경한다면 HUI의 upgradeMoneyData도 같이 변경할것
-    // 강화에 필요한 재화 데이타
-    int[,] upgradeMoneyData = new int[3, 4]
-        { {10, 20, 30, 50 }, 
-          {10, 20, 30, 50 }, 
-          {10, 20, 30, 50 } };
-    Button thisButton;
-    int nowLevel;
-    public int field;  // 강화하는 항목에 대한 정보 => 0 = Hp, 1 = Atk, 2 = AS
-    GameManager gameManager;    // 현재 강화 정보에 접근하기 위한 gameManager
-
+    // Start is called before the first frame update
     void Start()
     {
-        thisButton = gameObject.GetComponent<Button>();
-        gameManager = GameManager.instance;
-        // 레벨 가져오기
-        switch (field)
-        {
-            case 0: nowLevel = gameManager.upgradeData.hpLevel; break;
-            case 1: nowLevel = gameManager.upgradeData.offenceLevel; break;
-            case 2: nowLevel = gameManager.upgradeData.asLevel; break;
-        }
-        if (nowLevel == 5)
-            thisButton.interactable = false;
-        Debug.Log($"필드 : {field}, 레벨 : {nowLevel}");
+        
     }
 
-    // 테스트용 함수 : 돈 10000으로 설정
-    public void Cheat()
+    // Update is called once per frame
+    void Update()
     {
-        gameManager.gameData.money += 100;
-        gameManager.dm.SaveGameData(gameManager.gameData);
-    }
-
-    // Upgrade 함수
-    public void GetUpgrade()
-    {
-        int nowMoney = gameManager.gameData.money;
-        // 돈이 부족하면 Error 출력 후 종료
-        if(nowMoney < upgradeMoneyData[field, nowLevel-1]) 
-        {
-            Debug.Log("돈이 부족합니다");
-            return;
-        }
-
-        // 강화 & json에 정보 Save
-        nowMoney -= upgradeMoneyData[field, nowLevel-1];
-        gameManager.gameData.money = nowMoney;
-        switch(field)
-        {
-            case 0: gameManager.upgradeData.hpLevel = nowLevel + 1; break;
-            case 1: gameManager.upgradeData.offenceLevel = nowLevel + 1; break;
-            case 2: gameManager.upgradeData.asLevel = nowLevel + 1; break;
-        }
-        gameManager.dm.SaveUpgradeData(gameManager.upgradeData);
-        gameManager.dm.SaveGameData(gameManager.gameData);
-        Debug.Log($"필드 {field}번 강화에 성공하셨습니다! Lv.{nowLevel} -> Lv.{nowLevel + 1}");
-        nowLevel++;
-
-        // 만렙 달성
-        if (nowLevel == 5)
-            thisButton.interactable = false;
+        
     }
 }

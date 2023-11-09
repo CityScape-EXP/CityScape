@@ -9,21 +9,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;    
     [Header("Data")]
-    [SerializeField] public GameData gameData;
-    [SerializeField] public UpgradeData upgradeData;
+    [SerializeField] GameData gameData;
+    [SerializeField] PlayerData playerData;
 
     public BulletPool BulletPool;
     public MonsterPool MonsterPool;
     public Player player;
     public float surviveTime;
     public bool isGameover;
-    public DataManager dm;
-
     void Awake()
     {
-        dm = GetComponent<DataManager>();
-        gameData = dm.GetGameData();
-        upgradeData = dm.GetUpgradeData();
         if (instance == null)
         {
             instance = this;
@@ -33,12 +28,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
     }
     private void Start()
     {
         surviveTime = 0;
         isGameover = false;
+        gameData = DataManager.GetGameData();
+        playerData = DataManager.GetPlayerData();
     }
     void Update()
     {
