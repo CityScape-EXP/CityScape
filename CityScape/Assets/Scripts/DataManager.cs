@@ -4,12 +4,6 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 
-/*  DataManager.cs
- *  각종 json 파일을 관리하는 스크립트
- *  json파일이나 세이브 파일, 각종 게임이 꺼져도 유지되는 항목에 대해서는
- *  해당 스크립트에 작성한다
- */
-
 public class DataManager : MonoBehaviour
 {
     
@@ -19,114 +13,70 @@ public class DataManager : MonoBehaviour
 #endif
     // Json 파일을 통해 PatternData를 가져오는 과정
     // Json 파일의 이름 규칙은 다음과 같다. (예) St0_Phase2_Pattern0
-    public PatternData GetPatternData(int stage, int phase, int pattern)
+    public static PatternData GetPatternData(int stage, int phase, int pattern)
     {
         string savePath = Application.dataPath;
         PatternData data = new PatternData();
-        string path = savePath + $"/Resources/Patterns/St{stage}_Phase{phase}_Pattern{pattern}.json" ;
+        string path = savePath + $"/Resources/St{stage}_Phase{phase}_Pattern{pattern}.json" ;
         string jsonData = File.ReadAllText(path);
         data = JsonUtility.FromJson<PatternData>(jsonData);
         return data;
     }
 
-    // UpgradeData.json 파일을 UpgradeData 클래스 정보로 변경하는 함수
-    public UpgradeData GetUpgradeData()
+    public static PlayerData GetPlayerData()
     {
         string savePath = Application.dataPath;
-        UpgradeData data = new UpgradeData();
-        string path = savePath + $"/Resources/Data/UpgradeData.json";
+        PlayerData data = new PlayerData();
+        string path = savePath + $"/Resources/PlayerData.json";
         string jsonData = File.ReadAllText(path);
-        data = JsonUtility.FromJson<UpgradeData>(jsonData);
+        data = JsonUtility.FromJson<PlayerData>(jsonData);
         return data;
     }
 
-    // GameData.json 파일을 GameData 클래스 정보로 변경하는 함수
-    public GameData GetGameData()
+    public static GameData GetGameData()
     {
         string savePath = Application.dataPath;
         GameData data = new GameData();
-        string path = savePath + $"/Resources/Data/GameData.json";
+        string path = savePath + $"/Resources/GameData.json";
         string jsonData = File.ReadAllText(path);
         data = JsonUtility.FromJson<GameData>(jsonData);
         return data;
     }
 
-
-    /*
-     *  저장 부분 : 변화가 일어날 때에는 무조건 저장을 한다
-     *  -> 일어난 변화를 적용시켜줘야 한다
-     */
-    // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
-    public void SaveGameData(GameData gdata)
+    public static void SaveGameData(ref GameData gdata)
     {
         string savePath = Application.dataPath;
         string data = JsonUtility.ToJson(gdata);
-        Debug.Log("저장 데이터 : " + data);
-        File.WriteAllText(savePath + "/Resources/Data/GameData.json", data);
-        GameManager.instance.gameData = GetGameData();
+        File.WriteAllText(data, savePath + "/Resources/GameData.json");
     }
 
-    // UpgradeData 클래스 정보를 받아 UpgradeData.json에 저장하는 함수
-    public void SaveUpgradeData(UpgradeData udata)
+    public static void SavePlayerData(ref PlayerData pdata)
     {
         string savePath = Application.dataPath;
-        string data = JsonUtility.ToJson(udata);
-        Debug.Log("저장 데이터 : " + data);
-        File.WriteAllText(savePath + "/Resources/Data/UpgradeData.json", data);
-        GameManager.instance.upgradeData = GetUpgradeData();
-    }
-
-    // 게임 첫 시작시 UpgradeData를 초기화하는 함수
-    public void InitUpgradeData()
-    {
-        Debug.Log("강화 수치 초기화");
-        UpgradeData p_temp = new UpgradeData();
-        SaveUpgradeData(p_temp);
-    }
-
-    // 게임 첫 시작시 GameData를 초기화하는 함수
-    public void InitGameData()
-    {
-        Debug.Log("게임 데이터 초기화");
-        GameData g_temp = new GameData();
-        SaveGameData(g_temp);
+        string data = JsonUtility.ToJson(pdata);
+        File.WriteAllText(data, savePath + "/Resources/PlayerData.json");
     }
 }
 
-// UpgradeData 클래스
 [System.Serializable]
-public class UpgradeData
+public class PlayerData
 {
-    public int hpLevel;
-    public int offenceLevel;
-    public int asLevel;
-    
-    // 초기화를 위한 생성자
-    public UpgradeData(int hp = 1, int atk = 1, int atks = 1)
-    {
-        hpLevel = hp; offenceLevel = atk; asLevel = atks;
-    }
+    public int playerMaxHp;
+    public float playerOffence;
+    public float playerAttackSpeed;
 }
 
-// GameData 클래스
 [System.Serializable]
 public class GameData
 {
-    public List<bool> isStageOpen;
-    public List<int> stageHighScore;
+    public List<bool> isStageOpen = new List<bool>();
+    public List<int> stageHighScore = new List<int>();
     public int money;
-    
-    // 초기화를 위한 생성자
-    public GameData()
-    {
-        isStageOpen = new List<bool>() { false, false, false};
-        stageHighScore = new List<int>() { 0, 0, 0 };
-        money = 0;
-    }
+    public int systemSetting_Audio0;
+    public int systemSetting_Audio1;
+    public int systemSetting_Audio2;
 }
 
-
-// 게임 패턴을 저장하는 PatternData 클래스
 [System.Serializable]
 public class PatternData
 {
@@ -134,7 +84,6 @@ public class PatternData
     public List<EnemyData> e_Data = new List<EnemyData>();
     public int patternTime;
     
-    // 플랫폼 정보를 저장하는 PlatformData 클래스
     [System.Serializable]
     public class PlatformData
     {
@@ -143,7 +92,6 @@ public class PatternData
         public int width;
     }
 
-    // 몬스터 정보를 저장하는 EnemyData 클래스
     [System.Serializable]
     public class EnemyData
     {

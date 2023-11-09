@@ -30,7 +30,7 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("몬스터 위치: " + transform.position);
+        Debug.Log("몬스터 위치: " + transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

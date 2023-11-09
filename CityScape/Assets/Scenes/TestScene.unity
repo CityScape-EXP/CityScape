@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a952ea6a358104693fd0f82d809457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   gameData:
     isStageOpen: 
     stageHighScore: 
@@ -166,14 +165,11 @@ MonoBehaviour:
     playerMaxHp: 0
     playerOffence: 0
     playerAttackSpeed: 0
-=======
->>>>>>> Stashed changes
   BulletPool: {fileID: 1191721507}
   MonsterPool: {fileID: 400451080}
   player: {fileID: 394994606}
   surviveTime: 0
   isGameover: 0
-  dm: {fileID: 0}
 --- !u!4 &145313895
 Transform:
   m_ObjectHideFlags: 0
@@ -212,6 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec128cbd78802e45b2da006bb81a87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData:
+    earlyPatterns: []
+    middlePatterns: []
+    latePatterns: []
   acmPattern: 0
   prefebElements:
   - m_Name: Platform
