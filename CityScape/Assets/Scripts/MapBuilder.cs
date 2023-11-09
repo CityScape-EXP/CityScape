@@ -9,17 +9,8 @@ public class PrefebElement
     public GameObject m_Prefeb;
 }
 
-[System.Serializable]
-public class LevelData
-{
-    public List<PatternData> earlyPatterns;
-    public List<PatternData> middlePatterns;
-    public List<PatternData> latePatterns;
-}
-
 public class MapBuilder : MonoBehaviour
 {
-    public LevelData levelData;
     // 패턴 누적수 (초, 중, 후반 나누는 분기점)
     public int acmPattern = 0;
     int nowPhase = 0;
@@ -44,7 +35,7 @@ public class MapBuilder : MonoBehaviour
 
             int patternNum = Random.Range(0, 4);
             Debug.Log($"패턴 {patternNum}번 실행!");
-            PatternData nowPattern = DataManager.GetPatternData(0, nowPhase, patternNum);
+            PatternData nowPattern = GameManager.instance.dm.GetPatternData(0, nowPhase, patternNum);
             DrawPattern(nowPattern);
 
             nowPatternTime = nowPattern.patternTime;
