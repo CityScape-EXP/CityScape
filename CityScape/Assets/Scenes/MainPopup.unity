@@ -2814,33 +2814,29 @@ PrefabInstance:
       propertyPath: settingCanvas
       value: 
       objectReference: {fileID: 1581500106}
-    - target: {fileID: 835534276, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6841991975437061852, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1061244391}
     - target: {fileID: 6841991975541280323, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.7497497
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991975541280323, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991975541280323, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.7497497
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991975590598867, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.7497497
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991975590598867, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991976370469456, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_Pivot.x
@@ -2930,17 +2926,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 6841991976370469463, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 6841991976599743905, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991976599743905, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.7497497
-      objectReference: {fileID: 0}
-    - target: {fileID: 6841991976599743905, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991976646812962, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2952,15 +2944,15 @@ PrefabInstance:
       objectReference: {fileID: 833163380}
     - target: {fileID: 6841991976913197431, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.7497497
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991976913197431, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991976913197431, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.7497497
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6841991977188053778, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3001,10 +2993,6 @@ PrefabInstance:
     - target: {fileID: 6841991977329746920, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6841991977329746926, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6841991977437070832, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
