@@ -7,14 +7,9 @@ public class Monster : MonoBehaviour
     public float id;
     public float prefabID;
 
-    public float speed;
     public float health;
     public float power;
     public bool isLive; // 최초 Instantiate시 isLive = true
-
-    [SerializeField] float StartAppearTime;
-    [SerializeField] float StartAppearSpeed;
-    [SerializeField] float TimeLimit; // 몬스터 처치 시간 제한
 
     Rigidbody2D rigid;
     CapsuleCollider2D coll;
@@ -24,20 +19,13 @@ public class Monster : MonoBehaviour
         isLive = true;
         coll = GetComponent<CapsuleCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
-        StartCoroutine(StartAppearSec(StartAppearTime)); // 맵 밖에서 안으로 등장하는 시간
-        //StartCoroutine(DissaperaSec(TimeLimit)); // TimeLimit 넘길시 사라짐
-    }
-
-    private void Update()
-    {
-        //Debug.Log("몬스터 위치: " + transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isLive)
         {
-            if (collision.CompareTag("PlayerBullet"))
+            if (collision.CompareTag("PlayerBullet")) // 총알 충돌시 체력 감소
             {
                 health -= collision.GetComponent<PlayerBullet>().damage;
                 Debug.Log(id + "번 몬스터 체력: " + health);
@@ -49,28 +37,6 @@ public class Monster : MonoBehaviour
                     gameObject.SetActive(false); // 비활성화
                 }
             }
-        }
-    }
-
-    IEnumerator StartAppearSec(float seconds)
-    {
-        float endTime = Time.time + seconds;
-
-        while (Time.time < endTime)
-        {
-            rigid.MovePosition(transform.position + Vector3.left * StartAppearSpeed * Time.deltaTime);
-            yield return null;
-        }
-    }
-
-    IEnumerator DissaperaSec(float seconds)
-    {
-        float endTime = Time.time + seconds;
-
-        while (Time.time < endTime)
-        {
-            rigid.MovePosition(transform.position + Vector3.right * StartAppearSpeed * Time.deltaTime);
-            yield return null;
         }
     }
 }

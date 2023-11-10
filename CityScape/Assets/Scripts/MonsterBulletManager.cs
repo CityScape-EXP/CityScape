@@ -27,8 +27,8 @@ public class MonsterBulletManager : MonoBehaviour
     {
         yield return new WaitForSeconds(BulletWaitTime);
 
-        while (isMonsterLive)
-        { // 몬스터 생존 경우만 총알 생성
+        while (isMonsterLive) // 몬스터 생존 경우만 총알 생성
+        { 
             GameObject MonsterBullet = GameManager.instance.BulletPool.Get(1);
             MonsterBullet.transform.position = MyMonster.transform.position + FixPos;
             yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
@@ -43,9 +43,7 @@ public class MonsterBulletManager : MonoBehaviour
             if (MonsterObj != null)
             {
                 isMonsterLive = MonsterObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
-                //Debug.Log("MonsterObj.isLive : " + MonsterObj.isLive);
             }
         }
-        //Debug.Log("MBM Pos : " + MyMonster.transform.position);
     }
 }

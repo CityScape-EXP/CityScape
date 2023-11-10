@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     Collider2D coll;
 
     public float jumpPower;
-    public float speed;
     public float health;
     public bool isLive;
 
@@ -51,12 +50,6 @@ public class Player : MonoBehaviour
         // 낙하중일때 DownRay 실행
         if (rigid.velocity.y < 0)
             GroundCheck(rayHit);
-    }
-
-    private void FixedUpdate()
-    {
-        float h = Input.GetAxisRaw("Horizontal");
-        transform.Translate(Vector3.right * h * Time.deltaTime * speed);
     }
 
     private void GroundCheck(RaycastHit2D rayHit)

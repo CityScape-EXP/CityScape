@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 394994604}
   - component: {fileID: 394994606}
   - component: {fileID: 394994605}
+  - component: {fileID: 394994601}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -256,6 +257,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &394994601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394994599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602272fb1914bad44af26ff20174c695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!212 &394994602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -380,7 +394,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 11
-  speed: 3
   health: 50
   isLive: 0
   isGround: 1
@@ -423,8 +436,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400451079}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.048375, y: -3.1560466, z: -1.2804637}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2063464480}
@@ -597,8 +610,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853149342}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.951625, y: -3.1560466, z: 2.7303495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2063464480}
@@ -1225,7 +1238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e669166c35dbba4cb733a41d851c5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - {fileID: 5501616621956362097, guid: b6f870cbe382cd545aa62b4e57d87e5e, type: 3}
   id: 0
   FixPos: {x: 0, y: 0, z: 0}
   BulletWaitTime: 1
