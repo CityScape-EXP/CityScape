@@ -5,6 +5,10 @@ using UnityEngine;
 public class MonsterMove : MonoBehaviour
 {
     public float speed;
+
+    public float minX;
+    public float maxX;
+
     private Vector3 targetPosition; // 이동할 목표 위치
 
     private void Start()
@@ -14,7 +18,7 @@ public class MonsterMove : MonoBehaviour
 
     private void SetRandomPosition()
     {
-        float randomX = Random.Range(2f, 10f); // X 좌표 범위 설정
+        float randomX = Random.Range(minX, maxX); // X 좌표 범위 설정
         //float randomY = Random.Range(-5f, 5f); // Y 좌표 범위 설정
         targetPosition = new Vector3(randomX, transform.position.y, transform.position.z); // 랜덤 위치 설정
     }

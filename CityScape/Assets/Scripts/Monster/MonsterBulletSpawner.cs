@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterBulletManager : MonoBehaviour
+public class MonsterBulletSpawner : MonoBehaviour
 {
-    public GameObject[] prefabs; // 인스펙터에서 초기화
     GameObject MyMonster;
-    public int id;
 
     public Vector3 FixPos; // 총알 생성 위치 조정
 
-    public float BulletWaitTime;
-    public float BulletSpawnTime;
+    public float WaitForApeear;
+    public float SpawnColltime;
 
     public bool isMonsterLive;
 
@@ -25,13 +23,13 @@ public class MonsterBulletManager : MonoBehaviour
 
     IEnumerator SpawnRoutine() // 총알 생성 루틴
     {
-        yield return new WaitForSeconds(BulletWaitTime);
+        yield return new WaitForSeconds(WaitForApeear);
 
         while (isMonsterLive) // 몬스터 생존 경우만 총알 생성
         { 
             GameObject MonsterBullet = GameManager.instance.BulletPool.Get(1);
             MonsterBullet.transform.position = MyMonster.transform.position + FixPos;
-            yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
+            yield return new WaitForSeconds(SpawnColltime); // BulletSpawnTime 초 만큼 대기 후 실행
         }
     }
 

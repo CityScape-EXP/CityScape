@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBulletManager : MonoBehaviour
+public class PlayerBulletSpawner : MonoBehaviour
 {
-    public GameObject[] prefabs; // 인스펙터에서 초기화
     public GameObject Player;
     public int id;
 

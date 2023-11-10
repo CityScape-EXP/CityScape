@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-
     Collider2D coll;
     WaitForFixedUpdate waitf = new WaitForFixedUpdate();
 
