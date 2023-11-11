@@ -7,6 +7,7 @@ using UnityEngine.UI;
 /*  
  *  Reinforcement.cs
  *  각종 강화와 관련된 함수를 작성한다
+ *  재화나 정보의 변경이 있을 때는 반드시 Save도 병행되어야 함
  */
 public class Reinforcement : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Reinforcement : MonoBehaviour
         Debug.Log($"필드 : {field}, 레벨 : {nowLevel}");
     }
 
-    // 테스트용 함수 : 돈 10000으로 설정
+    // 테스트용 함수 : 돈 100 증가
     public void Cheat()
     {
         gameManager.gameData.money += 100;

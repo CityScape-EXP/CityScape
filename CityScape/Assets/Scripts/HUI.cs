@@ -34,10 +34,13 @@ public class HUI : MonoBehaviour
         }
         switch (type)
         {
+            // 레벨 정보 텍스트 (패널별 중앙의 왼쪽에 위치) ex) Lv.1, MAX ..
             case InfoType.Level:
                 if (level == 5) myText.text = "MAX";
                 else myText.text = $"Lv.{level}";
                 break;
+
+            // 업그레이드 정보 텍스트 (패널별 중앙에 위치) ex) 105% > 110% ..
             case InfoType.UpInfo:
                 switch(field)
                 {
@@ -61,9 +64,13 @@ public class HUI : MonoBehaviour
                         break;
                 }
                 break;
+
+            // 현재 소유 재화 정보 텍스트 (우측 상단에 위치) ex) ◎ : 999 ..
             case InfoType.Money:
                 myText.text = $"◎ : {GameManager.instance.gameData.money}";
                 break;
+
+            // 업그레이드 필요 재화 정보 텍스트 (패널별 우측에 위치) ex) Lv.3 50필요
             case InfoType.UpCost:
                 string lv;
                 if (level == 5) // 만렙일경우 -> 소모 재화량 표시 X
