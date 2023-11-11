@@ -67,10 +67,10 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator LoadMainMenuScene()
     {
-        // AsyncOperationÀ» ÅëÇØ Scene Load Á¤µµ¸¦ ¾Ë ¼ö ÀÖ´Ù.
+        // AsyncOperationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Scene Load ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(roadMainMenu);
 
-        // SceneÀ» ºÒ·¯¿À´Â °ÍÀÌ ¿Ï·áµÇ¸é, AsyncOperationÀº isDone »óÅÂ°¡ µÈ´Ù.
+        // Sceneï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¸ï¿½, AsyncOperationï¿½ï¿½ isDone ï¿½ï¿½ï¿½Â°ï¿½ ï¿½È´ï¿½.
         while (!asyncLoad.isDone)
         {
             isMenu = true;
