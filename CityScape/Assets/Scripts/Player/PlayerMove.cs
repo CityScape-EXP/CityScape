@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
         // 경계 내부에 있는 경우
         else
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
             transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HUI : MonoBehaviour
+public class ReinforceUI : MonoBehaviour
 {
     // 변경한다면 Reinforcement의 upgradeMoneyData도 같이 변경할것
     int[,] upgradeMoneyData = new int[3, 4]
