@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameData gameData;
     [SerializeField] public UpgradeData upgradeData;
 
-    public BulletPool BulletPool;
-    public MonsterPool MonsterPool;
     public Player player;
     public float surviveTime;
     public bool isGameover;

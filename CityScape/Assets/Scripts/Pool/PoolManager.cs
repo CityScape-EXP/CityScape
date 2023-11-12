@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class PoolManager : MonoBehaviour
     public static PoolManager Instance;
     // 게임 프리펩들을 담는 objectPrefeb 리스트
     [SerializeField] private List<GameObject> objectPrefebList = new List<GameObject>();
+    // 프리펩 수만큼의 Queue<GameObject> 생성
     private List<Queue<GameObject>> poolingObjectQueueList = new List<Queue<GameObject>>();
 
 
@@ -15,6 +17,10 @@ public class PoolManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        for(int i = 0; i < objectPrefebList.Count; i++)
+        {
+            poolingObjectQueueList.Add(new Queue<GameObject>());
+        }
         Initialize(10);
     }
 
@@ -32,10 +38,9 @@ public class PoolManager : MonoBehaviour
         int prefebNum = objectPrefebList.Count;
         for(int i = 0; i < prefebNum; i++)
         {
-            poolingObjectQueueList.Add(new Queue<GameObject>());
-            for(int j = 0; j< prefebNum; j++)
+            for(int j = 0; j< count; j++)
             {
-                poolingObjectQueueList[prefebNum].Enqueue(createNewObject(prefebNum));
+                poolingObjectQueueList[i].Enqueue(createNewObject(i));
             }
         }
     }    

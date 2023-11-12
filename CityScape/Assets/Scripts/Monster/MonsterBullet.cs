@@ -21,7 +21,7 @@ public class MonsterBullet : MonoBehaviour
 
         if (transform.position.x < -16) // 총알이 화면 밖으로 벗어날 시
         {
-            gameObject.SetActive(false);
+            PoolManager.ReturnObject(this.gameObject, 1);
         }
     }
 
@@ -29,7 +29,7 @@ public class MonsterBullet : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            PoolManager.ReturnObject(this.gameObject, 1);
         }
         else return;
     }

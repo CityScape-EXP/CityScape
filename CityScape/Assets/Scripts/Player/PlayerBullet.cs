@@ -21,6 +21,7 @@ public class PlayerBullet : MonoBehaviour
 
         if (transform.position.x > 16) // 총알이 화면 밖으로 벗어날 시
         {
+            PoolManager.ReturnObject(this.gameObject, 0);
             gameObject.SetActive(false);
         }
     }
@@ -28,7 +29,7 @@ public class PlayerBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) // 충돌 감지
     {
         if (collision.CompareTag("Monster")){
-            gameObject.SetActive(false);
+            PoolManager.ReturnObject(this.gameObject, 0);
         }
     }
 }

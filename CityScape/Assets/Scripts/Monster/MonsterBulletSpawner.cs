@@ -17,7 +17,7 @@ public class MonsterBulletSpawner : MonoBehaviour
     private void Start()
     {
         isMonsterLive = true; // Monster가 생존 상태로 시작
-        MyMonster = GameManager.instance.MonsterPool.Get(0);
+        MyMonster = PoolManager.GetObject(2);
         StartCoroutine(SpawnRoutine());
     }
 
@@ -27,7 +27,7 @@ public class MonsterBulletSpawner : MonoBehaviour
 
         while (isMonsterLive) // 몬스터 생존 경우만 총알 생성
         { 
-            GameObject MonsterBullet = GameManager.instance.BulletPool.Get(1);
+            GameObject MonsterBullet = PoolManager.GetObject(1);
             MonsterBullet.transform.position = MyMonster.transform.position + FixPos;
             yield return new WaitForSeconds(SpawnColltime); // BulletSpawnTime 초 만큼 대기 후 실행
         }
