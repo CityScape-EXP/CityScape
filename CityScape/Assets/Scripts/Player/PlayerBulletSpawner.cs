@@ -20,7 +20,7 @@ public class PlayerBulletSpawner : MonoBehaviour
     {
         while (true)
         {
-            GameObject obj = PoolManager.GetObject(0);
+            GameObject obj = PoolManager.GetObject(0); // 이 부분 인덱스 나즁에 id로 수정
             obj.transform.position = Player.transform.position + FixPos;
             yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
             

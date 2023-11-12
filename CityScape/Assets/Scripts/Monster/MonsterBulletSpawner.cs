@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterBulletSpawner : MonoBehaviour
 {
     GameObject MyMonster;
+    GameObject TestMonster;
 
     public Vector3 FixPos; // 총알 생성 위치 조정
 
@@ -13,14 +14,21 @@ public class MonsterBulletSpawner : MonoBehaviour
 
     public bool isMonsterLive;
 
+    private void Awake()
+    {
+        MyMonster = gameObject;
+    }
 
     private void Start()
     {
         isMonsterLive = true; // Monster가 생존 상태로 시작
-        MyMonster = PoolManager.GetObject(2);
-        StartCoroutine(SpawnRoutine());
-    }
 
+        // TestMonster = PoolManager.GetObject(2); // 생성 코드
+        
+        StartCoroutine(SpawnRoutine());
+        
+    }
+    
     IEnumerator SpawnRoutine() // 총알 생성 루틴
     {
         yield return new WaitForSeconds(WaitForApeear);
@@ -44,4 +52,5 @@ public class MonsterBulletSpawner : MonoBehaviour
             }
         }
     }
+    
 }

@@ -14,6 +14,7 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
+        // 오브젝트 풀링
         if (Instance == null)
         {
             Instance = this;
@@ -23,16 +24,21 @@ public class PoolManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    // Initialize
-    private void Start()
-    {
-        for(int i = 0; i < objectPrefebList.Count; i++)
+        // Initialize
+        for (int i = 0; i < objectPrefebList.Count; i++)
         {
             poolingObjectQueueList.Add(new Queue<GameObject>());
         }
         Initialize(10);
+
+    }
+
+    
+    // Initialize
+    private void Start()
+    {
+        // Awake로 옮김...
     }
 
     // 새로운 게임 오브젝트를 생성하고, 해당 오브젝트를 반환하는 함수
@@ -63,7 +69,7 @@ public class PoolManager : MonoBehaviour
         if (Instance.poolingObjectQueueList[prefebID].Count > 0)
         {
             GameObject obj = Instance.poolingObjectQueueList[prefebID].Dequeue();
-            obj.transform.SetParent(null);
+            obj.transform.SetParent(null); // 나중에 이 부분 수정하자.
             obj.SetActive(true);
             return obj;
         }
@@ -71,7 +77,7 @@ public class PoolManager : MonoBehaviour
         else
         {
             GameObject newObj = Instance.createNewObject(prefebID);
-            newObj.transform.SetParent(null);
+            newObj.transform.SetParent(null); // 나중에 이 부분 수정하자.
             newObj.SetActive(true);
             return newObj;
         }

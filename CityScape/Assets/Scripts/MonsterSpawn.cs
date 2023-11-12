@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MonsterSpawn : MonoBehaviour
 {
-    /*
+    
     public GameObject MyMonster;
 
     // Start is called before the first frame update
+    
     void Start()
     {
         MyMonster = PoolManager.GetObject(2);
@@ -18,5 +19,5 @@ public class MonsterSpawn : MonoBehaviour
     {
         
     }
-    */
+    
 }
