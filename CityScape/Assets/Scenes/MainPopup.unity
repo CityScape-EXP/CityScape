@@ -6733,7 +6733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8227464170424589291, guid: e696185dead01ff4cb426386c35ee786, type: 3}
       propertyPath: m_Name
-      value: GrayBackGround
+      value: Settings
       objectReference: {fileID: 0}
     - target: {fileID: 8227464170424589291, guid: e696185dead01ff4cb426386c35ee786, type: 3}
       propertyPath: m_IsActive

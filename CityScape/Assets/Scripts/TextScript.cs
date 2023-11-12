@@ -27,7 +27,11 @@ public class TextScript : MonoBehaviour
             _text.text = HP.ToString();
         }
     }
-    void ShowPopup(){
+    void ShowPopup()
+    {
+
+        Popup.SetActive(true);
+        /*
     // Get the canvas RectTransform to calculate the center
     Canvas canvas = GetComponentInParent<Canvas>();
     
@@ -48,6 +52,7 @@ public class TextScript : MonoBehaviour
 
     // Instantiate the Popup at the center of the canvas
     Instantiate(Popup, centerOfCanvas, Quaternion.identity);
-}
+        */
+    }
 
 }
