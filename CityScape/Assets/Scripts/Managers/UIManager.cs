@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [Header("settingCanvas")]
     [SerializeField] public GameObject settingCanvas;
     [Header("MainUI")]
-    [SerializeField] private GameObject settingPanel;
+    [SerializeField] public GameObject settingPanel;
     
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
         // AsyncOperation�� ���� Scene Load ������ �� �� �ִ�.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(roadMainMenu);
 
-        // Scene�� �ҷ����� ���� �Ϸ�Ǹ�, AsyncOperation�� isDone ���°� �ȴ�.
+        // Scene�� �ҷ����� ���� �Ϸ�Ǹ�, AsyncOperation�� isDone ���°� �ȴ�.   
         while (!asyncLoad.isDone)
         {
             isMenu = true;

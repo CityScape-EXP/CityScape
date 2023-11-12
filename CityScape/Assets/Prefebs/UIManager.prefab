@@ -44,12 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadMainMenu: MainPopup
-  settingPanel: {fileID: 6841991976370469463, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
-  offSettingPanelButton: {fileID: 0}
-  creditPanelButton: {fileID: 0}
-  exitButton: {fileID: 0}
-  settingText: {fileID: 0}
-  PauseText: {fileID: 0}
-  continueButton: {fileID: 0}
-  restartButton: {fileID: 0}
-  goToMenuButton: {fileID: 0}
+  settingCanvas: {fileID: 0}
+  settingPanel: {fileID: 542813900024748449, guid: edd25244f44761b40886ae00b07f9ab8, type: 3}
