@@ -15,13 +15,17 @@ public class Player : MonoBehaviour
     // 플레이어 스탯
     public bool isLive;
     public float jumpPower;
-    public float health;
+    private int playerHp;
+    public float playerOffence;
+    public bool isLive;
 
     public bool isGround = true;
 
     private void Start()
     {
         isLive = true;
+        playerHp = GameManager.instance.upgradeData.hpLevel + 2;
+        playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
     }
 
     private void Awake()
@@ -81,21 +85,15 @@ public class Player : MonoBehaviour
         } 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void getDamage(int damage)
     {
-        if (isLive)
+        playerHp -= damage;
+        Debug.Log($"플레이어 체력 : {playerHp}");
+        if(playerHp <= 0)
         {
-            if (collision.CompareTag("MonsterBullet"))
-            {
-                health -= collision.GetComponent<MonsterBullet>().damage;
-                Debug.Log("플레이어 체력: " + health);
-
-                if (health < 1)
-                {
-                    isLive = false;
-                    Debug.Log("플레이어 사망!! XOXO"); // 죽음
-                }
-            }
+            isLive = false;
+            Debug.Log("플레이어 사망");
+            this.gameObject.SetActive(false);
         }
     }
 
