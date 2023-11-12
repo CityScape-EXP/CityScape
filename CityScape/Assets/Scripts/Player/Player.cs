@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     Collider2D coll;
 
     // 플레이어 스탯
-    public bool isLive;
     public float jumpPower;
     private int playerHp;
     public float playerOffence;
