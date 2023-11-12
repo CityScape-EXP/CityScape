@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // ½Ì±ÛÅæ
+    public static Player instance = null;
+
     Rigidbody2D rigid;
     Animation anim;
     SpriteRenderer spriteRenderer;
     Collider2D coll;
 
+    // ÇÃ·¹ÀÌ¾î ½ºÅÈ
     public float jumpPower;
-    public float health;
+    private int playerHp;
+    public float playerOffence;
     public bool isLive;
 
     public bool isGround = true;
@@ -18,14 +23,28 @@ public class Player : MonoBehaviour
     private void Start()
     {
         isLive = true;
+        playerHp = GameManager.instance.upgradeData.hpLevel + 2;
+        playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
     }
 
     private void Awake()
     {
+        // ½Ì±ÛÅæ Àû¿ë
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // ÆÄ±« ±ÝÁö
+        }
+        else
+        {
+            Destroy(gameObject); // ÆÄ±«
+        }
+
         coll = GetComponent<Collider2D>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animation>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     private void Update()
@@ -65,21 +84,15 @@ public class Player : MonoBehaviour
         } 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void getDamage(int damage)
     {
-        if (isLive)
+        playerHp -= damage;
+        Debug.Log($"ÇÃ·¹ÀÌ¾î Ã¼·Â : {playerHp}");
+        if(playerHp <= 0)
         {
-            if (collision.CompareTag("MonsterBullet"))
-            {
-                health -= collision.GetComponent<MonsterBullet>().damage;
-                Debug.Log("ÇÃ·¹ÀÌ¾î Ã¼·Â: " + health);
-
-                if (health < 1)
-                {
-                    isLive = false;
-                    Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á!! XOXO"); // Á×À½
-                }
-            }
+            isLive = false;
+            Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á");
+            this.gameObject.SetActive(false);
         }
     }
 

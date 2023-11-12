@@ -6,7 +6,7 @@ public class MonsterBullet : MonoBehaviour
 {
     //BoxCollider2D coll;
     public float moveSpeed;
-    public float damage;
+    public int damage;
     public float id;
     public float prefabID;
 
@@ -30,6 +30,7 @@ public class MonsterBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PoolManager.ReturnObject(this.gameObject, 1);
+            collision.GetComponent<Player>().getDamage(damage);
         }
         else return;
     }

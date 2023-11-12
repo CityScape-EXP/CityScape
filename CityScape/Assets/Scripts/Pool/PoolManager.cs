@@ -12,11 +12,14 @@ public class PoolManager : MonoBehaviour
     // 프리펩 수만큼의 Queue<GameObject> 생성
     private List<Queue<GameObject>> poolingObjectQueueList = new List<Queue<GameObject>>();
 
+    private void Awake()
+    {
+         Instance = this;
+    }
 
-    // 싱글톤 적용 및 Initialize
+    // Initialize
     private void Start()
     {
-        Instance = this;
         for(int i = 0; i < objectPrefebList.Count; i++)
         {
             poolingObjectQueueList.Add(new Queue<GameObject>());
@@ -48,6 +51,7 @@ public class PoolManager : MonoBehaviour
     // GameObject를 Pool에서 가져가는 함수
     public static GameObject GetObject(int prefebID)
     {
+        Debug.Log($"{prefebID}번 오브젝트 생성");
         // Pool에 남는 GameObject가 있을 때 남는 Object return
         if (Instance.poolingObjectQueueList[prefebID].Count > 0)
         {
