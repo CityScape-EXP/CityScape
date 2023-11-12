@@ -17,7 +17,7 @@ public class SpawnTest : MonoBehaviour
         {
             Debug.Log("Enemy »ý¼º!");
             var enemy = PoolManager.GetObject(2);
-            enemy.transform.position = transform.position + Vector3.zero;
+            enemy.transform.position = new Vector3(transform.position.x, 0.7f, 0);
             i++;
         }
     }
