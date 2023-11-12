@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // ½Ì±ÛÅæ
+    public static Player instance = null;
+
     Rigidbody2D rigid;
     Animation anim;
     SpriteRenderer spriteRenderer;
     Collider2D coll;
 
+    // ÇÃ·¹ÀÌ¾î ½ºÅÈ
+    public bool isLive;
     public float jumpPower;
     public float health;
-    public bool isLive;
 
     public bool isGround = true;
 
@@ -22,10 +26,22 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        // ½Ì±ÛÅæ Àû¿ë
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // ÆÄ±« ±ÝÁö
+        }
+        else
+        {
+            Destroy(gameObject); // ÆÄ±«
+        }
+
         coll = GetComponent<Collider2D>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animation>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     private void Update()

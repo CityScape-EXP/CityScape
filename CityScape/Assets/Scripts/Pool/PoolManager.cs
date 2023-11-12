@@ -12,11 +12,22 @@ public class PoolManager : MonoBehaviour
     // ÇÁ¸®Æé ¼ö¸¸Å­ÀÇ Queue<GameObject> »ý¼º
     private List<Queue<GameObject>> poolingObjectQueueList = new List<Queue<GameObject>>();
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-    // ½Ì±ÛÅæ Àû¿ë ¹× Initialize
+    // Initialize
     private void Start()
     {
-        Instance = this;
         for(int i = 0; i < objectPrefebList.Count; i++)
         {
             poolingObjectQueueList.Add(new Queue<GameObject>());
