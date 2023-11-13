@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBulletSpawner : MonoBehaviour
 {
     /* 총알 관련 */
+    public float WaitForFirstSpawn;
     public float BulletSpawnTime;
     public Vector3 FixPos;
 
@@ -33,7 +34,8 @@ public class PlayerBulletSpawner : MonoBehaviour
     /* 총알 생성 루틴 함수 */
     IEnumerator SpawnRoutine()
     {
-        yield return new WaitForSeconds(0.001f); // 에러 방지
+        yield return new WaitForSeconds(WaitForFirstSpawn);
+        // WaitForFirstSpawn 초 이후 총알 스폰 시작
 
         while (true)
         {
