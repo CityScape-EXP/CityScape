@@ -14,6 +14,8 @@ public class PlayerBulletSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnRoutine());
+        int asLevel = GameManager.instance.upgradeData.asLevel;
+        BulletSpawnTime = BulletSpawnTime / (1.00f + (asLevel - 1) * 0.25f);
     }
 
     IEnumerator SpawnRoutine()
