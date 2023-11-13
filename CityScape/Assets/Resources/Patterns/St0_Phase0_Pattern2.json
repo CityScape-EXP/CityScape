@@ -7,10 +7,16 @@
         },
         {
             "floor": 2,
-            "pos": 8.0,
+            "pos": 9.0,
             "width": 1
         }
     ],
-    "e_Data": [],
+    "e_Data": [
+        {
+            "type": 0,
+            "x_pos": 6,
+            "y_pos": 1.5
+        }
+    ],
   "patternTime": 6
 }

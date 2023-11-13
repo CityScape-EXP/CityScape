@@ -21,22 +21,15 @@ public class Monster : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void getDamage(float damage)
     {
-        if (isLive)
+        health -= damage;
+        Debug.Log($"몬스터 체력 : {health}");
+        if (health <= 0)
         {
-            if (collision.CompareTag("PlayerBullet")) // 총알 충돌시 체력 감소
-            {
-                health -= collision.GetComponent<PlayerBullet>().damage;
-                Debug.Log(id + "번 몬스터 체력: " + health);
-
-                if (health < 1)
-                {
-                    isLive = false;
-                    Debug.Log("몬스터 사망!! XOXO"); // 죽음
-                    gameObject.SetActive(false); // 비활성화
-                }
-            }
+            isLive = false;
+            Debug.Log("몬스터 사망");
+            this.gameObject.SetActive(false);
         }
     }
 }
