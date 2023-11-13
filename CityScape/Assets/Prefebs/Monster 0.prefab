@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e669166c35dbba4cb733a41d851c5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletSpawnTime: 1
   FixPos: {x: 0, y: 0, z: 0}
-  WaitForApeear: 0
-  SpawnColltime: 0.8
   isMonsterLive: 0

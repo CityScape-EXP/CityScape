@@ -271,10 +271,11 @@ GameObject:
   - component: {fileID: 394994603}
   - component: {fileID: 394994602}
   - component: {fileID: 394994600}
+  - component: {fileID: 394994605}
   - component: {fileID: 394994604}
   - component: {fileID: 394994606}
-  - component: {fileID: 394994605}
   - component: {fileID: 394994601}
+  - component: {fileID: 394994607}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -445,6 +446,21 @@ MonoBehaviour:
   playerOffence: 0
   isLive: 0
   isGround: 1
+--- !u!114 &394994607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394994599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539dfb824a6a308458d2591300169036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletSpawnTime: 1
+  FixPos: {x: 0, y: 0, z: 0}
+  isPlayerLive: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,10 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539dfb824a6a308458d2591300169036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 394994599}
-  id: 0
-  FixPos: {x: 0, y: 0, z: 0}
   BulletSpawnTime: 0.5
+  FixPos: {x: 0, y: -0.7, z: 0}
+  isPlayerLive: 0
 --- !u!4 &745848535
 Transform:
   m_ObjectHideFlags: 0
