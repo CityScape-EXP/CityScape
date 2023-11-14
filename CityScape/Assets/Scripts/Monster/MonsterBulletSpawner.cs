@@ -18,17 +18,47 @@ public class MonsterBulletSpawner : MonoBehaviour
         MyMonster = gameObject;
     }
 
-    /* 몬스터가 생존 상태로 시작하고, 총알 생성 루틴을 실행함 */
+    /* 몬스터가 생존 상태로 시작하고 코루틴을 시작함 */
     private void Start()
     {
         isMonsterLive = true;
 
-        StartCoroutine(SpawnRoutine());
+        StartCoroutine(CheckMonsterPosit());
+    }
+
+    /* 몬스터 사망 여부 체크 */
+    private void Update()
+    {
+        if (MyMonster != null)
+        {
+            Monster MonsterObj = MyMonster.GetComponent<Monster>();
+
+            if (MonsterObj != null)
+            {
+                isMonsterLive = MonsterObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
+            }
+        }
+    }
+
+    /* 몬스터가 화면 내에 등장하면 총알 생성 루틴 시작 */
+    IEnumerator CheckMonsterPosit()
+    {
+        while (isMonsterLive)
+        {
+            if (gameObject.transform.position.x < 12)
+            {
+                StartCoroutine(SpawnRoutine());
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 
     /* 총알 생성 루틴 함수 */
     IEnumerator SpawnRoutine()
     {
+        StopCoroutine(CheckMonsterPosit());
         while (isMonsterLive) // 몬스터 생존 경우만 총알 생성
         {
             GameObject MonsterBullet = PoolManager.GetObject(1);
@@ -39,15 +69,4 @@ public class MonsterBulletSpawner : MonoBehaviour
         }
     }
 
-    /* 몬스터 사망 여부 체크 */
-    private void Update() 
-    {
-        if (MyMonster != null){
-            Monster MonsterObj = MyMonster.GetComponent<Monster>();
-
-            if (MonsterObj != null){
-                isMonsterLive = MonsterObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
-            }
-        }
-    }
 }
