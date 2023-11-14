@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 4512605631849769789}
   - component: {fileID: 7278125840530149608}
   - component: {fileID: 5390192871527258492}
+  - component: {fileID: -6436606435897560896}
   - component: {fileID: 3071048025323167981}
+  - component: {fileID: -6602905993573977973}
   m_Layer: 9
   m_Name: Monster 1
   m_TagString: Monster
@@ -99,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   prefabID: 1
-  health: 25
-  power: 3
+  health: 10
+  power: 1
   isLive: 1
 --- !u!70 &5390192871527258492
 CapsuleCollider2D:
@@ -118,6 +120,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.22, y: 1.55}
   m_Direction: 1
+--- !u!114 &-6436606435897560896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292050168988759920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10c0f172bd64654e82dcc8e30c2b4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  isAppear: 0
+  minX: 2
+  maxX: 10
 --- !u!114 &3071048025323167981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +148,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e669166c35dbba4cb733a41d851c5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpawnTime: 1
+  BulletSpawnTime: 5
   FixPos: {x: 0, y: 0, z: 0}
   isMonsterLive: 0
+--- !u!50 &-6602905993573977973
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292050168988759920}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

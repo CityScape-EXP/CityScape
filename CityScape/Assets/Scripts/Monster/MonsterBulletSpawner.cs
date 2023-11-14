@@ -62,6 +62,7 @@ public class MonsterBulletSpawner : MonoBehaviour
         while (isMonsterLive) // 몬스터 생존 경우만 총알 생성
         {
             GameObject MonsterBullet = PoolManager.GetObject(1);
+            MonsterBullet.GetComponent<MonsterBullet>().shooterID = MyMonster.GetComponent<Monster>().id;
             // Pool의 1번째 프리펩(총알)을 가져옴. 나중에 해당 부분 수정 가능성 있음
             MonsterBullet.transform.position = MyMonster.transform.position + FixPos; // 총알 생성 위치 조정
 

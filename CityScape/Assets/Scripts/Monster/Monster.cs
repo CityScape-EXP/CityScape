@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public float id;
+    public int id;
     public float prefabID;
 
     public float health;

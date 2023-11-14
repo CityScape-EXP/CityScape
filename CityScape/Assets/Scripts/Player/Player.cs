@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.player = this;
         isLive = true;
         playerHp = GameManager.instance.upgradeData.hpLevel + 2;
         playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
