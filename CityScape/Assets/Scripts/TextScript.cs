@@ -43,6 +43,7 @@ public class TextScript : MonoBehaviour
             _text.text = HP.ToString();
         }
     }
+
     void ShowPopup()
     {
 
@@ -54,6 +55,7 @@ public class TextScript : MonoBehaviour
         Popup.SetActive(true);
     /*
     // Get the canvas RectTransform to calculate the center
+
     Canvas canvas = GetComponentInParent<Canvas>();
     
     if (canvas == null){
@@ -75,5 +77,5 @@ public class TextScript : MonoBehaviour
     Instantiate(Popup, centerOfCanvas, Quaternion.identity);
         */
     }
-
 }
+
