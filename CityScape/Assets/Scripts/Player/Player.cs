@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // ½Ì±ÛÅæ
+    // ì‹±ê¸€í†¤
     public static Player instance = null;
 
-    // ÇÃ·¹ÀÌ¾î ½ºÅÈ
+    // í”Œë ˆì´ì–´ ìŠ¤íƒ¯
     Rigidbody2D rigid;
     Animation anim;
     SpriteRenderer spriteRenderer;
@@ -20,21 +20,23 @@ public class Player : MonoBehaviour
 
     public bool isGround = true;
 
-    // ±¸¸£±â °ü·Ã
+    // êµ¬ë¥´ê¸° ê´€ë ¨
     public bool canRoll;
+    public bool isRolling;
     public float rollingTime;
 
     private void Start()
     {
         GameManager.instance.player = this;
         isLive = true;
+        isRolling = false;
         playerHp = GameManager.instance.upgradeData.hpLevel + 2;
         playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
     }
 
     private void Awake()
     {
-        /* ½Ì±ÛÅæ Àû¿ë */
+        /* ì‹±ê¸€í†¤ ì ìš© */
         if (instance == null)
         {
             instance = this;
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
             Vector2.down * 0.45f, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
-        // »ó¹æ Á¡ÇÁ
+        // ìƒë°© ì í”„
         if (Input.GetButtonDown("Jump") && isGround)
         {
             isGround = false;
@@ -64,7 +66,7 @@ public class Player : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
 
-        // ÇÏ¹æ Á¡ÇÁ (Á¶°Ç : PlatformÀÏ°Í, ¶¥¿¡ ´ê¾ÆÀÖÀ»°Í)
+        // í•˜ë°© ì í”„ (ì¡°ê±´ : Platformì¼ê²ƒ, ë•…ì— ë‹¿ì•„ìˆì„ê²ƒ)
         if (Input.GetKeyDown(KeyCode.DownArrow) && isGround && rayHit.collider.CompareTag("Platform"))
         {
             isGround = false;
@@ -73,12 +75,12 @@ public class Player : MonoBehaviour
             rayHit.collider.gameObject.GetComponent<Platform>().TemporaryDisable();
         }
 
-        // ³«ÇÏÁßÀÏ¶§ DownRay ½ÇÇà
+        // ë‚™í•˜ì¤‘ì¼ë•Œ DownRay ì‹¤í–‰
         if (rigid.velocity.y < 0)
             GroundCheck(rayHit);
 
-        // ±¸¸£±â
-        if (Input.GetButtonDown("Lshift") && isGround)
+        // êµ¬ë¥´ê¸° (ì¡°ê±´: ë•…ì— ìˆì„ ê²ƒ, êµ¬ë¥´ê³  ìˆì§€ ì•Šì„ ê²ƒ)
+        if (Input.GetButtonDown("Lshift") && isGround && !isRolling)
         {
             canRoll = true;
             StartCoroutine(Rolling());
@@ -89,7 +91,7 @@ public class Player : MonoBehaviour
     {
         if (rayHit.collider != null)
         {
-            // Á¡ÇÁ ±âÈ¸ ÁÖ±â
+            // ì í”„ ê¸°íšŒ ì£¼ê¸°
             if (rayHit.distance < 0.05f)
             {
                 isGround = true;
@@ -101,20 +103,37 @@ public class Player : MonoBehaviour
     public void getDamage(int damage)
     {
         playerHp -= damage;
-        Debug.Log($"ÇÃ·¹ÀÌ¾î Ã¼·Â : {playerHp}");
+        Debug.Log($"í”Œë ˆì´ì–´ ì²´ë ¥ : {playerHp}");
         if (playerHp <= 0)
         {
             isLive = false;
-            Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á");
+            Debug.Log("í”Œë ˆì´ì–´ ì‚¬ë§");
             gameObject.SetActive(false);
         }
     }
 
-    // ±¸¸£±â
-    // : ±¸¸£±â ½Ã°£µ¿¾È ÇÃ·¹ÀÌ¾î¿Í ¸ó½ºÅÍ ÃÑ¾ËÀÇ Ãæµ¹À» ºñÈ°¼ºÈ­ÇÔ, ¶Ç´Â µ¥¹ÌÁö°¡ °¨¼ÒÇÏÁö ¾ÊÀ½
+    // êµ¬ë¥´ê¸° : êµ¬ë¥´ê¸° ì‹œê°„ë™ì•ˆ í”Œë ˆì´ì–´ì™€ ëª¬ìŠ¤í„° ì´ì•Œì˜ ì¶©ëŒì„ ë¹„í™œì„±í™”í•¨, ë˜ëŠ” ë°ë¯¸ì§€ê°€ ê°ì†Œí•˜ì§€ ì•ŠìŒ
     IEnumerator Rolling()
     {
-        // ÇÃ·¹ÀÌ¾î Ãæµ¹ °¨Áö ºñÈ°¼ºÈ­
+        isRolling = true;
+        Debug.Log(" => êµ¬ë¥´ê¸° <= ");
+        Debug.Log("isRolling : " + isRolling);
+
+        // ì´ì•Œ ì¶©ëŒ ë¬´ì‹œ
+
+        int playerLayer = gameObject.layer;
+        int bulleyLayer = LayerMask.NameToLayer("Bullet");
+        Physics2D.IgnoreLayerCollision(bulleyLayer, playerLayer, false);
+
+        // êµ¬ë¥´ê¸° ì§€ì† ì‹œê°„
         yield return new WaitForSeconds(rollingTime);
+
+        // ì´ì•Œ ì¶©ëŒ ë¬´ì‹œ í•´ì œ
+        Physics2D.IgnoreLayerCollision(bulleyLayer, playerLayer, true);
+
+        isRolling = false;
+        Debug.Log(" => êµ¬ë¥´ê¸° ì¢…ë£Œ <= ");
+        Debug.Log("isRolling : " + isRolling);
+        yield break;
     }
 }

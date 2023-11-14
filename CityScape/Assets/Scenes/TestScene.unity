@@ -447,7 +447,8 @@ MonoBehaviour:
   isLive: 0
   isGround: 1
   canRoll: 0
-  rollingTime: 0
+  isRolling: 0
+  rollingTime: 1
 --- !u!114 &394994607
 MonoBehaviour:
   m_ObjectHideFlags: 0
