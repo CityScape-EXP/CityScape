@@ -34,7 +34,14 @@ public class PlayerMove : MonoBehaviour
         else
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+            if (horizontalInput < 0) // 뒤로 이동할 때 -> 좀 더 빠르게
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * 5.8f * horizontalInput);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * 4.2f * horizontalInput);
+            }
         }
     }
 }
