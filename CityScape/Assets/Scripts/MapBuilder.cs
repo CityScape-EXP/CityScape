@@ -12,34 +12,34 @@ public class PrefebElement
 
 public class MapBuilder : MonoBehaviour
 {
-    // ÆÐÅÏ ´©Àû¼ö (ÃÊ, Áß, ÈÄ¹Ý ³ª´©´Â ºÐ±âÁ¡)
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½, ï¿½ï¿½, ï¿½Ä¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ï¿½ï¿½)
     public int acmPattern = 0;
     int nowPhase = 0;
     float patternStartTime = 0f;
     float nowPatternTime = 0f;
-    // Prefeb ¸®½ºÆ®
+    // Prefeb ï¿½ï¿½ï¿½ï¿½Æ®
     public List<PrefebElement> prefebElements;
 
 
 
     private void Update()
     {
-        // TestScene(ÀÎ°ÔÀÓ)ÀÏ °æ¿ì¿¡¸¸ MapBuilder ½ÇÇàÇÑ´Ù
+        // TestScene(ï¿½Î°ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ MapBuilder ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
         if (!(SceneManager.GetActiveScene().name == "TestScene"))
             return;
 
-        // ÆÐÅÏ¿¡ ÇÒ´çµÈ ½Ã°£ÀÌ Áö³µ´Ù¸é
+        // ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ò´ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½
         if(Time.time - patternStartTime > nowPatternTime)
         {
-            //ÃÊ¹Ý, Áß¹Ý, ÈÄ¹Ý ºÐ±â °áÁ¤
-            // 5°³, 8°³, 6°³·Î °¡Á¤
+            //ï¿½Ê¹ï¿½, ï¿½ß¹ï¿½, ï¿½Ä¹ï¿½ ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½
+            // 5ï¿½ï¿½, 8ï¿½ï¿½, 6ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (acmPattern < 5) nowPhase = 0;
             else if (acmPattern < 13) nowPhase = 1;
             else if (acmPattern < 19) nowPhase = 2;
-            else Debug.Log("½ºÅ×ÀÌÁö Å¬¸®¾î");
+            else Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½");
 
             int patternNum = Random.Range(0, 4);
-            Debug.Log($"ÆÐÅÏ {patternNum}¹ø ½ÇÇà!");
+            Debug.Log($"ï¿½ï¿½ï¿½ï¿½ {patternNum}ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
             PatternData nowPattern = GameManager.instance.dm.GetPatternData(0, nowPhase, patternNum);
             DrawPattern(nowPattern);
 
@@ -60,19 +60,19 @@ public class MapBuilder : MonoBehaviour
 
     private void DrawPattern(PatternData pd)
     {
-        // platformÀÇ Prefeb Á¤º¸¸¦ °¡Á®¿Â´Ù
+        // platformï¿½ï¿½ Prefeb ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
         GameObject platformPrefab = GetPrefeb("Platform");
         foreach (var platform in pd.p_Data)
         {
             for(int i = 0; i< platform.width; i++)
             {
-                // platform Å¬·¡½º µ¥ÀÌÅÍ¸¦ ÀÌ¿ëÇÏ¿© prefeb Instantiate
+                // platform Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ prefeb Instantiate
                 Instantiate(platformPrefab, new Vector3(platform.pos + 20 + i, platform.floor * 1.5f, 0), Quaternion.identity);
             }
         }
         foreach (var enemy in pd.e_Data)
         {
-            // Type ¹øÈ£¿¡ ÀÏÄ¡ÇÏ´Â Enemy prefeb °¡Á®¿È
+            // Type ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ Enemy prefeb ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             GameObject enemyPrefeb = GetPrefeb("Enemy" + enemy.type.ToString());
             Instantiate(enemyPrefeb, new Vector3(enemy.x_pos + 20, enemy.y_pos, 0), Quaternion.identity);
         }
