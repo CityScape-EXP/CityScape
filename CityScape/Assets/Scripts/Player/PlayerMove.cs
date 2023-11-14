@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rigid;
+
     public float speed;
 
     public float minX;
@@ -14,8 +15,10 @@ public class PlayerMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
     }
+
     private void FixedUpdate()
     {
+        // 플레이어 이동 위치 제한 : 화면 내
         if (transform.position.x < minX)
         {
             transform.position = new Vector3(minX, transform.position.y, transform.position.z);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PrefebElement
@@ -23,6 +24,10 @@ public class MapBuilder : MonoBehaviour
 
     private void Update()
     {
+        // TestScene(인게임)일 경우에만 MapBuilder 실행한다
+        if (!(SceneManager.GetActiveScene().name == "TestScene"))
+            return;
+
         // 패턴에 할당된 시간이 지났다면
         if(Time.time - patternStartTime > nowPatternTime)
         {
@@ -69,7 +74,7 @@ public class MapBuilder : MonoBehaviour
         {
             // Type 번호에 일치하는 Enemy prefeb 가져옴
             GameObject enemyPrefeb = GetPrefeb("Enemy" + enemy.type.ToString());
-            Instantiate(enemyPrefeb, new Vector3(enemy.x_pos, enemy.y_pos, 0), Quaternion.identity);
+            Instantiate(enemyPrefeb, new Vector3(enemy.x_pos + 20, enemy.y_pos, 0), Quaternion.identity);
         }
     }
 }
