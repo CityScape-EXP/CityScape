@@ -446,6 +446,8 @@ MonoBehaviour:
   playerOffence: 0
   isLive: 0
   isGround: 1
+  canRoll: 0
+  rollingTime: 0
 --- !u!114 &394994607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1098,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1473757876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4975844440624288619, guid: df7cb077a8167ec41ad963bcf14a00ad, type: 3}
+  m_PrefabInstance: {fileID: 886527389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ef004966dbad341b8842afd3b98a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1538197174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6841991976370469463, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
@@ -1354,7 +1367,6 @@ Transform:
   m_Children:
   - {fileID: 898421387}
   - {fileID: 953504236}
-  - {fileID: 1821582604}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1389,8 +1401,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1872973863}
-  m_Father: {fileID: 1819749235}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1585,6 +1597,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6841991976646812962, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473757876}
+    - target: {fileID: 6841991976646812962, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841991976665860133, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473757876}
+    - target: {fileID: 6841991976665860133, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OffPausePanel
+      objectReference: {fileID: 0}
     - target: {fileID: 6841991976913197431, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.7497497
@@ -1596,6 +1624,30 @@ PrefabInstance:
     - target: {fileID: 6841991976913197431, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0.7497497
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841991977188053778, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841991977188053778, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473757876}
+    - target: {fileID: 6841991977188053778, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OffPausePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841991977188053778, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841991977304488356, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1473757876}
+    - target: {fileID: 6841991977304488356, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnExitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0a557c6eeb84a94993fd1f356d80f86, type: 3}

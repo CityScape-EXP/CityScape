@@ -32,7 +32,7 @@ public class TextScript : MonoBehaviour
 
         Popup.SetActive(true);
         /*
-    // Get the canvas RectTransform to calculate the center
+    //Get the canvas RectTransform to calculate the center
     Canvas canvas = GetComponentInParent<Canvas>();
     
     if (canvas == null){

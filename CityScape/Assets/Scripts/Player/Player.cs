@@ -37,11 +37,10 @@ public class Player : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // ÆÄ±« ±ÝÁö
         }
         else
         {
-            Destroy(gameObject); // ÆÄ±«
+            
         }
 
         coll = GetComponent<Collider2D>();
