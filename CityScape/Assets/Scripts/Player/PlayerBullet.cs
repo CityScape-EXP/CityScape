@@ -6,12 +6,14 @@ public class PlayerBullet : MonoBehaviour
 {
     //BoxCollider2D coll;
     public float moveSpeed;
-    public float damage;
+    private float damage;
     public float id;
     public float prefabID;
 
     void Start()
     {
+        int offenceLevel = GameManager.instance.upgradeData.offenceLevel;
+        damage = 1f + 1f * (offenceLevel - 1);
         //coll = GetComponent<BoxCollider2D>();
     }
 

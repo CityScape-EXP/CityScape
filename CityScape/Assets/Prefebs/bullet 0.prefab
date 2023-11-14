@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7f7f8d6935b649bc3fde5d4aa47da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 13
   damage: 2
   id: 0
   prefabID: 0
