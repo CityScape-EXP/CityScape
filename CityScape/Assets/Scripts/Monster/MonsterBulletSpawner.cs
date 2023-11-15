@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class MonsterBulletSpawner : MonoBehaviour
 {
-    /* ÃÑ¾Ë °ü·Ã */
+    /* ì´ì•Œ ê´€ë ¨ */
     public float BulletSpawnTime;
     public Vector3 FixPos;
 
-    /* ¸ó½ºÅÍ °ü·Ã */
+    /* ëª¬ìŠ¤í„° ê´€ë ¨ */
     GameObject MyMonster;
     public bool isMonsterLive;
 
-    /* ÃÊ±âÈ­ */
+    /* ì´ˆê¸°í™” */
     private void Awake()
     {
         MyMonster = gameObject;
     }
 
-    /* ¸ó½ºÅÍ°¡ »ıÁ¸ »óÅÂ·Î ½ÃÀÛÇÏ°í ÄÚ·çÆ¾À» ½ÃÀÛÇÔ */
+    /* ëª¬ìŠ¤í„°ê°€ ìƒì¡´ ìƒíƒœë¡œ ì‹œì‘í•˜ê³  ì½”ë£¨í‹´ì„ ì‹œì‘í•¨ */
     private void Start()
     {
         isMonsterLive = true;
@@ -26,7 +26,7 @@ public class MonsterBulletSpawner : MonoBehaviour
         StartCoroutine(CheckMonsterPosit());
     }
 
-    /* ¸ó½ºÅÍ »ç¸Á ¿©ºÎ Ã¼Å© */
+    /* ëª¬ìŠ¤í„° ì‚¬ë§ ì—¬ë¶€ ì²´í¬ */
     private void Update()
     {
         if (MyMonster != null)
@@ -35,12 +35,12 @@ public class MonsterBulletSpawner : MonoBehaviour
 
             if (MonsterObj != null)
             {
-                isMonsterLive = MonsterObj.isLive; // Monster ¿ÀºêÁ§Æ®ÀÇ isLive º¯¼ö °¡Á®¿À±â
+                isMonsterLive = MonsterObj.isLive; // Monster ì˜¤ë¸Œì íŠ¸ì˜ isLive ë³€ìˆ˜ ê°€ì ¸ì˜¤ê¸°
             }
         }
     }
 
-    /* ¸ó½ºÅÍ°¡ È­¸é ³»¿¡ µîÀåÇÏ¸é ÃÑ¾Ë »ı¼º ·çÆ¾ ½ÃÀÛ */
+    /* ëª¬ìŠ¤í„°ê°€ í™”ë©´ ë‚´ì— ë“±ì¥í•˜ë©´ ì´ì•Œ ìƒì„± ë£¨í‹´ ì‹œì‘ */
     IEnumerator CheckMonsterPosit()
     {
         while (isMonsterLive)
@@ -55,18 +55,23 @@ public class MonsterBulletSpawner : MonoBehaviour
         }
     }
 
-    /* ÃÑ¾Ë »ı¼º ·çÆ¾ ÇÔ¼ö */
+    /* ì´ì•Œ ìƒì„± ë£¨í‹´ í•¨ìˆ˜ */
     IEnumerator SpawnRoutine()
     {
         StopCoroutine(CheckMonsterPosit());
-        while (isMonsterLive) // ¸ó½ºÅÍ »ıÁ¸ °æ¿ì¸¸ ÃÑ¾Ë »ı¼º
+        while (isMonsterLive) // ëª¬ìŠ¤í„° ìƒì¡´ ê²½ìš°ë§Œ ì´ì•Œ ìƒì„±
         {
-            GameObject MonsterBullet = PoolManager.GetObject(1);
-            MonsterBullet.GetComponent<MonsterBullet>().shooterID = MyMonster.GetComponent<Monster>().id;
-            // PoolÀÇ 1¹øÂ° ÇÁ¸®Æé(ÃÑ¾Ë)À» °¡Á®¿È. ³ªÁß¿¡ ÇØ´ç ºÎºĞ ¼öÁ¤ °¡´É¼º ÀÖÀ½
-            MonsterBullet.transform.position = MyMonster.transform.position + FixPos; // ÃÑ¾Ë »ı¼º À§Ä¡ Á¶Á¤
+            // PoolManagerì—ì„œ Bullet ê°€ì ¸ ì˜´ ( 1 : ëª¬ìŠ¤í„°ì˜ Bullet )
+            GameObject Bullet = PoolManager.GetObject(1);
+            var MonsterBullet = Bullet.GetComponent<MonsterBullet>();
+            // MonsterBullet ê°ì¢… ì˜µì…˜ ì„¸íŒ…
+            MonsterBullet.shooterID = MyMonster.GetComponent<Monster>().id;
+            MonsterBullet.playerDir = (GameManager.instance.player.transform.position
+                - gameObject.transform.position).normalized;
+            // Poolì˜ 1ë²ˆì§¸ í”„ë¦¬í©(ì´ì•Œ)ì„ ê°€ì ¸ì˜´. ë‚˜ì¤‘ì— í•´ë‹¹ ë¶€ë¶„ ìˆ˜ì • ê°€ëŠ¥ì„± ìˆìŒ
+            MonsterBullet.transform.position = MyMonster.transform.position + FixPos; // ì´ì•Œ ìƒì„± ìœ„ì¹˜ ì¡°ì •
 
-            yield return new WaitForSeconds(BulletSpawnTime); // SpawnColltimeÃÊ ¸¸Å­ ´ë±â ÈÄ ½ÇÇà
+            yield return new WaitForSeconds(BulletSpawnTime); // SpawnColltimeì´ˆ ë§Œí¼ ëŒ€ê¸° í›„ ì‹¤í–‰
         }
     }
 

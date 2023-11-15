@@ -6638,13 +6638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acmPattern: 0
-  prefebElements:
-  - m_Name: Platform
-    m_Prefeb: {fileID: 6792495905665241148, guid: 46be4fb2571ebff46b4297d0a4019e90, type: 3}
-  - m_Name: Enemy0
-    m_Prefeb: {fileID: 8715609804402053396, guid: f86bba966fa4c0c4f9885aa458180e20, type: 3}
-  - m_Name: Enemy1
-    m_Prefeb: {fileID: 5292050168988759920, guid: b2497ee0b676f0e4c8b8f5b19237e417, type: 3}
 --- !u!1001 &8227464169588406438
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,29 +9,21 @@ public class MonsterBullet : MonoBehaviour
     public int damage;
     public float id;
     public float prefabID;
+
     public int shooterID;
     public Vector3 playerDir;
-
-    void Start()
-    { 
-        Vector3 playerPos = GameManager.instance.player.transform.position;
-        playerDir = (playerPos - transform.position).normalized;
-        //coll = GetComponent<BoxCollider2D>();
-    }
-
-    private void OnEnable()
-    {
-    }
 
     private void FixedUpdate()
     {
         if (shooterID == 0)
             normalEnemyShoot();
         else if(shooterID == 1)
+        {
             flyingEnemyShoot(playerDir);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // √Êµπ ∞®¡ˆ
+    private void OnTriggerEnter2D(Collider2D collision) // Ï∂©Îèå Í∞êÏßÄ
     {
         if (collision.CompareTag("Player"))
         {
@@ -43,9 +35,9 @@ public class MonsterBullet : MonoBehaviour
 
     private void normalEnemyShoot()
     {
-        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime); // ∫“∑ø ø¿∏•¬ ¿∏∑Œ ¿Ãµø
+        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime); // Î∂àÎ†õ Ïò§Î•∏Ï™ΩÏúºÎ°ú Ïù¥Îèô
 
-        if (transform.position.x < -16) // √—æÀ¿Ã »≠∏È π€¿∏∑Œ π˛æÓ≥Ø Ω√
+        if (transform.position.x < -16) // Ï¥ùÏïåÏù¥ ÌôîÎ©¥ Î∞ñÏúºÎ°ú Î≤óÏñ¥ÎÇ† Ïãú
         {
             PoolManager.ReturnObject(this.gameObject, 1);
         }

@@ -17,8 +17,6 @@ public class MapBuilder : MonoBehaviour
     int nowPhase = 0;
     float patternStartTime = 0f;
     float nowPatternTime = 0f;
-    // Prefeb ����Ʈ
-    public List<PrefebElement> prefebElements;
 
 
 
@@ -49,32 +47,17 @@ public class MapBuilder : MonoBehaviour
         }
     }
 
-    GameObject GetPrefeb(string s)
-    {
-        PrefebElement prefebElement = prefebElements.Find(le => le.m_Name == s);
-        if (prefebElement != null)
-            return prefebElement.m_Prefeb;
-        else
-            return null;
-    }
-
     private void DrawPattern(PatternData pd)
     {
-        // platform�� Prefeb ������ �����´�
-        GameObject platformPrefab = GetPrefeb("Platform");
         foreach (var platform in pd.p_Data)
         {
-            for(int i = 0; i< platform.width; i++)
-            {
-                // platform Ŭ���� �����͸� �̿��Ͽ� prefeb Instantiate
-                Instantiate(platformPrefab, new Vector3(platform.pos + 20 + i, platform.floor * 1.5f, 0), Quaternion.identity);
-            }
+            GameObject platformObject = PoolManager.GetObject(4);
+            platformObject.transform.position = new Vector3(platform.pos + 20, platform.floor * 1.5f, 0);
         }
         foreach (var enemy in pd.e_Data)
         {
-            // Type ��ȣ�� ��ġ�ϴ� Enemy prefeb ������
-            GameObject enemyPrefeb = GetPrefeb("Enemy" + enemy.type.ToString());
-            Instantiate(enemyPrefeb, new Vector3(enemy.x_pos + 20, enemy.y_pos, 0), Quaternion.identity);
+            GameObject enemyObject = PoolManager.GetObject(2 + enemy.type);
+            enemyObject.transform.position = new Vector3(enemy.x_pos + 20, enemy.y_pos, 0);
         }
     }
 }
