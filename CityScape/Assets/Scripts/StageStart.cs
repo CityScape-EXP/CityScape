@@ -15,9 +15,9 @@ public class StageStart : MonoBehaviour
     }
     IEnumerator LoadMainMenuScene()
     {
-        // AsyncOperationÀ» ÅëÇØ Scene Load Á¤µµ¸¦ ¾Ë ¼ö ÀÖ´Ù.
+        // AsyncOperationì„ í†µí•´ Scene Load ì •ë„ë¥¼ ì•Œ ìˆ˜ ìˆë‹¤.
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(roadStage1);
-        // SceneÀ» ºÒ·¯¿À´Â °ÍÀÌ ¿Ï·áµÇ¸é, AsyncOperationÀº isDone »óÅÂ°¡ µÈ´Ù.
+        // Sceneì„ ë¶ˆëŸ¬ì˜¤ëŠ” ê²ƒì´ ì™„ë£Œë˜ë©´, AsyncOperationì€ isDone ìƒíƒœê°€ ëœë‹¤.
         while (!asyncLoad.isDone)
         {
             UIManager.isMenu = false;

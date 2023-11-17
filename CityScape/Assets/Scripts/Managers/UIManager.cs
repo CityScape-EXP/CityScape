@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance = null;
-    public static bool isMenu = false;
-    public static bool isGame = true;
+    public static bool isMenu = true;
+    public static bool isGame = false;
     public string roadMainMenu = "MainPopup";
     [Header("settingCanvas")]
     [SerializeField] public GameObject settingCanvas;
@@ -62,21 +62,10 @@ public class UIManager : MonoBehaviour
     }
     public void GoMenuButton()
     {
-        StartCoroutine(LoadMainMenuScene());
+        isMenu = true;
+        isGame = false;
         Time.timeScale = 1f;
         settingPanel.SetActive(false);
-    }
-    IEnumerator LoadMainMenuScene()
-    {
-        // AsyncOperation�� ���� Scene Load ������ �� �� �ִ�.
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(roadMainMenu);
-
-        // Scene�� �ҷ����� ���� �Ϸ�Ǹ�, AsyncOperation�� isDone ���°� �ȴ�.   
-        while (!asyncLoad.isDone)
-        {
-            //isMenu = true;
-            //isGame = false;
-            yield return null;
-        }
+        SceneManager.LoadScene("MainPopup");
     }
 }
