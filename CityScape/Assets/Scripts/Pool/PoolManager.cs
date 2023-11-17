@@ -57,7 +57,7 @@ public class PoolManager : MonoBehaviour
         if (Instance.poolingObjectQueueList[prefebID].Count > 0)
         {
             GameObject obj = Instance.poolingObjectQueueList[prefebID].Dequeue();
-            obj.transform.SetParent(null);
+            //obj.transform.SetParent(null);
             obj.SetActive(true);
             return obj;
         }
@@ -65,7 +65,7 @@ public class PoolManager : MonoBehaviour
         else
         {
             GameObject newObj = Instance.createNewObject(prefebID);
-            newObj.transform.SetParent(null);
+            //newObj.transform.SetParent(null);
             newObj.SetActive(true);
             return newObj;
         }
