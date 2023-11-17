@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    // ½Ì±ÛÅæ
+    // ì‹±ê¸€í†¤
     public static PoolManager Instance;
-    // °ÔÀÓ ÇÁ¸®ÆéµéÀ» ´ã´Â objectPrefeb ¸®½ºÆ®
+    // ê²Œì„ í”„ë¦¬í©ë“¤ì„ ë‹´ëŠ” objectPrefeb ë¦¬ìŠ¤íŠ¸
     [SerializeField] private List<GameObject> objectPrefebList = new List<GameObject>();
-    // ÇÁ¸®Æé ¼ö¸¸Å­ÀÇ Queue<GameObject> »ı¼º
+    // í”„ë¦¬í© ìˆ˜ë§Œí¼ì˜ Queue<GameObject> ìƒì„±
     private List<Queue<GameObject>> poolingObjectQueueList = new List<Queue<GameObject>>();
 
     private void Awake()
@@ -27,15 +27,16 @@ public class PoolManager : MonoBehaviour
         Initialize(10);
     }
 
-    // »õ·Î¿î °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ »ı¼ºÇÏ°í, ÇØ´ç ¿ÀºêÁ§Æ®¸¦ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+    // ìƒˆë¡œìš´ ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒì„±í•˜ê³ , í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
     private GameObject createNewObject(int prefebID)
     {
         GameObject newObj = Instantiate(objectPrefebList[prefebID]);
+        newObj.transform.SetParent(Instance.transform);
         newObj.SetActive(false);
         return newObj; 
     }
 
-    // °ÔÀÓ ½ÃÀÛ½Ã ObjectPool ÃÊ±âÈ­ (¸®½ºÆ® ÃÊ±âÈ­ ¹× °¢ Å¥¿¡ ÀÓ½Ã prefeb 10°³¾¿ »ı¼º)
+    // ê²Œì„ ì‹œì‘ì‹œ ObjectPool ì´ˆê¸°í™” (ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™” ë° ê° íì— ì„ì‹œ prefeb 10ê°œì”© ìƒì„±)
     private void Initialize(int count)
     {
         int prefebNum = objectPrefebList.Count;
@@ -48,11 +49,11 @@ public class PoolManager : MonoBehaviour
         }
     }    
 
-    // GameObject¸¦ Pool¿¡¼­ °¡Á®°¡´Â ÇÔ¼ö
+    // GameObjectë¥¼ Poolì—ì„œ ê°€ì ¸ê°€ëŠ” í•¨ìˆ˜
     public static GameObject GetObject(int prefebID)
     {
-        Debug.Log($"{prefebID}¹ø ¿ÀºêÁ§Æ® »ı¼º");
-        // Pool¿¡ ³²´Â GameObject°¡ ÀÖÀ» ¶§ ³²´Â Object return
+        Debug.Log($"{prefebID}ë²ˆ ì˜¤ë¸Œì íŠ¸ ìƒì„±");
+        // Poolì— ë‚¨ëŠ” GameObjectê°€ ìˆì„ ë•Œ ë‚¨ëŠ” Object return
         if (Instance.poolingObjectQueueList[prefebID].Count > 0)
         {
             GameObject obj = Instance.poolingObjectQueueList[prefebID].Dequeue();
@@ -60,7 +61,7 @@ public class PoolManager : MonoBehaviour
             obj.SetActive(true);
             return obj;
         }
-        // Pool¿¡ ³²´Â GameObject°¡ ¾øÀ» ‹š.. »õ·Î Pool¿¡ »ı¼º ÈÄ return
+        // Poolì— ë‚¨ëŠ” GameObjectê°€ ì—†ì„ ë–„.. ìƒˆë¡œ Poolì— ìƒì„± í›„ return
         else
         {
             GameObject newObj = Instance.createNewObject(prefebID);
@@ -70,7 +71,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    // GameObject¿Í ÇØ´çÇÏ´Â prefeb ID¸¦ °¡Áö°í Pool¿¡ ¸®ÅÏÇÑ´Ù
+    // GameObjectì™€ í•´ë‹¹í•˜ëŠ” prefeb IDë¥¼ ê°€ì§€ê³  Poolì— ë¦¬í„´í•œë‹¤
     public static void ReturnObject(GameObject obj, int prefebID)
     {
         obj.SetActive(false);

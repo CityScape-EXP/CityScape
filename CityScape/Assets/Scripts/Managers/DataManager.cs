@@ -5,20 +5,20 @@ using System.IO;
 using System.Text;
 
 /*  DataManager.cs
- *  °¢Á¾ json ÆÄÀÏÀ» °ü¸®ÇÏ´Â ½ºÅ©¸³Æ®
- *  jsonÆÄÀÏÀÌ³ª ¼¼ÀÌºê ÆÄÀÏ, °¢Á¾ °ÔÀÓÀÌ ²¨Á®µµ À¯ÁöµÇ´Â Ç×¸ñ¿¡ ´ëÇØ¼­´Â
- *  ÇØ´ç ½ºÅ©¸³Æ®¿¡ ÀÛ¼ºÇÑ´Ù
+ *  ê°ì¢… json íŒŒì¼ì„ ê´€ë¦¬í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸
+ *  jsoníŒŒì¼ì´ë‚˜ ì„¸ì´ë¸Œ íŒŒì¼, ê°ì¢… ê²Œì„ì´ êº¼ì ¸ë„ ìœ ì§€ë˜ëŠ” í•­ëª©ì— ëŒ€í•´ì„œëŠ”
+ *  í•´ë‹¹ ìŠ¤í¬ë¦½íŠ¸ì— ì‘ì„±í•œë‹¤
  */
 
 public class DataManager : MonoBehaviour
 {
     
 #if UNITY_ANDROID
-    // ¾Èµå·ÎÀÌµå ºôµå ‹š »ç¿ë
+    // ì•ˆë“œë¡œì´ë“œ ë¹Œë“œ ë–„ ì‚¬ìš©
     // savePath = Application.persistantDataPath;
 #endif
-    // Json ÆÄÀÏÀ» ÅëÇØ PatternData¸¦ °¡Á®¿À´Â °úÁ¤
-    // Json ÆÄÀÏÀÇ ÀÌ¸§ ±ÔÄ¢Àº ´ÙÀ½°ú °°´Ù. (¿¹) St0_Phase2_Pattern0
+    // Json íŒŒì¼ì„ í†µí•´ PatternDataë¥¼ ê°€ì ¸ì˜¤ëŠ” ê³¼ì •
+    // Json íŒŒì¼ì˜ ì´ë¦„ ê·œì¹™ì€ ë‹¤ìŒê³¼ ê°™ë‹¤. (ì˜ˆ) St0_Phase2_Pattern0
     public PatternData GetPatternData(int stage, int phase, int pattern)
     {
         string savePath = Application.dataPath;
@@ -29,7 +29,7 @@ public class DataManager : MonoBehaviour
         return data;
     }
 
-    // UpgradeData.json ÆÄÀÏÀ» UpgradeData Å¬·¡½º Á¤º¸·Î º¯°æÇÏ´Â ÇÔ¼ö
+    // UpgradeData.json íŒŒì¼ì„ UpgradeData í´ë˜ìŠ¤ ì •ë³´ë¡œ ë³€ê²½í•˜ëŠ” í•¨ìˆ˜
     public UpgradeData GetUpgradeData()
     {
         string savePath = Application.dataPath;
@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour
         return data;
     }
 
-    // GameData.json ÆÄÀÏÀ» GameData Å¬·¡½º Á¤º¸·Î º¯°æÇÏ´Â ÇÔ¼ö
+    // GameData.json íŒŒì¼ì„ GameData í´ë˜ìŠ¤ ì •ë³´ë¡œ ë³€ê²½í•˜ëŠ” í•¨ìˆ˜
     public GameData GetGameData()
     {
         string savePath = Application.dataPath;
@@ -53,47 +53,47 @@ public class DataManager : MonoBehaviour
 
 
     /*
-     *  ÀúÀå ºÎºĞ : º¯È­°¡ ÀÏ¾î³¯ ¶§¿¡´Â ¹«Á¶°Ç ÀúÀåÀ» ÇÑ´Ù
-     *  -> ÀÏ¾î³­ º¯È­¸¦ Àû¿ë½ÃÄÑÁà¾ß ÇÑ´Ù
+     *  ì €ì¥ ë¶€ë¶„ : ë³€í™”ê°€ ì¼ì–´ë‚  ë•Œì—ëŠ” ë¬´ì¡°ê±´ ì €ì¥ì„ í•œë‹¤
+     *  -> ì¼ì–´ë‚œ ë³€í™”ë¥¼ ì ìš©ì‹œì¼œì¤˜ì•¼ í•œë‹¤
      */
-    // GameData Å¬·¡½º Á¤º¸¸¦ ¹Ş¾Æ GameData.json¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö
+    // GameData í´ë˜ìŠ¤ ì •ë³´ë¥¼ ë°›ì•„ GameData.jsonì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜
     public void SaveGameData(GameData gdata)
     {
         string savePath = Application.dataPath;
         string data = JsonUtility.ToJson(gdata);
-        Debug.Log("ÀúÀå µ¥ÀÌÅÍ : " + data);
+        Debug.Log("ì €ì¥ ë°ì´í„° : " + data);
         File.WriteAllText(savePath + "/Resources/Data/GameData.json", data);
         GameManager.instance.gameData = GetGameData();
     }
 
-    // UpgradeData Å¬·¡½º Á¤º¸¸¦ ¹Ş¾Æ UpgradeData.json¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö
+    // UpgradeData í´ë˜ìŠ¤ ì •ë³´ë¥¼ ë°›ì•„ UpgradeData.jsonì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜
     public void SaveUpgradeData(UpgradeData udata)
     {
         string savePath = Application.dataPath;
         string data = JsonUtility.ToJson(udata);
-        Debug.Log("ÀúÀå µ¥ÀÌÅÍ : " + data);
+        Debug.Log("ì €ì¥ ë°ì´í„° : " + data);
         File.WriteAllText(savePath + "/Resources/Data/UpgradeData.json", data);
         GameManager.instance.upgradeData = GetUpgradeData();
     }
 
-    // °ÔÀÓ Ã¹ ½ÃÀÛ½Ã UpgradeData¸¦ ÃÊ±âÈ­ÇÏ´Â ÇÔ¼ö
+    // ê²Œì„ ì²« ì‹œì‘ì‹œ UpgradeDataë¥¼ ì´ˆê¸°í™”í•˜ëŠ” í•¨ìˆ˜
     public void InitUpgradeData()
     {
-        Debug.Log("°­È­ ¼öÄ¡ ÃÊ±âÈ­");
+        Debug.Log("ê°•í™” ìˆ˜ì¹˜ ì´ˆê¸°í™”");
         UpgradeData p_temp = new UpgradeData();
         SaveUpgradeData(p_temp);
     }
 
-    // °ÔÀÓ Ã¹ ½ÃÀÛ½Ã GameData¸¦ ÃÊ±âÈ­ÇÏ´Â ÇÔ¼ö
+    // ê²Œì„ ì²« ì‹œì‘ì‹œ GameDataë¥¼ ì´ˆê¸°í™”í•˜ëŠ” í•¨ìˆ˜
     public void InitGameData()
     {
-        Debug.Log("°ÔÀÓ µ¥ÀÌÅÍ ÃÊ±âÈ­");
+        Debug.Log("ê²Œì„ ë°ì´í„° ì´ˆê¸°í™”");
         GameData g_temp = new GameData();
         SaveGameData(g_temp);
     }
 }
 
-// UpgradeData Å¬·¡½º
+// UpgradeData í´ë˜ìŠ¤
 [System.Serializable]
 public class UpgradeData
 {
@@ -101,14 +101,14 @@ public class UpgradeData
     public int offenceLevel;
     public int asLevel;
     
-    // ÃÊ±âÈ­¸¦ À§ÇÑ »ı¼ºÀÚ
+    // ì´ˆê¸°í™”ë¥¼ ìœ„í•œ ìƒì„±ì
     public UpgradeData(int hp = 1, int atk = 1, int atks = 1)
     {
         hpLevel = hp; offenceLevel = atk; asLevel = atks;
     }
 }
 
-// GameData Å¬·¡½º
+// GameData í´ë˜ìŠ¤
 [System.Serializable]
 public class GameData
 {
@@ -116,7 +116,7 @@ public class GameData
     public List<int> stageHighScore;
     public int money;
     
-    // ÃÊ±âÈ­¸¦ À§ÇÑ »ı¼ºÀÚ
+    // ì´ˆê¸°í™”ë¥¼ ìœ„í•œ ìƒì„±ì
     public GameData()
     {
         isStageOpen = new List<bool>() { false, false, false};
@@ -126,7 +126,7 @@ public class GameData
 }
 
 
-// °ÔÀÓ ÆĞÅÏÀ» ÀúÀåÇÏ´Â PatternData Å¬·¡½º
+// ê²Œì„ íŒ¨í„´ì„ ì €ì¥í•˜ëŠ” PatternData í´ë˜ìŠ¤
 [System.Serializable]
 public class PatternData
 {
@@ -134,7 +134,7 @@ public class PatternData
     public List<EnemyData> e_Data = new List<EnemyData>();
     public int patternTime;
     
-    // ÇÃ·§Æû Á¤º¸¸¦ ÀúÀåÇÏ´Â PlatformData Å¬·¡½º
+    // í”Œë«í¼ ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” PlatformData í´ë˜ìŠ¤
     [System.Serializable]
     public class PlatformData
     {
@@ -143,7 +143,7 @@ public class PatternData
         public int width;
     }
 
-    // ¸ó½ºÅÍ Á¤º¸¸¦ ÀúÀåÇÏ´Â EnemyData Å¬·¡½º
+    // ëª¬ìŠ¤í„° ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” EnemyData í´ë˜ìŠ¤
     [System.Serializable]
     public class EnemyData
     {
