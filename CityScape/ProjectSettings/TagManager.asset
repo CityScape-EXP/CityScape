@@ -9,7 +9,7 @@ TagManager:
   - Monster
   - PlayerBullet
   - MonsterBullet
-  - Popup
+  - popupGameObject
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HighScore : MonoBehaviour
+public class Current_score : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -12,10 +12,10 @@ public class HighScore : MonoBehaviour
         TextMeshProUGUI textComponent = GetComponent<TextMeshProUGUI>();
 
         if (textComponent != null){
-            textComponent.text = "High Score: " + Score.highScore.ToString();        
+            textComponent.text = "Score: " + Score.score.ToString();
         }
         else{
-            Debug.LogWarning("high score 텍스트 찾을 수 없음. " + gameObject.name);
+            Debug.LogWarning("current score 텍스트 찾을 수 없음. " + gameObject.name);
         }
 
     }

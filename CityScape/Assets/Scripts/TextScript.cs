@@ -2,30 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextScript : MonoBehaviour
 {
     [SerializeField] 
     Text _text;
 
-    public GameObject Popup;
+    public GameObject popupGameObject;
+    GameObject target;
 
-    public float HP = 0;
-    public float Damage = 0;
-    public static int score = 0;
-    public static int bestScore = 0;
-    private GameObject target;
+    //초기설정
+    private float HP = 100f;
+    private float Damage = 10f;
 
-    private float Attack
-    {
-        get { return HP - Damage; }
-    }
+    private float Attack => HP - Damage;
 
     void Awake(){
-        target = GameObject.FindWithTag("Popup");
+        target = GameObject.FindWithTag("popupGameObject");
 
         if(target == null){
-            Debug.LogError("'Popup'태그를 찾을 수 없음.");
+            Debug.Log("'Popup'태그를 찾을 수 없음.");
         }
         else HpMinus();
     }
@@ -37,45 +34,26 @@ public class TextScript : MonoBehaviour
     }
 
     public void HpMinus(){
-        if(Attack == 0) ShowPopup();
+        if(IsDead()) {
+            if (Score.score > Score.highScore)
+            {
+                Score.highScore = Score.score;
+            }
+            ShowPopup();
+        }
         else{
             HP -= Damage;
             _text.text = HP.ToString();
         }
     }
 
+    private bool IsDead(){
+        return Attack <= 0;
+    }
+
     void ShowPopup()
     {
-
-        Popup.SetActive(true);
-        /*
-    //Get the canvas RectTransform to calculate the center
-
-    void ShowPopup(){ 
-        Popup.SetActive(true);
-    /*
-    // Get the canvas RectTransform to calculate the center
-
-    Canvas canvas = GetComponentInParent<Canvas>();
-    
-    if (canvas == null){
-        Debug.LogError("Canvas component not found in parent.");
-        return;
-    }
-
-    RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-
-    if (canvasRect == null){
-        Debug.LogError("RectTransform component not found in the Canvas.");
-        return;
-    }
-
-    // Calculate the center of the canvas
-    Vector3 centerOfCanvas = new Vector3(canvasRect.rect.width / 2, canvasRect.rect.height / 2, 0);
-
-    // Instantiate the Popup at the center of the canvas
-    Instantiate(Popup, centerOfCanvas, Quaternion.identity);
-        */
+        popupGameObject.SetActive(true);
     }
 }
 

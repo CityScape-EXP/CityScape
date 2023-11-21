@@ -7,7 +7,7 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     public static int score = 0;
-    public static int bestScore = 0;
+    public static int highScore = 0;
     // Start is called before the first frame update
     void Start()
     {
