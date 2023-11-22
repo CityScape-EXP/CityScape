@@ -9,8 +9,8 @@ public class TextScript : MonoBehaviour
     [SerializeField] 
     Text _text;
 
-    public GameObject popupGameObject;
-    GameObject target;
+    public GameObject popupGameOver;
+    GameObject target1;
 
     //초기설정
     private float HP = 100f;
@@ -19,9 +19,9 @@ public class TextScript : MonoBehaviour
     private float Attack => HP - Damage;
 
     void Awake(){
-        target = GameObject.FindWithTag("popupGameObject");
+        target1 = GameObject.FindWithTag("popupGameOver");
 
-        if(target == null){
+        if(target1 == null){
             Debug.Log("'Popup'태그를 찾을 수 없음.");
         }
         else HpMinus();
@@ -53,7 +53,7 @@ public class TextScript : MonoBehaviour
 
     void ShowPopup()
     {
-        popupGameObject.SetActive(true);
+        popupGameOver.SetActive(true);
     }
 }
 
