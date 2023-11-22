@@ -68,4 +68,12 @@ public class UIManager : MonoBehaviour
         settingPanel.SetActive(false);
         SceneManager.LoadScene("MainPopup");
     }
+
+    public void OnRestartButton()
+    {
+        Time.timeScale = 1f;
+        settingPanel.SetActive(false);
+        MapBuilder.instance.Init_var();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 Scene을 다시 로드시키는 문장
+    }
 }

@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SPManager : MonoBehaviour
+public class SPManager : MonoBehaviour // SettingPanel 매니저 스크립트
 {
     [Header("settingCanvas")]
     [SerializeField] private GameObject settingCanvas;

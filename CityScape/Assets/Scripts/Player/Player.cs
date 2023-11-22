@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     Collider2D coll;
 
     public float jumpPower;
-    public int playerHp;
-    public int playerCurrentHp;
+    public int playerHp; // 플레이어의 최대 hp
+    public int playerCurrentHp; // 플레이어의 인게임상에서의 hp를 나타내기위한 변수
     public float playerOffence;
     public bool isLive;
 

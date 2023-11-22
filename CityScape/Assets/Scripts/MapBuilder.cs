@@ -13,12 +13,26 @@ public class PrefebElement
 public class MapBuilder : MonoBehaviour
 {
     // ���� ������ (��, ��, �Ĺ� ������ �б���)
-    public int acmPattern = 0;
-    int nowPhase = 0;
-    float patternStartTime = 0f;
-    float nowPatternTime = 0f;
-
-
+    public static MapBuilder instance = null;
+    public int acmPattern;
+    private int nowPhase;
+    private float patternStartTime;
+    private float nowPatternTime;
+    public void Init_var()
+    {
+        acmPattern = 0;
+        nowPhase = 0;
+        patternStartTime = 0f;
+        nowPatternTime = 0f;
+    }
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        Init_var();
+    }
 
     private void Update()
     {
@@ -37,7 +51,7 @@ public class MapBuilder : MonoBehaviour
             else Debug.Log("�������� Ŭ����");
 
             int patternNum = Random.Range(0, 4);
-            Debug.Log($"���� {patternNum}�� ����!");
+            Debug.Log($"패턴 {patternNum}번 생성!");
             PatternData nowPattern = GameManager.instance.dm.GetPatternData(0, nowPhase, patternNum);
             DrawPattern(nowPattern);
 
@@ -60,4 +74,6 @@ public class MapBuilder : MonoBehaviour
             enemyObject.transform.position = new Vector3(enemy.x_pos + 20, enemy.y_pos, 0);
         }
     }
+
+    
 }
