@@ -138,6 +138,7 @@ public class PatternData
     [System.Serializable]
     public class PlatformData
     {
+        public int type;
         public int floor;
         public float pos;
         public int width;
