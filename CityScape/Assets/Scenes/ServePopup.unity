@@ -1062,7 +1062,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 258667861825523126, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
   m_PrefabInstance: {fileID: 1200877164}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1036667730
+--- !u!114 &1036667733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1310,7 +1310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 258667861028611372, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 258667861508435774, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1618,7 +1618,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 258667862438897837, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
   m_PrefabInstance: {fileID: 1200877164}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1427619254
+--- !u!114 &1427619257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1748,7 +1748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupGameClear: {fileID: 1200877166}
   timerSlider: {fileID: 1386672071}
-  gameTime: 10
+  gameTime: 120
 --- !u!4 &1870874239
 Transform:
   m_ObjectHideFlags: 0
