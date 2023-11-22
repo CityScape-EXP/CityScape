@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     Collider2D coll;
 
     public float jumpPower;
-    private int playerHp;
+    public int playerHp;
+    public int playerCurrentHp;
     public float playerOffence;
     public bool isLive;
 
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
         isRolling = false;
         playerHp = GameManager.instance.upgradeData.hpLevel + 2;
         playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
+        playerCurrentHp = playerHp;
     }
 
     private void Awake()
@@ -41,15 +43,11 @@ public class Player : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            
-        }
 
         coll = GetComponent<Collider2D>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animation>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     private void Update()
@@ -102,9 +100,9 @@ public class Player : MonoBehaviour
 
     public void getDamage(int damage)
     {
-        playerHp -= damage;
-        Debug.Log($"플레이어 체력 : {playerHp}");
-        if (playerHp <= 0)
+        playerCurrentHp -= damage;
+        Debug.Log($"플레이어 체력 : {playerCurrentHp}");
+        if (playerCurrentHp <= 0)
         {
             isLive = false;
             Debug.Log("플레이어 사망");
