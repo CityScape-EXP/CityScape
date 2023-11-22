@@ -71,9 +71,19 @@ public class UIManager : MonoBehaviour
 
     public void OnRestartButton()
     {
-        Time.timeScale = 1f;
+        StartCoroutine(RestartStage());
+    }
+
+    IEnumerator RestartStage()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        while(!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        Debug.Log("다음 씬으로 로드 완료");
         settingPanel.SetActive(false);
+        Time.timeScale = 1f;
         MapBuilder.instance.Init_var();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // 현재 Scene을 다시 로드시키는 문장
     }
 }

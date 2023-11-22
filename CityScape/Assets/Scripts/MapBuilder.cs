@@ -18,6 +18,7 @@ public class MapBuilder : MonoBehaviour
     private int nowPhase;
     private float patternStartTime;
     private float nowPatternTime;
+
     public void Init_var()
     {
         acmPattern = 0;
@@ -25,12 +26,14 @@ public class MapBuilder : MonoBehaviour
         patternStartTime = 0f;
         nowPatternTime = 0f;
     }
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
         Init_var();
     }
 
@@ -63,10 +66,13 @@ public class MapBuilder : MonoBehaviour
 
     private void DrawPattern(PatternData pd)
     {
+        Debug.Log("DrawPattern 실행");
         foreach (var platform in pd.p_Data)
         {
             GameObject platformObject = PoolManager.GetObject(4);
+            platformObject.SetActive(true);
             platformObject.transform.position = new Vector3(platform.pos + 20, platform.floor * 1.5f, 0);
+            Debug.Log(platformObject.transform.position);
         }
         foreach (var enemy in pd.e_Data)
         {

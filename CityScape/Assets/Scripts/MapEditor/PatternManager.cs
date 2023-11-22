@@ -56,7 +56,7 @@ public class PatternManager : MonoBehaviour
             if (patternList[i].name == "Platform")
             {
                 int platformType = typeList[i]; // 플랫폼 타입 가져옴
-                float obj_xpos = // 위치 정보 저장
+                //float obj_xpos = // 위치 정보 저장
             }
             // Enemy인 경우
             else if (patternList[i].name == "Enemy")
