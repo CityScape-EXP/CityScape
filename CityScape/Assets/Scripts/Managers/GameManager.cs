@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public UpgradeData upgradeData;
 
     public Player player;
-    public float surviveTime;
+    public float surviveTime; //초기부터진행시간
     public bool isGameover;
     public DataManager dm;
 

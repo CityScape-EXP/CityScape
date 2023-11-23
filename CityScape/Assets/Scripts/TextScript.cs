@@ -53,7 +53,12 @@ public class TextScript : MonoBehaviour
 
     void ShowPopup()
     {
-        popupGameOver.SetActive(true);
+        if (popupGameOver != null){
+            popupGameOver.SetActive(true);
+        }
+        else{
+            Debug.LogWarning("PopupGameOver없음. 어딘가에서 destroy된 듯.. 근데 어디지");
+        }
     }
 }
 

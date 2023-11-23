@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public GameObject popupGameClear;
+    public GameObject popupGameOver;
 
     [SerializeField]
     public Slider timerSlider;
@@ -33,7 +34,6 @@ public class Timer : MonoBehaviour
 
         while(stopTimer == false && sliderTimer > 0){
             sliderTimer -= Time.deltaTime; //점점 줄어듦
-            Debug.Log("Slider Timer: " + sliderTimer + " " + stopTimer);
             yield return null;
 
             if(sliderTimer <= 0){
@@ -42,10 +42,17 @@ public class Timer : MonoBehaviour
             }
 
             if(stopTimer == false){ //slidervalue를 업뎃해야함
-                timerSlider.value = sliderTimer;
+                if(timerSlider!=null){
+                    timerSlider.value = sliderTimer;
+                }
             }
             Debug.Log("Slider Timer: " + sliderTimer + " " + stopTimer + " " + timerSlider.value);
 
+            //게임오버창이 활성화되면 타이머가 멈춤
+            if(popupGameOver != null && popupGameOver.activeSelf){
+                Debug.Log("게임오버");
+                stopTimer = true;
+            }
         }
     }
 

@@ -12,7 +12,17 @@ using System.Text;
 
 public class DataManager : MonoBehaviour
 {
+    //싱글톤
+    public static DataManager instance;
     
+    private void Awake(){
+        /* 싱글톤 적용 */
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
 #if UNITY_ANDROID
     // 안드로이드 빌드 떄 사용
     // savePath = Application.persistantDataPath;
@@ -111,7 +121,7 @@ public class UpgradeData
 // GameData 클래스
 [System.Serializable]
 public class GameData
-{
+{   
     public List<bool> isStageOpen;
     public List<int> stageHighScore;
     public int money;
