@@ -1975,7 +1975,7 @@ MonoBehaviour:
   GameclearReBtn: {fileID: 846015557}
   GameclearMenuBtn: {fileID: 125442007}
   timerSlider: {fileID: 1962450060}
-  gameTime: 10
+  gameTime: 120
   popupGameOver: {fileID: 629611211}
   GameoverReBtn: {fileID: 42948430}
   GameoverMenuBtn: {fileID: 532373598}
