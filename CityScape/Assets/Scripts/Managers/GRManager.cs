@@ -8,19 +8,15 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
 {    
     private int HighScore1;
     public GameData gameData;
+    public string roadMainMenu = "MainPopup";
 
     [Header("GameClear")]
     [SerializeField] private GameObject popupGameClear;
-    [SerializeField] private GameObject GameclearReBtn;
-    [SerializeField] private GameObject GameclearMenuBtn;
     public Slider timerSlider;
     public float gameTime; //게임플레이시간 설정(초단위)
     private bool stopTimer;
-
     [Header("GameOver")]
     [SerializeField] private GameObject popupGameOver;
-    [SerializeField] private GameObject GameoverReBtn;
-    [SerializeField] private GameObject GameoverMenuBtn;
 
     //싱글톤 적용
     public static GRManager instance;
@@ -93,14 +89,19 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         }
     }
 
-    /*public void GameclearMenuBtn()
+    public void GoMenuButton()
     {
+        if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
+            popupGameClear.SetActive(false); //gameclear 팝업 닫기
+        }
+        else{
+            popupGameOver.SetActive(false); //gameover 팝업 닫기
+        }
         Time.timeScale = 1f;
-        GRManager.instance.popupGameClear.SetActive(false);
         SceneManager.LoadScene("MainPopup");
     }
 
-    public void GameclearReBtn()
+    public void OnRestartButton()
     {
         StartCoroutine(RestartStage());
     }
@@ -113,33 +114,14 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
             yield return null;
         }
         Debug.Log("다음 씬으로 로드 완료");
-        GRManager.instance.popupGameClear.SetActive(false);
-        Time.timeScale = 1f;
-        MapBuilder.instance.Init_var();
-    }
-
-    public void GameoverMenuBtn()
-    {
-        Time.timeScale = 1f;
-        GRManager.instance.popupGameOver.SetActive(false);
-        SceneManager.LoadScene("MainPopup");
-    }
-
-    public void GameoverReBtn()
-    {
-        StartCoroutine(RestartStage_());
-    }
-
-    IEnumerator RestartStage_()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        while(!asyncLoad.isDone)
-        {
-            yield return null;
+        if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
+            popupGameClear.SetActive(false);
         }
-        Debug.Log("다음 씬으로 로드 완료");
-        GRManager.instance.popupGameOver.SetActive(false);
-        Time.timeScale = 1f;
+        else{
+            popupGameOver.SetActive(false);
+        }
+        Time.timeScale = 1f; 
         MapBuilder.instance.Init_var();
-    }*/
+    }
+
 }
