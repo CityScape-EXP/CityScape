@@ -46,3 +46,4 @@ MonoBehaviour:
   roadMainMenu: MainPopup
   settingCanvas: {fileID: 0}
   settingPanel: {fileID: 542813900024748449, guid: edd25244f44761b40886ae00b07f9ab8, type: 3}
+  MainMenu: {fileID: 8463639554948509854, guid: faaaebeca3d505e4ba8c498859175978, type: 3}

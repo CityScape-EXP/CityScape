@@ -8,11 +8,11 @@ public class UIManager : MonoBehaviour
     public static UIManager instance = null;
     public static bool isMenu = true;
     public static bool isGame = false;
-    public string roadMainMenu = "MainPopup";
     [Header("settingCanvas")]
     [SerializeField] public GameObject settingCanvas;
     [Header("MainUI")]
     [SerializeField] public GameObject settingPanel;
+    public GameObject MainMenu;
     
     private void Awake()
     {
@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
         isGame = false;
         Time.timeScale = 1f;
         settingPanel.SetActive(false);
+        //MainMenu.instance.mainMenu.SetActive(true);
         SceneManager.LoadScene("MainPopup");
     }
 
