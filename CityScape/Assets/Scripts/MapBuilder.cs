@@ -70,14 +70,25 @@ public class MapBuilder : MonoBehaviour
         foreach (var platform in pd.p_Data)
         {
             GameObject platformObject = PoolManager.GetObject(4);
+            Vector3 platformPos;
             platformObject.SetActive(true);
-            platformObject.transform.position = new Vector3(platform.pos + 20, platform.floor * 1.5f, 0);
+            if(platform.type == 0)
+            {
+                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(2750, 445, 10));
+            }
+            else
+            {
+                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(3200, 445, 10));
+            }
+            platformObject.transform.position = new Vector3(platformPos.x + 20, platformPos.y, 0);
             Debug.Log(platformObject.transform.position);
         }
         foreach (var enemy in pd.e_Data)
         {
+            Debug.Log($"타입  {enemy.type}번 몬스터 생성");
             GameObject enemyObject = PoolManager.GetObject(2 + enemy.type);
-            enemyObject.transform.position = new Vector3(enemy.x_pos + 20, enemy.y_pos, 0);
+            Vector3 enemPos = Camera.main.ScreenToWorldPoint(new Vector3(2000, 285 + 300 * enemy.floor, 0));
+            enemyObject.transform.position = new Vector3(enemPos.x + 20, enemPos.y, 0);
         }
     }
 

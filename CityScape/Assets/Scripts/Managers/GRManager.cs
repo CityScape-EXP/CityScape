@@ -82,7 +82,7 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
                     timerSlider.value = sliderTimer;
                 }
             }
-            Debug.Log("Slider Timer: " + sliderTimer + " " + stopTimer + " " + timerSlider.value); //남은 시간 확인용
+            //Debug.Log("Slider Timer: " + sliderTimer + " " + stopTimer + " " + timerSlider.value); //남은 시간 확인용
 
             //게임오버창이 활성화되면 타이머가 멈춤
             if(popupGameOver != null && popupGameOver.activeSelf){

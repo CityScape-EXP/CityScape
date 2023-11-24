@@ -86,6 +86,21 @@ public class DataManager : MonoBehaviour
         GameManager.instance.upgradeData = GetUpgradeData();
     }
 
+    public void SavePatternData(PatternData patternData)
+    {
+        string savePath = Application.dataPath;
+        string data = JsonUtility.ToJson(patternData);
+        Debug.Log(data);
+        string filePath = savePath + "/Resources/Patterns/TestPattern.json";
+        if(!File.Exists(filePath))
+        {
+            File.Create(filePath);
+            Debug.Log("파일 생성.. 위치 : " + savePath);
+        }
+        File.WriteAllText(filePath, data);
+        Debug.Log("테스트 데이터 저장 완료");
+    }
+
     // 게임 첫 시작시 UpgradeData를 초기화하는 함수
     public void InitUpgradeData()
     {
@@ -142,7 +157,7 @@ public class PatternData
 {
     public List<PlatformData> p_Data = new List<PlatformData>();
     public List<EnemyData> e_Data = new List<EnemyData>();
-    public int patternTime;
+    public float patternTime;
     
     // 플랫폼 정보를 저장하는 PlatformData 클래스
     [System.Serializable]
@@ -160,7 +175,7 @@ public class PatternData
     {
         public int type;
         public float x_pos; 
-        public float y_pos;
+        public int floor;
     }
 }
 

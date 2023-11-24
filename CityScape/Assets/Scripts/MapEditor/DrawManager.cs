@@ -53,7 +53,7 @@ public class DrawManager : MonoBehaviour
 
     // floor(층.. 아마 1층만 있음) , type를 받아 플랫폼 생성하고 반환하는 함수
     // type0:긴Platform  type1:짧은Platform
-    GameObject DrawPlatform(int floor, int type)
+    void DrawPlatform(int floor, int type)
     {
         GameObject newObj = new GameObject() { name = "Platform" };
         if (type == 0)
@@ -67,20 +67,18 @@ public class DrawManager : MonoBehaviour
             newObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(2000 + 1200, 445 + 300 * floor, 10));
         }
         newObj.GetComponent<SpriteRenderer>().color = UnityEngine.Color.black;
-        this.gameObject.GetComponent<PatternManager>().NewPattern(newObj, type);
-        return newObj;
+        this.gameObject.GetComponent<PatternManager>().NewPattern(newObj, type, 0);
     }
 
     // floor(2는 공중), type를 받아 Enemy 생성하고 반환하는 함수
     // type0:Normal Enemy  type1:Flying Enemy
-    GameObject DrawEnemy(int floor, int type)
+    void DrawEnemy(int floor, int type)
     {
         GameObject newObj = new GameObject() { name = "Enemy" };
         InitObject(newObj, 160, 210);
         newObj.GetComponent<SpriteRenderer>().color = UnityEngine.Color.red;
         newObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(2000, 180 + 105 + 300 * floor, 10));
-        this.gameObject.GetComponent<PatternManager>().NewPattern(newObj, type);
-        return newObj;
+        this.gameObject.GetComponent<PatternManager>().NewPattern(newObj, type, floor);
     }
 
     // 게임 안에서 오브젝트가 생성되고 보여지기 위해 오브젝트에 초기화를 해주는 함수
