@@ -2224,7 +2224,7 @@ MonoBehaviour:
   roadMainMenu: MainPopup
   popupGameClear: {fileID: 181949535}
   timerSlider: {fileID: 1962450060}
-  gameTime: 120
+  gameTime: 10
   popupGameOver: {fileID: 629611211}
 --- !u!4 &1108462267
 Transform:

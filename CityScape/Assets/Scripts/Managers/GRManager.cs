@@ -89,19 +89,19 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         }
     }
 
-    public void GoMenuButton()
+    public void GoMenuButton() //메인메뉴로(mainpopup)
     {
+        Time.timeScale = 1f;
         if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
             popupGameClear.SetActive(false); //gameclear 팝업 닫기
         }
         else{
             popupGameOver.SetActive(false); //gameover 팝업 닫기
         }
-        Time.timeScale = 1f;
         SceneManager.LoadScene("MainPopup");
     }
 
-    public void OnRestartButton()
+    public void OnRestartButton() //다시시작
     {
         StartCoroutine(RestartStage());
     }
@@ -112,16 +112,17 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         while(!asyncLoad.isDone)
         {
             yield return null;
+            Time.timeScale = 1f; 
+            if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
+            popupGameClear.SetActive(false);
+            }
+            else{
+            popupGameOver.SetActive(false);
+            }
+            MapBuilder.instance.Init_var();
         }
         Debug.Log("다음 씬으로 로드 완료");
-        if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
-            popupGameClear.SetActive(false);
-        }
-        else{
-            popupGameOver.SetActive(false);
-        }
-        Time.timeScale = 1f; 
-        MapBuilder.instance.Init_var();
+        
     }
 
 }
