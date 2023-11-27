@@ -74,13 +74,13 @@ public class MapBuilder : MonoBehaviour
             platformObject.SetActive(true);
             if(platform.type == 0)
             {
-                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(2750, 445, 10));
+                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(2000, 445, 10));
             }
             else
             {
-                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(3200, 445, 10));
+                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(2000, 445, 10));
             }
-            platformObject.transform.position = new Vector3(platformPos.x + 20, platformPos.y, 0);
+            platformObject.transform.position = new Vector3(platform.pos + platformPos.x + 20, platformPos.y, 0);
             Debug.Log(platformObject.transform.position);
         }
         foreach (var enemy in pd.e_Data)
@@ -88,7 +88,7 @@ public class MapBuilder : MonoBehaviour
             Debug.Log($"타입  {enemy.type}번 몬스터 생성");
             GameObject enemyObject = PoolManager.GetObject(2 + enemy.type);
             Vector3 enemPos = Camera.main.ScreenToWorldPoint(new Vector3(2000, 285 + 300 * enemy.floor, 0));
-            enemyObject.transform.position = new Vector3(enemPos.x + 20, enemPos.y, 0);
+            enemyObject.transform.position = new Vector3(enemPos.x + enemy.x_pos + 20, enemPos.y, 0);
         }
     }
 
