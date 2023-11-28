@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject settingCanvas;
     [Header("MainUI")]
     [SerializeField] public GameObject settingPanel;
-    public GameObject MainMenu;
     
     private void Awake()
     {
@@ -66,7 +65,7 @@ public class UIManager : MonoBehaviour
         isGame = false;
         Time.timeScale = 1f;
         settingPanel.SetActive(false);
-        //MainMenu.instance.mainMenu.SetActive(true);
+        MainMenu.isStart = false;
         SceneManager.LoadScene("MainPopup");
     }
 

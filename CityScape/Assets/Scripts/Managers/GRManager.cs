@@ -49,7 +49,7 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
     {
         if(Player.instance.isLive == false){
             GRManager.instance.popupGameOver.SetActive(true);
-            Debug.Log("게임오버");
+            //Debug.Log("게임오버");
             Time.timeScale = 0f; //인게임일시정지
         }
     }
@@ -104,6 +104,8 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
     public void OnRestartButton() //다시시작
     {
         StartCoroutine(RestartStage());
+        Debug.Log("1");
+        
     }
 
     IEnumerator RestartStage()
@@ -111,7 +113,7 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         while(!asyncLoad.isDone)
         {
-            yield return null;
+            
             Time.timeScale = 1f; 
             if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
             popupGameClear.SetActive(false);
@@ -120,6 +122,7 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
             popupGameOver.SetActive(false);
             }
             MapBuilder.instance.Init_var();
+            yield return null;
         }
         Debug.Log("다음 씬으로 로드 완료");
         
