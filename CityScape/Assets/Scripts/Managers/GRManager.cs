@@ -91,8 +91,8 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
 
     public void GoMenuButton() //메인메뉴로(mainpopup)
     {
-        Time.timeScale = 1f;
-        if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
+        MainMenu.isStart = false;
+        if (popupGameClear.activeSelf && !popupGameOver.activeSelf){
             popupGameClear.SetActive(false); //gameclear 팝업 닫기
         }
         else{
@@ -113,7 +113,6 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         while(!asyncLoad.isDone)
         {
-            
             Time.timeScale = 1f; 
             if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
             popupGameClear.SetActive(false);

@@ -22,6 +22,7 @@ public class StageStart : MonoBehaviour
         {
             UIManager.isMenu = false;
             UIManager.isGame = true;
+            Time.timeScale = 1;
             Debug.Log(UIManager.isMenu);
             yield return null;
         }

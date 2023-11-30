@@ -63,7 +63,6 @@ public class UIManager : MonoBehaviour
     {
         isMenu = true;
         isGame = false;
-        Time.timeScale = 1f;
         settingPanel.SetActive(false);
         MainMenu.isStart = false;
         SceneManager.LoadScene("MainPopup");
