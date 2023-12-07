@@ -11,6 +11,9 @@ TagManager:
   - MonsterBullet
   - popupGameOver
   - popupGameClear
+  - popupGameObject
+  - Coin5
+  - Coin10
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public Player player;
     public float surviveTime; //초기부터진행시간
+    public float stageTime; //스테이지시작 후부터 진행시간
+    public int stageNum;
     public bool isGameover;
     public DataManager dm;
 
@@ -33,16 +35,26 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
     private void Start()
     {
         surviveTime = 0;
+        stageTime = 0;
         isGameover = false;
+        UIManager.pauseOnclicked = true;
     }
+
     void Update()
     {
         if (!isGameover)
         {
             surviveTime += Time.deltaTime;
         }
+
+        if(!UIManager.pauseOnclicked){
+
+            stageTime += Time.deltaTime;
+        }
     }
+    
 }

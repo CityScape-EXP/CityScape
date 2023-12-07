@@ -9,7 +9,10 @@ public class Monster : MonoBehaviour
 
     public float health;
     public float power;
-    public bool isLive; // ���� Instantiate�� isLive = true
+    public bool isLive; // ���� Instantiate�� isLive = true
+
+    public GameObject coin5Prefab;
+    public GameObject coin10Prefab;
 
     Rigidbody2D rigid;
     CapsuleCollider2D coll;
@@ -24,12 +27,24 @@ public class Monster : MonoBehaviour
     public void getDamage(float damage)
     {
         health -= damage;
-        Debug.Log($"���� ü�� : {health}");
+        Debug.Log($"���� ü�� : {health}");
         if (health <= 0)
         {
             isLive = false;
-            Debug.Log("���� ���");
+            Debug.Log("���� ���");
+            this.DropCoin(); //오브젝트가 사라지기 전 매서드 달아주기
             this.gameObject.SetActive(false);
+        }
+    }
+
+    public void DropCoin(){
+        float randomValue = Random.value; //0에서 1사이의 랜덤값
+
+        if (randomValue <= 0.7f){// 70%의 확률로 5코인생성
+        Instantiate(coin5Prefab, transform.position, Quaternion.identity);
+        }
+        else{ // 10코인 생성
+        Instantiate(coin10Prefab, transform.position, Quaternion.identity);
         }
     }
 }

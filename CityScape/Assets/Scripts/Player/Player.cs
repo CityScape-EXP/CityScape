@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int playerCurrentHp; // 플레이어의 인게임상에서의 hp를 나타내기위한 변수
     public float playerOffence;
     public bool isLive;
+    public int totalMoney;
+    public int currentMoney;
 
     public bool isGround = true;
 
@@ -135,3 +137,4 @@ public class Player : MonoBehaviour
         yield break;
     }
 }
+

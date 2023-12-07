@@ -144,7 +144,7 @@ public class GameData
     // 초기화를 위한 생성자
     public GameData()
     {
-        isStageOpen = new List<bool>() { false, false, false};
+        isStageOpen = new List<bool>() { true, false, false};
         stageHighScore = new List<int>() { 0, 0, 0 };
         money = 0;
     }

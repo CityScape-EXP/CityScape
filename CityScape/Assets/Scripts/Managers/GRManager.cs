@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크립트
 {    
-    private int HighScore1;
+    //private int HighScore1;
     public GameData gameData;
     public string roadMainMenu = "MainPopup";
 
     [Header("GameClear")]
     [SerializeField] private GameObject popupGameClear;
     public Slider timerSlider;
-    public float gameTime; //게임플레이시간 설정(초단위)
+    public float gameTime; //슬라이더에 사용할 게임플레이시간(초단위)
     private bool stopTimer;
     [Header("GameOver")]
     [SerializeField] private GameObject popupGameOver;
@@ -114,17 +114,20 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         while(!asyncLoad.isDone)
         {
             Time.timeScale = 1f; 
-            if(popupGameClear.activeSelf && !popupGameOver.activeSelf){
-            popupGameClear.SetActive(false);
+            if(popupGameClear.activeSelf && !popupGameOver.activeSelf){ //게임클리어 시
+            GameManager.instance.stageTime = 0; //시간 초기화
+            UIManager.pauseOnclicked = false;
+            popupGameClear.SetActive(false); //게임클리어창 닫기
             }
-            else{
-            popupGameOver.SetActive(false);
+            else{ //게임오버 시
+            GameManager.instance.stageTime = 0; //시간 초기화
+            UIManager.pauseOnclicked = false;
+            popupGameOver.SetActive(false); //게임오버창 닫기
             }
             MapBuilder.instance.Init_var();
             yield return null;
         }
         Debug.Log("다음 씬으로 로드 완료");
-        
     }
 
 }

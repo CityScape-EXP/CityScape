@@ -334,10 +334,10 @@ RectTransform:
   m_Father: {fileID: 258667860914293069}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -135}
-  m_SizeDelta: {x: 150, y: 50}
+  m_SizeDelta: {x: -2200, y: -1030}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &258667861200390661
 CanvasRenderer:
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD68D\uB4DD \uC7AC\uD654"
+  m_text: "\uD68D\uB4DD \uC7AC\uD654 : 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ba7e9e2e210e4b199f1df8f221ffe6a, type: 2}
   m_sharedMaterial: {fileID: -1744197076491170593, guid: 8ba7e9e2e210e4b199f1df8f221ffe6a, type: 2}
@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 258667861825523125}
   - component: {fileID: 258667861825520203}
   - component: {fileID: 258667861825523124}
+  - component: {fileID: 7480215618805245569}
   m_Layer: 0
   m_Name: HighScore
   m_TagString: Untagged
@@ -634,7 +635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD5C\uACE0 \uC2A4\uCF54\uC5B4"
+  m_text: "\uCD5C\uACE0 \uC2A4\uCF54\uC5B4 : 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ba7e9e2e210e4b199f1df8f221ffe6a, type: 2}
   m_sharedMaterial: {fileID: -1744197076491170593, guid: 8ba7e9e2e210e4b199f1df8f221ffe6a, type: 2}
@@ -703,6 +704,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7480215618805245569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258667861825523126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &258667861913488025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1019,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: -1800, y: -910}
+  m_SizeDelta: {x: -1700, y: -910}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &258667862438897826
 CanvasRenderer:
@@ -1036,7 +1049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD5C\uC885 \uC2A4\uCF54\uC5B4"
+  m_text: "\uCD5C\uC885 \uC2A4\uCF54\uC5B4 : 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ba7e9e2e210e4b199f1df8f221ffe6a, type: 2}
   m_sharedMaterial: {fileID: -1744197076491170593, guid: 8ba7e9e2e210e4b199f1df8f221ffe6a, type: 2}

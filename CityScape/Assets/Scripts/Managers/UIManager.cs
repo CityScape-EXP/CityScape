@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance = null;
+    public static bool pauseOnclicked = false;
     public static bool isMenu = true;
     public static bool isGame = false;
     [Header("settingCanvas")]
@@ -43,12 +44,14 @@ public class UIManager : MonoBehaviour
     {
         UIManager.instance.settingPanel.SetActive(true);
         Time.timeScale = 0f;
+        pauseOnclicked = true;
     }
 
     public void OffPausePanel()
     {
         UIManager.instance.settingPanel.SetActive(false);
         Time.timeScale = 1f;
+        pauseOnclicked = false;
     }
     public void OnSettingPanel()
     {
@@ -84,5 +87,7 @@ public class UIManager : MonoBehaviour
         settingPanel.SetActive(false);
         Time.timeScale = 1f;
         MapBuilder.instance.Init_var();
+        GameManager.instance.stageTime = 0; //시간 초기화
+        pauseOnclicked = false;
     }
 }
