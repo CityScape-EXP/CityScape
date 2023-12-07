@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CurrencyManager : MonoBehaviour //Score&Money 상태 관리
+public class ScoreManager : MonoBehaviour //Score&Money 상태 관리
 {    
     [Header("Data")]
     [SerializeField] public GameData gameData; //Money와 HighScore은 DataManager에서 가져오기
@@ -13,7 +13,7 @@ public class CurrencyManager : MonoBehaviour //Score&Money 상태 관리
     TextMeshProUGUI textComponent;
     
     //싱글톤 적용
-    public static CurrencyManager instance;
+    public static ScoreManager instance;
     
     private void Awake(){
         /* 싱글톤 적용 */

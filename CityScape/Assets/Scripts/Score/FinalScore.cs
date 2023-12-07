@@ -25,7 +25,6 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
         finalScore = 0; //초기화
         TextMeshProUGUI textComponent = GetComponent<TextMeshProUGUI>();
         StageAdvRule();
-        Debug.Log(finalScore);
         textComponent.text = "Final Score : " + finalScore.ToString();        
     }
 
@@ -37,15 +36,17 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
 
     public void StageAdvRule(){ //stage진행도에 따른 점수추가부여
         float timePercent = (GameManager.instance.stageTime / GRManager.instance.gameTime) * 100;
-        int roundedNumber = Mathf.FloorToInt(timePercent);
-
+        Debug.Log(timePercent);
+        int roundedNumber = Mathf.FloorToInt(timePercent*10)/10;
+        Debug.Log(roundedNumber);
+        
         if(timePercent == 100){ //100%면 10000점 추가
-            CurrencyManager.Score += 10000;
+            ScoreManager.Score += 10000;
         }
         else{
-            CurrencyManager.Score += roundedNumber*100; //1%당 100점씩 추가
-            CurrencyManager.Score += (int)((timePercent - roundedNumber) * 100); //0.1%당 10점씩 추가
+            ScoreManager.Score += roundedNumber*100; //1%당 100점씩 추가
+            ScoreManager.Score += (int)((timePercent - roundedNumber) * 100); //0.1%당 10점씩 추가
         }
-        finalScore = CurrencyManager.Score;
+        finalScore = ScoreManager.Score;
     }
 }

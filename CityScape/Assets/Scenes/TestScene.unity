@@ -484,18 +484,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6778164591265802783, guid: d60e802eebcbd4454a9a3bc52f1dc3f5, type: 3}
   m_PrefabInstance: {fileID: 222001164}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &222001167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222001166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64bfc30d829146ae8913d732c7399cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &222001168 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6778164591845576452, guid: d60e802eebcbd4454a9a3bc52f1dc3f5, type: 3}
@@ -529,6 +517,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd621abda0584415a8420246d8a86af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &222001171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6778164592705358002, guid: d60e802eebcbd4454a9a3bc52f1dc3f5, type: 3}
+  m_PrefabInstance: {fileID: 222001164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &222001172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222001171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152bcd9e4eaa7497e9894a48423f90be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    isStageOpen: 010000
+    stageHighScore: 000000000000000000000000
+    money: 0
 --- !u!1 &224447625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,7 +1706,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4975844440624288618, guid: df7cb077a8167ec41ad963bcf14a00ad, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4975844440624288618, guid: df7cb077a8167ec41ad963bcf14a00ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2382,7 +2391,7 @@ MonoBehaviour:
   roadMainMenu: MainPopup
   popupGameClear: {fileID: 181949535}
   timerSlider: {fileID: 1962450060}
-  gameTime: 10
+  gameTime: 120
   popupGameOver: {fileID: 629611211}
 --- !u!4 &1108462267
 Transform:
@@ -3134,6 +3143,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd621abda0584415a8420246d8a86af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1492098931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 258667861200390656, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
+  m_PrefabInstance: {fileID: 1492098925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492098932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492098931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152bcd9e4eaa7497e9894a48423f90be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    isStageOpen: 010000
+    stageHighScore: 000000000000000000000000
+    money: 0
 --- !u!1 &1531548970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3562,7 +3592,7 @@ RectTransform:
   m_Children:
   - {fileID: 1872973863}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4207,6 +4237,7 @@ GameObject:
   - component: {fileID: 2090884905}
   - component: {fileID: 2090884907}
   - component: {fileID: 2090884906}
+  - component: {fileID: 2090884908}
   m_Layer: 5
   m_Name: GainCoin
   m_TagString: Untagged
@@ -4228,10 +4259,10 @@ RectTransform:
   m_Father: {fileID: 857450431}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.467773, y: 0}
-  m_SizeDelta: {x: 91.0642, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 190, y: 6}
+  m_SizeDelta: {x: 140, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090884906
 MonoBehaviour:
@@ -4288,7 +4319,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -4330,3 +4361,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090884904}
   m_CullTransparentMesh: 1
+--- !u!114 &2090884908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090884904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152bcd9e4eaa7497e9894a48423f90be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    isStageOpen: 010000
+    stageHighScore: 000000000000000000000000
+    money: 0

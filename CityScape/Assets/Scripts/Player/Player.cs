@@ -136,5 +136,18 @@ public class Player : MonoBehaviour
         Debug.Log("isRolling : " + isRolling);
         yield break;
     }
+
+    public void OnCollisionEnter2D(Collision2D other){ //충돌 감지
+        if(other.gameObject.tag == "Coin5"){ //5코인 획득
+            Debug.Log("5코인 획득");
+            ScoreManager.Score += 20;
+            GetMoney.getMoney += 5;
+        }
+        else if(other.gameObject.tag == "Coin10"){ //10코인 획득
+            Debug.Log("10코인 획득");
+            ScoreManager.Score += 20;
+            GetMoney.getMoney += 10;
+        }
+    }
 }
 
