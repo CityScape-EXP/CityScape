@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
     public void getDamage(int damage)
     {
         playerCurrentHp -= damage;
+        ScoreManager.Score -= 1000; //피격 시 데미지
         Debug.Log($"플레이어 체력 : {playerCurrentHp}");
         if (playerCurrentHp <= 0)
         {
@@ -137,7 +138,7 @@ public class Player : MonoBehaviour
         yield break;
     }
 
-    public void OnCollisionEnter2D(Collision2D other){ //충돌 감지
+    public void OnCollisionEnter2D(Collision2D other){ //충돌 감지 => 
         if(other.gameObject.tag == "Coin5"){ //5코인 획득
             Debug.Log("5코인 획득");
             ScoreManager.Score += 20;
