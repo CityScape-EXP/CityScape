@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public float surviveTime; //초기부터진행시간
     public float stageTime; //스테이지시작 후부터 진행시간
-    public int stageNum;
+    public int stageNum; //선택한 스테이지의 번호
     public bool isGameover;
     public DataManager dm;
 

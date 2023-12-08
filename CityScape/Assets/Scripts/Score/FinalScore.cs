@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,18 +35,15 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
         
     }
 
-    public void StageAdvRule(){ //stage진행도에 따른 점수추가부여
-        float timePercent = (GameManager.instance.stageTime / GRManager.instance.gameTime) * 100;
-        Debug.Log(timePercent);
-        int roundedNumber = Mathf.FloorToInt(timePercent*10)/10;
-        Debug.Log(roundedNumber);
+    public void StageAdvRule(){
+        double timeP = (GameManager.instance.stageTime / GRManager.instance.gameTime) * 100; // 게임시간 테스트용 변동 가능 => /0.12
+        float timeR = (float)Math.Truncate(timeP*10)/10; //소수점 첫째자리 이하 버림
         
-        if(timePercent == 100){ //100%면 10000점 추가
+        if(timeP >= 100){ //100%면 10000점 추가
             ScoreManager.Score += 10000;
         }
         else{
-            ScoreManager.Score += roundedNumber*100; //1%당 100점씩 추가
-            ScoreManager.Score += (int)((timePercent - roundedNumber) * 100); //0.1%당 10점씩 추가
+            ScoreManager.Score += Mathf.RoundToInt(timeR * 100);
         }
         finalScore = ScoreManager.Score;
     }
