@@ -62,13 +62,22 @@ public class UIManager : MonoBehaviour
     {
         UIManager.instance.settingPanel.SetActive(false);
     }
-    public void GoMenuButton()
+    public void GoMenuButton()  // init_var작동문제로 async로 변경
     {
-        isMenu = true;
-        isGame = false;
-        settingPanel.SetActive(false);
-        MainMenu.isStart = false;
-        SceneManager.LoadScene("MainPopup");
+        StartCoroutine(GoMenu());
+    }
+    IEnumerator GoMenu()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainPopup");
+        while (!asyncLoad.isDone)
+        {
+            isMenu = true;
+            isGame = false;
+            settingPanel.SetActive(false);
+            MainMenu.isStart = false;
+            MapBuilder.instance.Init_var();
+            yield return null;
+        }
     }
 
     public void OnRestartButton()

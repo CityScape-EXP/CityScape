@@ -89,16 +89,27 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         }
     }
 
-    public void GoMenuButton() //메인메뉴로(mainpopup)
+    public void GoMenuButton() //메인메뉴로(mainpopup)   // init_var 문제로 async로 변경
     {
-        MainMenu.isStart = false;
-        if (popupGameClear.activeSelf && !popupGameOver.activeSelf){
-            popupGameClear.SetActive(false); //gameclear 팝업 닫기
+        StartCoroutine(GoMenu());
+    }
+    IEnumerator GoMenu()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainPopup");
+        while (!asyncLoad.isDone)
+        {
+            MainMenu.isStart = false;
+            if (popupGameClear.activeSelf && !popupGameOver.activeSelf)
+            {
+                popupGameClear.SetActive(false); //gameclear 팝업 닫기
+            }
+            else
+            {
+                popupGameOver.SetActive(false); //gameover 팝업 닫기
+            }
+            MapBuilder.instance.Init_var();
+            yield return null;
         }
-        else{
-            popupGameOver.SetActive(false); //gameover 팝업 닫기
-        }
-        SceneManager.LoadScene("MainPopup");
     }
 
     public void OnRestartButton() //다시시작
