@@ -86,12 +86,12 @@ public class DataManager : MonoBehaviour
         GameManager.instance.upgradeData = GetUpgradeData();
     }
 
-    public void SavePatternData(PatternData patternData)
+    public void SavePatternData(PatternData patternData, int stage, int phase, int pattern)
     {
         string savePath = Application.dataPath;
         string data = JsonUtility.ToJson(patternData);
         Debug.Log(data);
-        string filePath = savePath + "/Resources/Patterns/TestPattern.json";
+        string filePath = savePath + $"/Resources/Patterns/St{stage}_Phase{phase}_Pattern{pattern}.json";
         if(!File.Exists(filePath))
         {
             File.Create(filePath);

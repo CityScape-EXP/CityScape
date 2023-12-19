@@ -14,7 +14,8 @@ public class PatternManager : MonoBehaviour
     // 플랫폼 - 0:긴플랫폼 1:짧은플랫폼
     private List<int> typeList = new List<int>();
     private List<int> floorList = new List<int>();
-    float startPos_x;
+    //float fix_x;
+    //float startPos_x;
 
     // 코드가 짧아서 UI도 같이 넣어버림
     public GameObject stageTextObj, phaseTextObj, patternTextObj;
@@ -24,8 +25,8 @@ public class PatternManager : MonoBehaviour
     private void Update()
     {
         // 다른 플랫폼과의 위치 차이를 파악하기 위해 첫번째 오브젝트의 x좌표를 계속 갱신한다
-        if (patternList.Count != 0)
-            startPos_x = patternList[0].transform.position.x;
+        //if (patternList.Count != 0)
+        //    startPos_x = patternList[0].transform.position.x;
     }
 
     private void Start()
@@ -40,7 +41,7 @@ public class PatternManager : MonoBehaviour
     // DrawManager에서 PatternManager로 Object 정보를 위임한다
     public void NewPattern(GameObject obj, int type, int floor) 
     {
-        patternList.Add(obj); 
+        patternList.Add(obj);
         typeList.Add(type);
         floorList.Add(floor);
     }
@@ -56,11 +57,30 @@ public class PatternManager : MonoBehaviour
     }
 
     // 복잡.. Pattern Object의 정보들을 Json으로 변경한다
+    // 비동기 코드이므로 Object들은 멈춰있다고 생각해도 괜찮다.
     public void SavePattern()
     {
+        if (patternList.Count == 0) return;
+        float platformFix = Camera.main.ScreenToWorldPoint(new Vector3(1200, 0, 0)).x -
+            Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x; ;
+        float enemyFix = Camera.main.ScreenToWorldPoint(new Vector3(80, 0, 0)).x -
+            Camera.main.ScreenToWorldPoint(new Vector3(0,0,0)).x;
+        float startPos_x = 0f;
+        float endPos_x = 0f;
+        if (patternList[0].name == "Platform")
+        {
+            startPos_x = patternList[0].transform.position.x - platformFix;
+            endPos_x = patternList[0].transform.position.x + platformFix;
+        }
+        else if (patternList[0].name == "Enemey")
+        {
+            startPos_x = patternList[0].transform.position.x - enemyFix;
+            endPos_x = patternList[0].transform.position.x + enemyFix;
+        }
+
+        Debug.Log($"StartPos : {startPos_x}, EndPos : {endPos_x}");
         // 저장할 패턴 생성
         PatternData pattern = new PatternData();
-        float endPos_x = patternList[patternList.Count - 1].transform.position.x;
 
         for(int i = 0; i < patternList.Count; i++)
         {
@@ -73,6 +93,7 @@ public class PatternManager : MonoBehaviour
                 platformData.type = platformType;
                 platformData.pos = platformPos;
                 pattern.p_Data.Add(platformData);
+                endPos_x = Mathf.Max(endPos_x, patternList[i].transform.position.x + platformFix);
             }
             // Enemy인 경우
             else if (patternList[i].name == "Enemy")
@@ -90,20 +111,23 @@ public class PatternManager : MonoBehaviour
                 enemyData.floor = enemyFloor;
                 enemyData.x_pos = enemyPos;
                 pattern.e_Data.Add(enemyData);
+                endPos_x = Mathf.Max(endPos_x, patternList[i].transform.position.x + enemyFix);
             }
         }
-        pattern.patternTime = (endPos_x - startPos_x) / 2;
-        Debug.Log($"패턴타임 : {pattern.patternTime}초");
+        Debug.Log($"StartPos : {startPos_x}, EndPos : {endPos_x}");
+        pattern.patternTime = (endPos_x - startPos_x) / (5.5f);
+        Debug.Log(endPos_x - startPos_x);
+        //Debug.Log($"패턴타임 : {pattern.patternTime}초");
         Debug.Log("저장하겠습니다");
         // DataManager의 SavePatternData 통해서 Pattern 저장
-        this.GetComponent<DataManager>().SavePatternData(pattern);
+        this.GetComponent<DataManager>().SavePatternData(pattern, nowStage, nowPhase, nowPattern);
     }
 
     // UI
-    public void IncStage() { nowStage++; stageText.text = $"Stage : {nowStage}"; }
-    public void DecStage() { nowStage--; stageText.text = $"Stage : {nowStage}"; }
-    public void IncPhase() { nowPhase++; phaseText.text = $"Phase : {nowPhase}"; }
-    public void DecPhase() { nowPhase--; phaseText.text = $"Phase : {nowPhase}"; }
+    public void IncStage() { if(nowStage < 2) nowStage++; stageText.text = $"Stage : {nowStage}"; }
+    public void DecStage() { if(nowStage > 0) nowStage--; stageText.text = $"Stage : {nowStage}"; }
+    public void IncPhase() { if(nowPhase < 2) nowPhase++; phaseText.text = $"Phase : {nowPhase}"; }
+    public void DecPhase() { if(nowPhase > 0) nowPhase--; phaseText.text = $"Phase : {nowPhase}"; }
     public void IncPattern() { nowPattern++; patternText.text = $"Pattern : {nowPattern}"; }
-    public void DecPattern() { nowPattern--; patternText.text = $"Pattern : {nowPattern}"; }
+    public void DecPattern() {if(nowPattern > 0) nowPattern--; patternText.text = $"Pattern : {nowPattern}"; }
 }
