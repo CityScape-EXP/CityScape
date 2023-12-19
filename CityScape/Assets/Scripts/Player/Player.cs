@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
             Vector2.down * 0.45f, Vector3.down, 1, LayerMask.GetMask("Platform"));

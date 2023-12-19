@@ -69,7 +69,7 @@ public class MapBuilder : MonoBehaviour
         Debug.Log("DrawPattern 실행");
         foreach (var platform in pd.p_Data)
         {
-            GameObject platformObject = PoolManager.GetObject(4);
+            GameObject platformObject = PoolManager.GetObject(5);
             Vector3 platformPos;
             platformObject.SetActive(true);
             if(platform.type == 0)

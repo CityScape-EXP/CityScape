@@ -28,12 +28,19 @@ public class DrawManager : MonoBehaviour
         // O -> 3층 Flying Enemy 생성
         if (Input.GetKeyDown(KeyCode.O))
             DrawEnemy(2, 1);
+        // N -> 1층 강화 Enemy 생성
+        if (Input.GetKeyDown(KeyCode.N))
+            DrawEnemy(0, 2);
+        // J -> 2층 강화 Enemey 생성
+        if (Input.GetKeyDown(KeyCode.J))
+            DrawEnemy(1, 2);
         // A -> 긴 플랫폼 생성
-        if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
             DrawPlatform(0, 0);
         // S -> 짧은 플랫폼 생성
         if(Input.GetKeyDown(KeyCode.S))
             DrawPlatform(0, 1);
+        
     }
 
     // 생성 위치 표시하는 라인 그려주는 함수. 설명 생략
@@ -87,12 +94,23 @@ public class DrawManager : MonoBehaviour
     }
 
     // floor(2는 공중), type를 받아 Enemy 생성하고 반환하는 함수
-    // type0:Normal Enemy  type1:Flying Enemy
+    // type0:Normal Enemy  type1:Flying Enemy type2:Enhanced Enemy
     void DrawEnemy(int floor, int type)
     {
         GameObject newObj = new GameObject() { name = "Enemy" };
         InitObject(newObj, 160, 210);
-        newObj.GetComponent<SpriteRenderer>().color = UnityEngine.Color.white;
+        switch(type)
+        {
+            case 0:
+                newObj.GetComponent<SpriteRenderer>().color = UnityEngine.Color.white;
+                break;
+            case 1:
+                newObj.GetComponent<SpriteRenderer>().color = UnityEngine.Color.blue;
+                break;
+            case 2:
+                newObj.GetComponent<SpriteRenderer>().color = UnityEngine.Color.green;
+                break;
+        }
         newObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(2080, 180 + 105 + 300 * floor, 10));
         this.gameObject.GetComponent<PatternManager>().NewPattern(newObj, type, floor);
     }
@@ -103,7 +121,7 @@ public class DrawManager : MonoBehaviour
         Vector3 r_Start = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 r_End = Camera.main.ScreenToWorldPoint(new Vector3(width, height, 0));
         newObj.transform.localScale = new Vector3(r_End.x - r_Start.x, r_End.y - r_Start.y, 1f);
-        Debug.Log($"{r_End.x - r_Start.x},{r_End.y - r_Start.y}");
+        //Debug.Log($"{r_End.x - r_Start.x},{r_End.y - r_Start.y}");
         newObj.AddComponent<SpriteRenderer>().sprite = square;
         newObj.AddComponent<Platform>().moveSpeed = 3f;
     }

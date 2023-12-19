@@ -57,7 +57,7 @@ public class PatternManager : MonoBehaviour
     }
 
     // 복잡.. Pattern Object의 정보들을 Json으로 변경한다
-    // 비동기 코드이므로 Object들은 멈춰있다고 생각해도 괜찮다.
+    // 비동기이므로 Object들은 멈춰있다고 생각해도 괜찮다.
     public void SavePattern()
     {
         if (patternList.Count == 0) return;
@@ -115,7 +115,7 @@ public class PatternManager : MonoBehaviour
             }
         }
         Debug.Log($"StartPos : {startPos_x}, EndPos : {endPos_x}");
-        pattern.patternTime = (endPos_x - startPos_x) / (5.5f);
+        pattern.patternTime = (endPos_x - startPos_x) / (5f);
         Debug.Log(endPos_x - startPos_x);
         //Debug.Log($"패턴타임 : {pattern.patternTime}초");
         Debug.Log("저장하겠습니다");
