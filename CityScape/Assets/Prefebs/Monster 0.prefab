@@ -120,8 +120,8 @@ MonoBehaviour:
   health: 10
   power: 1
   isLive: 1
-  coin5Prefab: {fileID: 4581357610582504813, guid: a85fada33dfdf4de091631090fd8a366, type: 3}
-  coin10Prefab: {fileID: 7859128923706739799, guid: a5a106e0a1bc84135ac758b23f1ecac2, type: 3}
+  coin5Prefab: {fileID: 3453482804788463098, guid: a85fada33dfdf4de091631090fd8a366, type: 3}
+  coin10Prefab: {fileID: 3453482804788463098, guid: 9c503d4041148ed45a85ae3596bc77f6, type: 3}
 --- !u!114 &-9154107576541224776
 MonoBehaviour:
   m_ObjectHideFlags: 0
