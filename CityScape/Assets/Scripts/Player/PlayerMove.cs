@@ -18,23 +18,23 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // í”Œë ˆì´ì–´ ì´ë™ ìœ„ì¹˜ ì œí•œ : í™”ë©´ ë‚´
+        // ÇÃ·¹ÀÌ¾î ÀÌµ¿ À§Ä¡ Á¦ÇÑ : È­¸é ³»
         if (transform.position.x < minX)
         {
             transform.position = new Vector3(minX, transform.position.y, transform.position.z);
         }
 
-        // ì˜¤ë¥¸ìª½ ê²½ê³„ë¥¼ ë„˜ì–´ê°„ ê²½ìš°
+        // ¿À¸¥ÂÊ °æ°è¸¦ ³Ñ¾î°£ °æ¿ì
         else if (transform.position.x > maxX)
         {
             transform.position = new Vector3(maxX, transform.position.y, transform.position.z);
         }
 
-        // ê²½ê³„ ë‚´ë¶€ì— ìˆëŠ” ê²½ìš°
+        // °æ°è ³»ºÎ¿¡ ÀÖ´Â °æ¿ì
         else
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
-            if (horizontalInput < 0) // ë’¤ë¡œ ì´ë™í•  ë•Œ -> ì¢€ ë” ë¹ ë¥´ê²Œ
+            if (horizontalInput < 0) // µÚ·Î ÀÌµ¿ÇÒ ¶§ -> Á» ´õ ºü¸£°Ô
             {
                 transform.Translate(Vector3.right * Time.deltaTime * 5.8f * horizontalInput);
             }
