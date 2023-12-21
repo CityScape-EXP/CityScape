@@ -216,27 +216,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8463639554948510561, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
   m_PrefabInstance: {fileID: 8463639555016865121}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &211327399 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8463639555230615614, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-  m_PrefabInstance: {fileID: 8463639555016865121}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &211327403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211327399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &365846563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,27 +1183,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!1 &1618584203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8463639554231853549, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-  m_PrefabInstance: {fileID: 8463639555016865121}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1618584207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618584203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &1628117133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,48 +1276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 69142015}
   Title: {fileID: 1628117133}
---- !u!1 &1657698258 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8463639554301656298, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-  m_PrefabInstance: {fileID: 8463639555016865121}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1657698262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657698258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
---- !u!1 &2114274794 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8285661278464814996, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-  m_PrefabInstance: {fileID: 8463639555016865121}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2114274799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114274794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152bcd9e4eaa7497e9894a48423f90be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &2116384654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,22 +1632,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 982673376}
     m_Modifications:
-    - target: {fileID: 5775124602736055791, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285661278464814998, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 7be03630a7eb4934eb92afe4d92af71b, type: 2}
-    - target: {fileID: 8285661278464814998, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285661280297304143, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8463639554832069739, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1746,7 +1646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8463639554948509854, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8463639554948510561, guid: faaaebeca3d505e4ba8c498859175978, type: 3}
       propertyPath: m_Pivot.x

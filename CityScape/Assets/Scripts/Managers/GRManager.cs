@@ -48,23 +48,8 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
     void Update()
     {
         if(Player.instance.isLive == false){
-            GRManager.instance.popupGameOver.SetActive(true); //게임오버
-            //스테이지별 HighScore 업뎃
-            if(GameManager.instance.stageNum == 1){ //스테이지 1
-                if(FinalScore.finalScore > gameData.stageHighScore[0]){
-                    gameData.stageHighScore[0] = FinalScore.finalScore;
-                }
-            }
-            else if(GameManager.instance.stageNum == 2){ //스테이지 2
-                if(FinalScore.finalScore > gameData.stageHighScore[1]){
-                    gameData.stageHighScore[1] = FinalScore.finalScore;
-                }
-            }
-            else{ //스테이지 3
-                if(FinalScore.finalScore > gameData.stageHighScore[2]){
-                    gameData.stageHighScore[2] = FinalScore.finalScore;
-                }
-            }
+            GRManager.instance.popupGameOver.SetActive(true);
+            //Debug.Log("게임오버");
             Time.timeScale = 0f; //인게임일시정지
         }
     }
