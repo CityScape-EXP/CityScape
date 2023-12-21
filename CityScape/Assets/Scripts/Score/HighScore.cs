@@ -12,18 +12,15 @@ public class HighScore : MonoBehaviour //UI상 텍스트에 최고 스코어를 
     void Start()
     {
         gameData = DataManager.instance.GetGameData();
+
         TextMeshProUGUI textComponent = GetComponent<TextMeshProUGUI>();
+
         int stageNum = GameManager.instance.stageNum;
-
-        if (textComponent == null)
+        
+        if (stageNum >= 0 && stageNum < gameData.stageHighScore.Count)
         {
-            Debug.LogWarning("TextMeshProUGUI component 없음");
-        }
-
-        if (stageNum > 0 && stageNum < gameData.stageHighScore.Count)
-        {
-            Debug.Log("!!스테이지"+stageNum);
-            int highScore = gameData.stageHighScore[stageNum-1];
+            Debug.Log(stageNum);
+            int highScore = gameData.stageHighScore[stageNum];
             if (textComponent != null)
             {
                 textComponent.text = "High Score: " + highScore.ToString();
@@ -37,9 +34,6 @@ public class HighScore : MonoBehaviour //UI상 텍스트에 최고 스코어를 
         {
             Debug.LogWarning("StageNum 오류: " + stageNum);
         }
-    }
-    
-    void Update(){
         
     }
 }
