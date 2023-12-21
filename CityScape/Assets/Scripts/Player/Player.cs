@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // 싱글톤
-    public static Player instance = null;
+    public static Player instance { get; set; }
+
+
 
     // 플레이어 스탯
     Rigidbody2D rigid;
@@ -52,20 +54,29 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
+
+    public void JumpUp()
+    {
+        if (isGround)
+        {
+
+            GameManager.Sound.Play(Define.SFX.Char_jump_1128);
+            isGround = false;
+            coll.isTrigger = true;
+
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+    }
     private void Update()
     {
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
             Vector2.down * 0.45f, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
         // 상방 점프
-        if (Input.GetButton("Jump") && isGround)
+        if (Input.GetButton("Jump"))
         {
-            isGround = false;
-            coll.isTrigger = true;
-
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            JumpUp();
         }
-
         // 하방 점프 (조건 : Platform일것, 땅에 닿아있을것)
         if (Input.GetKeyDown(KeyCode.DownArrow) && isGround && rayHit.collider.CompareTag("Platform"))
         {
@@ -102,6 +113,9 @@ public class Player : MonoBehaviour
 
     public void getDamage(int damage)
     {
+
+        GameManager.Sound.Play(Define.SFX.Char_hit_1128);
+
         playerCurrentHp -= damage;
         ScoreManager.Score -= 1000; //피격 시 데미지
         Debug.Log($"플레이어 체력 : {playerCurrentHp}");

@@ -9,12 +9,14 @@ public class Audio : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider sliderBgm;
     [SerializeField] private Slider sliderSFX;
-    public static Audio instance = null;
+    public static Audio _instance = null;
+    public static Audio instance { get { return _instance; }}
+
     private void Awake()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
