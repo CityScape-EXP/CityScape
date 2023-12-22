@@ -1342,8 +1342,6 @@ MonoBehaviour:
     asLevel: 0
   player: {fileID: 0}
   surviveTime: 0
-  stageTime: 0
-  stageNum: 0
   isGameover: 0
   dm: {fileID: 5838595156536576948}
 --- !u!1 &5838595156536576947
