@@ -7,28 +7,40 @@ public class Player : MonoBehaviour
     // 싱글톤
     public static Player instance { get; set; }
 
-
-
     // 플레이어 스탯
     Rigidbody2D rigid;
-    Animation anim;
+    Animator anim;
     SpriteRenderer spriteRenderer;
     Collider2D coll;
 
-    public float jumpPower;
     public int playerHp; // 플레이어의 최대 hp
     public int playerCurrentHp; // 플레이어의 인게임상에서의 hp를 나타내기위한 변수
     public float playerOffence;
     public bool isLive;
+
+    // 코인 관련
     public int totalMoney;
     public int currentMoney;
 
+    // 점프 관련
     public bool isGround = true;
+    public float jumpPower;
 
     // 구르기 관련
     public bool canRoll;
     public bool isRolling;
     public float rollingTime;
+    private void Awake()
+    {
+        /* 싱글톤 적용 */
+        if (instance == null)
+            instance = this;
+
+        coll = GetComponent<Collider2D>();
+        rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
+    }
 
     private void Start()
     {
@@ -38,28 +50,14 @@ public class Player : MonoBehaviour
         playerHp = GameManager.instance.upgradeData.hpLevel + 2;
         playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
         playerCurrentHp = playerHp;
+
+        anim.SetBool("isRolling", false);
     }
-
-    private void Awake()
-    {
-        /* 싱글톤 적용 */
-        if (instance == null)
-        {
-            instance = this;
-        }
-
-        coll = GetComponent<Collider2D>();
-        rigid = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animation>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
-    }
-
 
     public void JumpUp()
     {
         if (isGround)
         {
-
             GameManager.Sound.Play(Define.SFX.Char_jump_1128);
             isGround = false;
             coll.isTrigger = true;
@@ -133,6 +131,7 @@ public class Player : MonoBehaviour
         // 구르기 상태 ON
         isRolling = true;
         Debug.Log("=> 구르기 ON, 현재 체력 : " + playerCurrentHp);
+        anim.SetBool("isRolling", true);
 
         // ~ 구르기 지속 시간 ~
         yield return new WaitForSeconds(rollingTime);
@@ -140,6 +139,7 @@ public class Player : MonoBehaviour
         // 구르기 상태 OFF
         isRolling = false;
         Debug.Log("=> 구르기 OFF, 현재 체력 : " + playerCurrentHp);
+        anim.SetBool("isRolling", false);
         yield break;
     }
 
