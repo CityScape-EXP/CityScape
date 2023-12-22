@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
 
     public void getDamage(int damage)
     {
-
+        if (isRolling) return;
         GameManager.Sound.Play(Define.SFX.Char_hit_1128);
 
         playerCurrentHp -= damage;
@@ -127,28 +127,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    // 구르기 : 구르기 시간동안 플레이어와 몬스터 총알의 충돌을 비활성화함, 또는 데미지가 감소하지 않음
+    // 구르기 : 구르기 시간동안 플레이어의 체력이 감소하지 않음
     IEnumerator Rolling()
     {
+        // 구르기 상태 ON
         isRolling = true;
-        Debug.Log(" => 구르기 <= ");
-        Debug.Log("isRolling : " + isRolling);
+        Debug.Log("=> 구르기 ON, 현재 체력 : " + playerCurrentHp);
 
-        // 총알 충돌 무시
-
-        int playerLayer = gameObject.layer;
-        int bulleyLayer = LayerMask.NameToLayer("Bullet");
-        Physics2D.IgnoreLayerCollision(bulleyLayer, playerLayer, false);
-
-        // 구르기 지속 시간
+        // ~ 구르기 지속 시간 ~
         yield return new WaitForSeconds(rollingTime);
 
-        // 총알 충돌 무시 해제
-        Physics2D.IgnoreLayerCollision(bulleyLayer, playerLayer, true);
-
+        // 구르기 상태 OFF
         isRolling = false;
-        Debug.Log(" => 구르기 종료 <= ");
-        Debug.Log("isRolling : " + isRolling);
+        Debug.Log("=> 구르기 OFF, 현재 체력 : " + playerCurrentHp);
         yield break;
     }
 
