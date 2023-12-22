@@ -19,7 +19,6 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("지금나타나는몬스터"+this.gameObject);
         isLive = true;
         coll = GetComponent<CapsuleCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
@@ -32,13 +31,18 @@ public class Monster : MonoBehaviour
         if (health <= 0)
         {
             isLive = false;
-            Debug.Log("���� ���");
-            if(this.CompareTag("Monster 0")){ //일반몹 처치
-                ScoreManager.Score += 100;
-            }
-            //강화몹 처치 +150
-            if(this.CompareTag("Monster 1")){ //날몹 처치
-                ScoreManager.Score += 200;
+
+            switch(id)
+            {
+                case 0: // 일반몬스터 처치
+                    ScoreManager.Score += 100;
+                    break;
+                case 1: // 날몹 처치
+                    ScoreManager.Score += 200;
+                    break;
+                case 2:
+                    ScoreManager.Score += 150;
+                    break;
             }
             this.DropCoin(); //오브젝트가 사라지기 전 매서드 달아주기
             this.gameObject.SetActive(false);

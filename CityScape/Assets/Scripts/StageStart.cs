@@ -4,17 +4,21 @@ using UnityEditor.U2D.Path;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Define;
 
 public class StageStart : MonoBehaviour
 {   
     //싱글톤 적용
-    public static StageStart instance;
+    public static StageStart instance { get; set; }
     
     private void Awake(){
         /* 싱글톤 적용 */
         if (instance == null)
         {
             instance = this;
+
+            // 과연 필수일까? 
+            DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -24,9 +28,14 @@ public class StageStart : MonoBehaviour
 
     //public int StageNum; //선택한 스테이지 번호
     public string roadStage1 = "TestScene";
-    public void StartStage1()
+    public void StartStage1() 
     {
-        StartCoroutine(LoadMainMenuScene());
+        Debug.Log("Get");
+
+        GameManager.Sound.Play(Define.BGM.St_1);
+        SceneManager.LoadScene("TestScene");
+
+        //StartCoroutine(LoadMainMenuScene());     //다른 씬이 로드되는 시점 게임 오브젝트가 파괴되면 과연 코루틴은 작동을 할까요?
     }
     IEnumerator LoadMainMenuScene()
     {
