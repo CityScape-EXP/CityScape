@@ -27,7 +27,6 @@ public class Monster : MonoBehaviour
     public void getDamage(float damage)
     {
         health -= damage;
-        Debug.Log($"���� ü�� : {health}");
         if (health <= 0)
         {
             isLive = false;

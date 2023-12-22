@@ -5,28 +5,40 @@ using UnityEngine;
 public class MonsterMove : MonoBehaviour
 {
     public float speed;
-    public bool isAppear;
+    public bool isAppear = false;
     public float minX;
     public float maxX;
-
-    private float targetX; // ÀÌµ¿ÇÒ ¸ñÇ¥ À§Ä¡
+    float appearTime = 0f; // ëª¬ìŠ¤í„°ê°€ ë“±ì¥í•˜ê³  íë¥¸ ì‹œê°„
+    private float targetX; // ì´ë™í•  ëª©í‘œ ìœ„ì¹˜
+    Material objectMaterial;
 
     private void Start()
     {
+        //if(objectMaterial == null)
+            //objectMaterial = GetComponent<Material>();
         targetX = 10;
     }
 
     private void FixedUpdate()
     {
-        if (transform.position.x < 11)
-            MoveToTargetPosition(); // ¸ñÇ¥ À§Ä¡·Î ÀÌµ¿
+        if(isAppear)
+            appearTime += Time.deltaTime;
+        if (appearTime > 7) // ìƒì„± í›„ 10ì´ˆê°€ ì§€ë‚˜ë©´ ? -> í‡´ì¥ ì•¡ì…˜
+        {
+            MonsterExit();
+        }
+        else if (transform.position.x < 11)
+        {
+            isAppear = true;
+            MoveToTargetPosition(); // ëª©í‘œ ìœ„ì¹˜ë¡œ ì´ë™
+        }
         else
             WaitForAppear();
     }
 
     private void MoveToTargetPosition()
     {
-        // ÇöÀç À§Ä¡¿¡¼­ ¸ñÇ¥ À§Ä¡·Î ÀÏÁ¤ ¼Óµµ·Î ÀÌµ¿
+        // í˜„ì¬ ìœ„ì¹˜ì—ì„œ ëª©í‘œ ìœ„ì¹˜ë¡œ ì¼ì • ì†ë„ë¡œ ì´ë™
         Vector3 monsterDirection = new Vector3(targetX - transform.position.x, 0, 0).normalized;
         if (monsterDirection.x > 0)
             speed = 3;
@@ -35,7 +47,7 @@ public class MonsterMove : MonoBehaviour
         transform.Translate(monsterDirection * Time.deltaTime * speed);
 
         if (Mathf.Abs(transform.position.x - targetX) < 0.1f)
-        {   // ÇöÀç À§Ä¡°¡ ¸ñÇ¥ À§Ä¡¿¡ µµ´ŞÇßÀ» ¶§
+        {   // í˜„ì¬ ìœ„ì¹˜ê°€ ëª©í‘œ ìœ„ì¹˜ì— ë„ë‹¬í–ˆì„ ë•Œ
             targetX = Random.Range(minX, maxX);
         }
     }
@@ -43,5 +55,19 @@ public class MonsterMove : MonoBehaviour
     private void WaitForAppear()
     {
         transform.Translate(Vector3.left * Time.deltaTime * 5);
+    }
+
+    private void MonsterExit()
+    {
+        this.GetComponent<MonsterBulletSpawner>().enabled = false; // ì´ì•Œ ìƒì„± ë¡œì§ ë©ˆì¶¤
+        /*Color color = objectMaterial.color;
+        color.a = 0.5f;
+        objectMaterial.color = color;*/
+        // íˆ¬ëª…ë„ ì½”ë“œ
+        transform.Translate(Vector3.left * Time.deltaTime * 10);
+        if(this.transform.position.x < -15)
+        {
+            Destroy(this);
+        }
     }
 }
