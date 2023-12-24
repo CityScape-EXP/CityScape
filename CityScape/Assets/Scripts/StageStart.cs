@@ -33,6 +33,11 @@ public class StageStart : MonoBehaviour
         Debug.Log("Get");
 
         GameManager.Sound.Play(Define.BGM.St_1);
+        GameManager.instance.stageNum = 1;
+        Time.timeScale = 1;
+        GameManager.instance.stageTime = 0; //stageTime 초기화
+        UIManager.pauseOnclicked = false; //static변수는 instance 안써도 됨
+        MapBuilder.instance.Init_var();
         SceneManager.LoadScene("TestScene");
 
         //StartCoroutine(LoadMainMenuScene());     //다른 씬이 로드되는 시점 게임 오브젝트가 파괴되면 과연 코루틴은 작동을 할까요?
@@ -45,7 +50,6 @@ public class StageStart : MonoBehaviour
         while (!asyncLoad.isDone)
         {
             UIManager.isMenu = false;
-            UIManager.isGame = true;
             GameManager.instance.stageNum = 1;
             Time.timeScale = 1;
             GameManager.instance.stageTime = 0; //stageTime 초기화

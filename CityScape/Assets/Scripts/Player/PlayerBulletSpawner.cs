@@ -4,50 +4,51 @@ using UnityEngine;
 
 public class PlayerBulletSpawner : MonoBehaviour
 {
-    /* ÃÑ¾Ë °ü·Ã */
+    /* ì´ì•Œ ê´€ë ¨ */
     public float WaitForFirstSpawn;
     public float BulletSpawnTime;
     public Vector3 FixPos;
 
-    /* ÇÃ·¹ÀÌ¾î °ü·Ã */
+    /* í”Œë ˆì´ì–´ ê´€ë ¨ */
     private GameObject Player;
     public bool isPlayerLive;
 
-    /* ÃÊ±âÈ­ */
+    /* ì´ˆê¸°í™” */
     private void Awake()
     {
         Player = gameObject;
     }
 
-    /* ÇÃ·¹ÀÌ¾î°¡ »ıÁ¸ »óÅÂ·Î ½ÃÀÛÇÏ°í, ÃÑ¾Ë »ı¼º ·çÆ¾À» ½ÇÇàÇÔ */
+    /* í”Œë ˆì´ì–´ê°€ ìƒì¡´ ìƒíƒœë¡œ ì‹œì‘í•˜ê³ , ì´ì•Œ ìƒì„± ë£¨í‹´ì„ ì‹¤í–‰í•¨ */
     private void Start()
     {
         isPlayerLive = true;
 
         StartCoroutine(SpawnRoutine());
 
-        // ·¹º§¿¡ µû¸¥ ÃÑ¾Ë ÄğÅ¸ÀÓ Á¶Á¤
+        // ë ˆë²¨ì— ë”°ë¥¸ ì´ì•Œ ì¿¨íƒ€ì„ ì¡°ì •
         int asLevel = GameManager.instance.upgradeData.asLevel;
         BulletSpawnTime = BulletSpawnTime / (1.00f + (asLevel - 1) * 0.25f);
     }
 
-    /* ÃÑ¾Ë »ı¼º ·çÆ¾ ÇÔ¼ö */
+    /* ì´ì•Œ ìƒì„± ë£¨í‹´ í•¨ìˆ˜ */
     IEnumerator SpawnRoutine()
     {
         yield return new WaitForSeconds(WaitForFirstSpawn);
-        // WaitForFirstSpawn ÃÊ ÀÌÈÄ ÃÑ¾Ë ½ºÆù ½ÃÀÛ
+        // WaitForFirstSpawn ì´ˆ ì´í›„ ì´ì•Œ ìŠ¤í° ì‹œì‘
 
         while (true)
         {
             GameObject obj = PoolManager.GetObject(0);
-            // PoolÀÇ 0¹øÂ° ÇÁ¸®Æé(ÃÑ¾Ë)À» °¡Á®¿È. ³ªÁß¿¡ ÇØ´ç ºÎºĞ ¼öÁ¤ °¡´É¼º ÀÖÀ½
+            GameManager.Sound.Play(Define.SFX.Char_gunfire_1128);
+            // Poolì˜ 0ë²ˆì§¸ í”„ë¦¬í©(ì´ì•Œ)ì„ ê°€ì ¸ì˜´. ë‚˜ì¤‘ì— í•´ë‹¹ ë¶€ë¶„ ìˆ˜ì • ê°€ëŠ¥ì„± ìˆìŒ
             obj.transform.position = Player.transform.position + FixPos;
             
-            yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime ÃÊ ¸¸Å­ ´ë±â ÈÄ ½ÇÇà
+            yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime ì´ˆ ë§Œí¼ ëŒ€ê¸° í›„ ì‹¤í–‰
         }
     }
 
-    /* ÇÃ·¹ÀÌ¾î »ç¸Á ¿©ºÎ Ã¼Å© */
+    /* í”Œë ˆì´ì–´ ì‚¬ë§ ì—¬ë¶€ ì²´í¬ */
     private void Update()
     {
         if (Player != null)
@@ -56,7 +57,7 @@ public class PlayerBulletSpawner : MonoBehaviour
 
             if (PlayerObj != null)
             {
-                isPlayerLive = PlayerObj.isLive; // Monster ¿ÀºêÁ§Æ®ÀÇ isLive º¯¼ö °¡Á®¿À±â
+                isPlayerLive = PlayerObj.isLive; // Monster ì˜¤ë¸Œì íŠ¸ì˜ isLive ë³€ìˆ˜ ê°€ì ¸ì˜¤ê¸°
             }
         }
     }

@@ -108,6 +108,7 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
                 popupGameOver.SetActive(false); //gameover 팝업 닫기
             }
             MapBuilder.instance.Init_var();
+            UIManager.isMenu = true;
             yield return null;
         }
     }

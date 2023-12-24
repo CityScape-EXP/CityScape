@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         if (playerCurrentHp <= 0)
         {
             isLive = false;
+            GameManager.Sound.Play(Define.SFX.Char_death_1128);
             Debug.Log("플레이어 사망");
             gameObject.SetActive(false);
         }
@@ -132,6 +133,7 @@ public class Player : MonoBehaviour
         isRolling = true;
         Debug.Log("=> 구르기 ON, 현재 체력 : " + playerCurrentHp);
         anim.SetBool("isRolling", true);
+        GameManager.Sound.Play(Define.SFX.Chac_roll_1128);
 
         // ~ 구르기 지속 시간 ~
         yield return new WaitForSeconds(rollingTime);

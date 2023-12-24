@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
 
     public static bool pauseOnclicked = false;
     public static bool isMenu = true;
-    public static bool isGame = false;
     [Header("settingCanvas")]
     [SerializeField] public GameObject settingCanvas;
     [Header("MainUI")]
@@ -114,22 +113,8 @@ public class UIManager : MonoBehaviour
     }
     public void GoMenuButton()  // init_var작동문제로 async로 변경
     {
-        StartCoroutine(GoMenu());
+        SceneManager.LoadScene("MainPopUp");
     }
-    IEnumerator GoMenu()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainPopup");
-        while (!asyncLoad.isDone)
-        {
-            isMenu = true;
-            isGame = false;
-            settingPanel.SetActive(false);
-            MainMenu.isStart = false;
-            MapBuilder.instance.Init_var();
-            yield return null;
-        }
-    }
-
     public void OnRestartButton()
     {
         StartCoroutine(RestartStage());

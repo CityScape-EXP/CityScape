@@ -14,7 +14,7 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnClickHandler?.Invoke(eventData);
+        OnClickHandler?.Invoke(eventData);  //  ?연산자는 null이 아닐경우에만 실행
     }
     public void OnDrag(PointerEventData eventData)
     {

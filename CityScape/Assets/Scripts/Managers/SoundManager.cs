@@ -20,8 +20,8 @@ public class SoundManager
     float _bgmvolume = 1.0f;
     float _sfxvolume = 1.0f;
 
-    public float BGMVolume { get { return _bgmvolume; } set { PlayerPrefs.SetFloat("BGMVolume", value >= 1 ? 1 : value); } }
-    public float SFXVolume { get { return _sfxvolume; } set { PlayerPrefs.SetFloat("SFXVolume", value >= 1 ? 1 : value); } }
+    public float BGMVolume { get { return _bgmvolume; } set { _bgmvolume = value; PlayerPrefs.SetFloat("BGMVolume", value >= 1 ? 1 : value); } }
+    public float SFXVolume { get { return _sfxvolume; } set { _sfxvolume = value;  PlayerPrefs.SetFloat("SFXVolume", value >= 1 ? 1 : value); } }
 
     public void Init()
     {
@@ -38,7 +38,8 @@ public class SoundManager
                 _audioSources[(int)s] = go.AddComponent<AudioSource>();
                 go.transform.parent = root.transform;
             }
-
+            _bgmvolume = PlayerPrefs.GetFloat("BGMVolume", 0.75f);
+            _sfxvolume = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
             _audioSources[(int)Define.Sounds.BGM].loop = true;
         }
         else
@@ -54,6 +55,9 @@ public class SoundManager
 
         _bgmvolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
         _sfxvolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
+        SetVolume(Define.Sounds.BGM, _bgmvolume);
+        SetVolume(Define.Sounds.SFX, _sfxvolume);
 
     }
 
@@ -92,14 +96,12 @@ public class SoundManager
             if (audioSource.isPlaying)
                 audioSource.Stop();
 
-            audioSource.volume = volume;
             audioSource.clip = audioClip;
             audioSource.Play();
         }
         else
         {
             AudioSource audioSource = _audioSources[(int)Define.Sounds.SFX];
-            audioSource.volume = volume;
             audioSource.PlayOneShot(audioClip);
         }
     }

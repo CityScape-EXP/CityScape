@@ -6,35 +6,29 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SettingUI : UI_Base
+public class PauseUI : UI_Base
 {
     enum Texts
     {
     }
     enum Buttons
     {
-        CreditButton,
-        ExitButton,
-        OffSettingButton,
-
+        RestartButton,
+        ContinueButton,
+        GoToMenuButton,
     }
     enum Sliders
     {
         BgmSlider,
         SFXSlider,
     }
-
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<Slider>(typeof(Sliders));
 
-        
+
         BindButtonEvt();
         BindSliderEvt();
 
@@ -42,31 +36,28 @@ public class SettingUI : UI_Base
         Get<Slider>((int)Sliders.SFXSlider).value = GameManager.Sound.SFXVolume;
     }
 
-    #region Button_Event
-
     void BindButtonEvt()
     {
-        BindEvent(Get<Button>((int)Buttons.CreditButton).gameObject, CreditButton);
-        BindEvent(Get<Button>((int)Buttons.ExitButton).gameObject, ExitButton);
-        BindEvent(Get<Button>((int)Buttons.OffSettingButton).gameObject, OffSettingButton);
-    }
-    void CreditButton (PointerEventData evt) 
-    {
-        UIManager.LoadUI(Define.UI_Type.CreditUI);
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
-    }
-    void ExitButton (PointerEventData evt) 
-    {
-        UIManager.instance.OnExitButton();
-    }
-    void OffSettingButton(PointerEventData evt) 
-    {
-        Destroy(this.gameObject);
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        BindEvent(Get<Button>((int)Buttons.RestartButton).gameObject, RestartButton);
+        BindEvent(Get<Button>((int)Buttons.ContinueButton).gameObject, ContinueButton);
+        BindEvent(Get<Button>((int)Buttons.GoToMenuButton).gameObject, GoToMenuButton);
     }
 
-
-    #endregion Button_Event
+    void RestartButton(PointerEventData evt)
+    {
+        UIManager.instance.OnRestartButton();
+        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+    }
+    void ContinueButton(PointerEventData evt)
+    {
+        UIManager.instance.OffPausePanel();
+        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+    }
+    void GoToMenuButton(PointerEventData evt)
+    {
+        UIManager.instance.GoMenuButton();
+        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+    }
 
     #region Slider_Event
 
@@ -95,6 +86,4 @@ public class SettingUI : UI_Base
 
     }
     #endregion Slider_Event
-
-   
 }

@@ -68,6 +68,7 @@ public class Define
         TitleUI,
         CreditUI,
         SettingUI,
+        PauseUI,
     }
 
 

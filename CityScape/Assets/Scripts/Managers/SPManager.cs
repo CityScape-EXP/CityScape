@@ -23,7 +23,7 @@ public class SPManager : MonoBehaviour // SettingPanel 매니저 스크립트
     [SerializeField] private GameObject goToMenuButton;
     private void OnEnable()
     {
-        if (UIManager.isMenu == true && UIManager.isGame == false)
+        if (UIManager.isMenu == true)
         {
             offSettingPanelButton.SetActive(true);
             creditPanelButton.SetActive(true);
@@ -35,7 +35,7 @@ public class SPManager : MonoBehaviour // SettingPanel 매니저 스크립트
             restartButton.SetActive(false);
             goToMenuButton.SetActive(false);
         }
-        else if (UIManager.isMenu == false && UIManager.isGame == true)
+        else if (UIManager.isMenu == false)
         {
             offSettingPanelButton.SetActive(false);
             creditPanelButton.SetActive(false);
