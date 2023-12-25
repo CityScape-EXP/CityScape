@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance { get { Init(); return _instance; } }
 
     public static bool pauseOnclicked = false;
-    public static bool isMenu = true;
+    public static bool isStart = true;
     [Header("settingCanvas")]
     [SerializeField] public GameObject settingCanvas;
     [Header("MainUI")]
@@ -77,10 +77,7 @@ public class UIManager : MonoBehaviour
     //        }
     //    }
     //}
-    private void Start()
-    {
-        
-    }
+    
     public void OnExitButton()
     {
 #if UNITY_EDITOR
@@ -117,7 +114,11 @@ public class UIManager : MonoBehaviour
     }
     public void OnRestartButton()
     {
-        StartCoroutine(RestartStage());
+        Time.timeScale = 1f;
+        MapBuilder.instance.Init_var();
+        GameManager.instance.stageTime = 0; //시간 초기화
+        pauseOnclicked = false;
+        SceneManager.LoadScene("TestScene");
     }
 
     IEnumerator RestartStage()

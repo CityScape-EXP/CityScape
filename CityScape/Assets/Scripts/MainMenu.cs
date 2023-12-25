@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public static MainMenu instance = null;
-    public static bool isStart = true;
+    
     [SerializeField] public GameObject mainMenu;
     [SerializeField] public GameObject Title;
 
@@ -15,13 +15,5 @@ public class MainMenu : MonoBehaviour
     {
         if(instance == null)
             instance = this;
-    }
-    private void Start()
-    {
-        if(isStart ==false)
-        {
-            mainMenu.SetActive(true);
-            isStart = true;
-        }
     }
 }

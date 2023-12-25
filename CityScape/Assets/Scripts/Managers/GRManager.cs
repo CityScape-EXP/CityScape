@@ -98,7 +98,6 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainPopup");
         while (!asyncLoad.isDone)
         {
-            MainMenu.isStart = false;
             if (popupGameClear.activeSelf && !popupGameOver.activeSelf)
             {
                 popupGameClear.SetActive(false); //gameclear 팝업 닫기
@@ -108,7 +107,6 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
                 popupGameOver.SetActive(false); //gameover 팝업 닫기
             }
             MapBuilder.instance.Init_var();
-            UIManager.isMenu = true;
             yield return null;
         }
     }

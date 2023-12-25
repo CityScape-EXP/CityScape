@@ -50,7 +50,9 @@ public class PauseUI : UI_Base
     }
     void ContinueButton(PointerEventData evt)
     {
-        UIManager.instance.OffPausePanel();
+        Destroy(this.gameObject);
+        Time.timeScale = 1f;
+        UIManager.pauseOnclicked = false;
         GameManager.Sound.Play(Define.SFX.UI_select_1128);
     }
     void GoToMenuButton(PointerEventData evt)

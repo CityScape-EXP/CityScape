@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using System;
 
 public class ReinforceUI : MonoBehaviour
 {
-    // º¯°æÇÑ´Ù¸é ReinforcementÀÇ upgradeMoneyDataµµ °°ÀÌ º¯°æÇÒ°Í
+    // ë³€ê²½í•œë‹¤ë©´ Reinforcementì˜ upgradeMoneyDataë„ ê°™ì´ ë³€ê²½í• ê²ƒ
     int[,] upgradeMoneyData = new int[3, 4]
         { {10, 20, 30, 50 },
           {10, 20, 30, 50 },
@@ -14,7 +16,6 @@ public class ReinforceUI : MonoBehaviour
     public enum InfoType { Level, UpInfo, Money, UpCost }
     public int field;
     public InfoType type;
-
     TMP_Text myText;
 
     void Awake()
@@ -22,7 +23,7 @@ public class ReinforceUI : MonoBehaviour
         myText = GetComponent<TMP_Text>();
     }
 
-    // Save´Â ÇÊ¿ä ¾ø°í, Load¸¸À» »ç¿ëÇÏ¸é µÈ´Ù : Á¤º¸ Ç¥ÃâÀÌ±â ¶§¹®
+    // SaveëŠ” í•„ìš” ì—†ê³ , Loadë§Œì„ ì‚¬ìš©í•˜ë©´ ëœë‹¤ : ì •ë³´ í‘œì¶œì´ê¸° ë•Œë¬¸
     void LateUpdate()
     {
         int level = 0;
@@ -34,13 +35,13 @@ public class ReinforceUI : MonoBehaviour
         }
         switch (type)
         {
-            // ·¹º§ Á¤º¸ ÅØ½ºÆ® (ÆĞ³Îº° Áß¾ÓÀÇ ¿ŞÂÊ¿¡ À§Ä¡) ex) Lv.1, MAX ..
+            // ë ˆë²¨ ì •ë³´ í…ìŠ¤íŠ¸ (íŒ¨ë„ë³„ ì¤‘ì•™ì˜ ì™¼ìª½ì— ìœ„ì¹˜) ex) Lv.1, MAX ..
             case InfoType.Level:
                 if (level == 5) myText.text = "MAX";
                 else myText.text = $"Lv.{level}";
                 break;
 
-            // ¾÷±×·¹ÀÌµå Á¤º¸ ÅØ½ºÆ® (ÆĞ³Îº° Áß¾Ó¿¡ À§Ä¡) ex) 105% > 110% ..
+            // ì—…ê·¸ë ˆì´ë“œ ì •ë³´ í…ìŠ¤íŠ¸ (íŒ¨ë„ë³„ ì¤‘ì•™ì— ìœ„ì¹˜) ex) 105% > 110% ..
             case InfoType.UpInfo:
                 switch(field)
                 {
@@ -65,15 +66,15 @@ public class ReinforceUI : MonoBehaviour
                 }
                 break;
 
-            // ÇöÀç ¼ÒÀ¯ ÀçÈ­ Á¤º¸ ÅØ½ºÆ® (¿ìÃø »ó´Ü¿¡ À§Ä¡) ex) ¡İ : 999 ..
+            // í˜„ì¬ ì†Œìœ  ì¬í™” ì •ë³´ í…ìŠ¤íŠ¸ (ìš°ì¸¡ ìƒë‹¨ì— ìœ„ì¹˜) ex) â— : 999 ..
             case InfoType.Money:
-                myText.text = $"¡İ : {GameManager.instance.gameData.money}";
+                myText.text = $"â— : {GameManager.instance.gameData.money}";
                 break;
 
-            // ¾÷±×·¹ÀÌµå ÇÊ¿ä ÀçÈ­ Á¤º¸ ÅØ½ºÆ® (ÆĞ³Îº° ¿ìÃø¿¡ À§Ä¡) ex) Lv.3 50ÇÊ¿ä
+            // ì—…ê·¸ë ˆì´ë“œ í•„ìš” ì¬í™” ì •ë³´ í…ìŠ¤íŠ¸ (íŒ¨ë„ë³„ ìš°ì¸¡ì— ìœ„ì¹˜) ex) Lv.3 50í•„ìš”
             case InfoType.UpCost:
                 string lv;
-                if (level == 5) // ¸¸·¾ÀÏ°æ¿ì -> ¼Ò¸ğ ÀçÈ­·® Ç¥½Ã X
+                if (level == 5) // ë§Œë ™ì¼ê²½ìš° -> ì†Œëª¨ ì¬í™”ëŸ‰ í‘œì‹œ X
                 {
                     lv = "MAX";
                     myText.text = lv;
@@ -81,9 +82,9 @@ public class ReinforceUI : MonoBehaviour
                 }
                 lv = $"Lv.{level}";
                 int cost = upgradeMoneyData[field, level - 1];
-                if (GameManager.instance.gameData.money < cost) // µ·ÀÌ ºÎÁ·ÇÒ°æ¿ì »¡°£»öÀ¸·Î
-                    myText.text = $"{lv}\n<color=#ff0000>{cost}ÇÊ¿ä</color>";
-                else myText.text = $"{lv}\n{cost}ÇÊ¿ä";
+                if (GameManager.instance.gameData.money < cost) // ëˆì´ ë¶€ì¡±í• ê²½ìš° ë¹¨ê°„ìƒ‰ìœ¼ë¡œ
+                    myText.text = $"{lv}\n<color=#ff0000>{cost}í•„ìš”</color>";
+                else myText.text = $"{lv}\n{cost}í•„ìš”";
                 break;
         }
     }

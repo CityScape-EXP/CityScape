@@ -37,6 +37,7 @@ public class StageStart : MonoBehaviour
         Time.timeScale = 1;
         GameManager.instance.stageTime = 0; //stageTime 초기화
         UIManager.pauseOnclicked = false; //static변수는 instance 안써도 됨
+        UIManager.isStart = false;
         MapBuilder.instance.Init_var();
         SceneManager.LoadScene("TestScene");
 
@@ -49,12 +50,10 @@ public class StageStart : MonoBehaviour
         // Scene을 불러오는 것이 완료되면, AsyncOperation은 isDone 상태가 된다.
         while (!asyncLoad.isDone)
         {
-            UIManager.isMenu = false;
             GameManager.instance.stageNum = 1;
             Time.timeScale = 1;
             GameManager.instance.stageTime = 0; //stageTime 초기화
             UIManager.pauseOnclicked = false; //static변수는 instance 안써도 됨
-            Debug.Log(UIManager.isMenu);
             yield return null;
         }
     }

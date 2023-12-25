@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Reinforcement_UI : UI_Base
+public class Reinforcement_UI : UI_Base , IPointerClickHandler
 {
     enum Texts 
     {
@@ -28,5 +28,9 @@ public class Reinforcement_UI : UI_Base
     private void Destroy(PointerEventData evt)
     {
         Destroy(gameObject);
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameManager.Sound.Play(Define.SFX.UI_touch_1128);
     }
 }

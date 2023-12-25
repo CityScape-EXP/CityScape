@@ -31,6 +31,10 @@ public class TitleUI : UI_Base
         GameManager.Sound.Play(Define.BGM.main_BGM);
         BindEvent(Get<Button>((int)Buttons.GetMainMenu).gameObject, GetMainMenu);
 
+        if (UIManager.isStart == false)
+        {
+            UIManager.LoadUI(Define.UI_Type.MainMenuUI);
+        }
     }
 
     

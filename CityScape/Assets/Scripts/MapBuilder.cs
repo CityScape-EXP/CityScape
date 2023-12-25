@@ -25,6 +25,7 @@ public class MapBuilder : MonoBehaviour
         nowPhase = 0;
         patternStartTime = 0f;
         nowPatternTime = 0f;
+        Debug.Log("init_var");
     }
 
     private void Awake()

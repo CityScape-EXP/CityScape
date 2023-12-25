@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         playerHp = GameManager.instance.upgradeData.hpLevel + 2;
         playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
         playerCurrentHp = playerHp;
-
+        MapBuilder.instance.Init_var();
         anim.SetBool("isRolling", false);
     }
 

@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 6778164592676054928}
   - component: {fileID: 6778164592676054929}
   m_Layer: 0
-  m_Name: GameOverPopup
+  m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

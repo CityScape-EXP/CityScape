@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainMenuUI : UI_Base
+public class MainMenuUI : UI_Base , IPointerClickHandler
 {
     enum Texts
     {
@@ -24,9 +25,6 @@ public class MainMenuUI : UI_Base
         SettingButton,
         ReinforceButton,
     }
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +38,10 @@ public class MainMenuUI : UI_Base
         BindEvent(Get<Button>((int)Buttons.ReinforceButton).gameObject, ReinforceBtn);
 
     }
-
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameManager.Sound.Play(Define.SFX.UI_touch_1128);
+    }
     void Stage1Btn(PointerEventData evt)
     {
         StageStart.instance.StartStage1();

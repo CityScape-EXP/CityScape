@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SettingUI : UI_Base
+public class SettingUI : UI_Base , IPointerClickHandler
 {
     enum Texts
     {
@@ -23,9 +24,6 @@ public class SettingUI : UI_Base
         BgmSlider,
         SFXSlider,
     }
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +47,10 @@ public class SettingUI : UI_Base
         BindEvent(Get<Button>((int)Buttons.CreditButton).gameObject, CreditButton);
         BindEvent(Get<Button>((int)Buttons.ExitButton).gameObject, ExitButton);
         BindEvent(Get<Button>((int)Buttons.OffSettingButton).gameObject, OffSettingButton);
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameManager.Sound.Play(Define.SFX.UI_touch_1128);
     }
     void CreditButton (PointerEventData evt) 
     {

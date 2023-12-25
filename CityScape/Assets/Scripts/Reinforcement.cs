@@ -6,27 +6,27 @@ using UnityEngine.UI;
 
 /*  
  *  Reinforcement.cs
- *  °¢Á¾ °­È­¿Í °ü·ÃµÈ ÇÔ¼ö¸¦ ÀÛ¼ºÇÑ´Ù
- *  ÀçÈ­³ª Á¤º¸ÀÇ º¯°æÀÌ ÀÖÀ» ¶§´Â ¹İµå½Ã Saveµµ º´ÇàµÇ¾î¾ß ÇÔ
+ *  ê°ì¢… ê°•í™”ì™€ ê´€ë ¨ëœ í•¨ìˆ˜ë¥¼ ì‘ì„±í•œë‹¤
+ *  ì¬í™”ë‚˜ ì •ë³´ì˜ ë³€ê²½ì´ ìˆì„ ë•ŒëŠ” ë°˜ë“œì‹œ Saveë„ ë³‘í–‰ë˜ì–´ì•¼ í•¨
  */
 public class Reinforcement : MonoBehaviour
 {
-    // º¯°æÇÑ´Ù¸é HUIÀÇ upgradeMoneyDataµµ °°ÀÌ º¯°æÇÒ°Í
-    // °­È­¿¡ ÇÊ¿äÇÑ ÀçÈ­ µ¥ÀÌÅ¸
+    // ë³€ê²½í•œë‹¤ë©´ HUIì˜ upgradeMoneyDataë„ ê°™ì´ ë³€ê²½í• ê²ƒ
+    // ê°•í™”ì— í•„ìš”í•œ ì¬í™” ë°ì´íƒ€
     int[,] upgradeMoneyData = new int[3, 4]
         { {10, 20, 30, 50 }, 
           {10, 20, 30, 50 }, 
           {10, 20, 30, 50 } };
     Button thisButton;
     int nowLevel;
-    public int field;  // °­È­ÇÏ´Â Ç×¸ñ¿¡ ´ëÇÑ Á¤º¸ => 0 = Hp, 1 = Atk, 2 = AS
-    GameManager gameManager;    // ÇöÀç °­È­ Á¤º¸¿¡ Á¢±ÙÇÏ±â À§ÇÑ gameManager
+    public int field;  // ê°•í™”í•˜ëŠ” í•­ëª©ì— ëŒ€í•œ ì •ë³´ => 0 = Hp, 1 = Atk, 2 = AS
+    GameManager gameManager;    // í˜„ì¬ ê°•í™” ì •ë³´ì— ì ‘ê·¼í•˜ê¸° ìœ„í•œ gameManager
 
     void Start()
     {
         thisButton = gameObject.GetComponent<Button>();
         gameManager = GameManager.instance;
-        // ·¹º§ °¡Á®¿À±â
+        // ë ˆë²¨ ê°€ì ¸ì˜¤ê¸°
         switch (field)
         {
             case 0: nowLevel = gameManager.upgradeData.hpLevel; break;
@@ -35,28 +35,29 @@ public class Reinforcement : MonoBehaviour
         }
         if (nowLevel == 5)
             thisButton.interactable = false;
-        Debug.Log($"ÇÊµå : {field}, ·¹º§ : {nowLevel}");
+        Debug.Log($"í•„ë“œ : {field}, ë ˆë²¨ : {nowLevel}");
     }
 
-    // Å×½ºÆ®¿ë ÇÔ¼ö : µ· 100 Áõ°¡
+    // í…ŒìŠ¤íŠ¸ìš© í•¨ìˆ˜ : ëˆ 100 ì¦ê°€
     public void Cheat()
     {
         gameManager.gameData.money += 100;
         gameManager.dm.SaveGameData(gameManager.gameData);
     }
 
-    // Upgrade ÇÔ¼ö
+    // Upgrade í•¨ìˆ˜
     public void GetUpgrade()
     {
         int nowMoney = gameManager.gameData.money;
-        // µ·ÀÌ ºÎÁ·ÇÏ¸é Error Ãâ·Â ÈÄ Á¾·á
+        // ëˆì´ ë¶€ì¡±í•˜ë©´ Error ì¶œë ¥ í›„ ì¢…ë£Œ
         if(nowMoney < upgradeMoneyData[field, nowLevel-1]) 
         {
-            Debug.Log("µ·ÀÌ ºÎÁ·ÇÕ´Ï´Ù");
+            Debug.Log("ëˆì´ ë¶€ì¡±í•©ë‹ˆë‹¤");
+            GameManager.Sound.Play(Define.SFX.UI_upgrade_fail_1128);
             return;
         }
-
-        // °­È­ & json¿¡ Á¤º¸ Save
+        GameManager.Sound.Play(Define.SFX.UI_upgrade_1128);
+        // ê°•í™” & jsonì— ì •ë³´ Save
         nowMoney -= upgradeMoneyData[field, nowLevel-1];
         gameManager.gameData.money = nowMoney;
         switch(field)
@@ -67,10 +68,10 @@ public class Reinforcement : MonoBehaviour
         }
         gameManager.dm.SaveUpgradeData(gameManager.upgradeData);
         gameManager.dm.SaveGameData(gameManager.gameData);
-        Debug.Log($"ÇÊµå {field}¹ø °­È­¿¡ ¼º°øÇÏ¼Ì½À´Ï´Ù! Lv.{nowLevel} -> Lv.{nowLevel + 1}");
+        Debug.Log($"í•„ë“œ {field}ë²ˆ ê°•í™”ì— ì„±ê³µí•˜ì…¨ìŠµë‹ˆë‹¤! Lv.{nowLevel} -> Lv.{nowLevel + 1}");
         nowLevel++;
 
-        // ¸¸·¾ ´Ş¼º
+        // ë§Œë ™ ë‹¬ì„±
         if (nowLevel == 5)
             thisButton.interactable = false;
     }
