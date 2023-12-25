@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 2298132835562254752}
   - component: {fileID: 5753502126125979998}
   - component: {fileID: 9181724613972956217}
-  - component: {fileID: 8192938569084604895}
-  - component: {fileID: 1182428420542883283}
+  - component: {fileID: 3840741490448591614}
+  - component: {fileID: 1897556528611703824}
   m_Layer: 8
-  m_Name: bullet 0
-  m_TagString: PlayerBullet
+  m_Name: EnemyBullet
+  m_TagString: MonsterBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -757041864195582159, guid: 56c670de7fe22a946b32f983ee60ebd9, type: 3}
+  m_Sprite: {fileID: -2187574676084372009, guid: ccf45e534f9c4264ab631f563e87e6f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.06, y: 0.03}
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.4, y: 0.4}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.06, y: 0.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -111,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &8192938569084604895
+--- !u!114 &3840741490448591614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,13 +120,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5501616621956362097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a7f7f8d6935b649bc3fde5d4aa47da, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1a7811f4417c24083a34a3377ba091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 13
+  moveSpeed: 10
+  damage: 1
   id: 0
-  prefabID: 0
---- !u!95 &1182428420542883283
+  prefabID: 3
+  shooterID: 0
+  playerDir: {x: 0, y: 0, z: 0}
+--- !u!95 &1897556528611703824
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -136,7 +139,7 @@ Animator:
   m_GameObject: {fileID: 5501616621956362097}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 03880f321f0db774798321c3bcccea5e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a13aa95d8a6645a4e8c41253e1142f52, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

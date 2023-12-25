@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4763453948078931554}
   - component: {fileID: -9035706391600811192}
   m_Layer: 9
-  m_Name: Monster 2
+  m_Name: ReinEnemy
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   prefabID: 0
-  health: 10
+  health: 3
   power: 1
   isLive: 1
   coin5Prefab: {fileID: 3453482804788463098, guid: a85fada33dfdf4de091631090fd8a366, type: 3}
