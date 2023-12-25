@@ -60,24 +60,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //private void Awake()
-    //{
-    //    if (_instance == null)
-    //    {
-    //        if (_instance == null)
-    //        {
-    //            _instance = this;
-    //            DontDestroyOnLoad(gameObject);
-    //            DontDestroyOnLoad(settingCanvas);
-    //        }
-    //        else
-    //        {
-    //            Destroy(gameObject);
-    //            Destroy(settingCanvas);
-    //        }
-    //    }
-    //}
-    
+
+
     public void OnExitButton()
     {
 #if UNITY_EDITOR
@@ -110,6 +94,7 @@ public class UIManager : MonoBehaviour
     }
     public void GoMenuButton()  // init_var작동문제로 async로 변경
     {
+        UIManager.isStart = false;
         SceneManager.LoadScene("MainPopUp");
     }
     public void OnRestartButton()

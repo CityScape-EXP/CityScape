@@ -34,6 +34,7 @@ public class TitleUI : UI_Base
         if (UIManager.isStart == false)
         {
             UIManager.LoadUI(Define.UI_Type.MainMenuUI);
+            UIManager.isStart = true;
         }
     }
 

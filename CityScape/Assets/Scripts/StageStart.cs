@@ -37,7 +37,6 @@ public class StageStart : MonoBehaviour
         Time.timeScale = 1;
         GameManager.instance.stageTime = 0; //stageTime 초기화
         UIManager.pauseOnclicked = false; //static변수는 instance 안써도 됨
-        UIManager.isStart = false;
         MapBuilder.instance.Init_var();
         SceneManager.LoadScene("TestScene");
 
