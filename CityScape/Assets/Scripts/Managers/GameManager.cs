@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     public bool isGameover;
     public DataManager dm;
 
-
     SoundManager soundManager = new SoundManager();
     public static SoundManager Sound { get { return instance.soundManager; } } 
 
@@ -129,6 +128,7 @@ public class GameManager : MonoBehaviour
         stageTime = 0;
         isGameover = false;
         UIManager.pauseOnclicked = true;
+        
     }
 
     void Update()
