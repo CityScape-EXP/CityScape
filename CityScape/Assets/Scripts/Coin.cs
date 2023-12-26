@@ -20,7 +20,8 @@ public class Coin : MonoBehaviour
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
     }
 
-    //동전이 캐릭터와 충돌하면 점수 오르고 돈 오른다
+    
+    /*//동전이 캐릭터와 충돌하면 점수 오르고 돈 오른다 => player 스크립트에 구현
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
@@ -29,5 +30,5 @@ public class Coin : MonoBehaviour
             GameManager.instance.gameData.money += 5;
             GameManager.instance.dm.SaveGameData(GameManager.instance.gameData);
         }
-    }
+    }*/
 }
