@@ -1607,11 +1607,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acmPattern: 0
-  building: {fileID: 1897897975567796766, guid: b1f02087eb9e6cd4e8be9c5556adf67c, type: 3}
-  BackgroundBuildings:
-  - {fileID: 21300000, guid: a67f6096ea4061e49b76a9157f9ca6ad, type: 3}
-  - {fileID: 21300000, guid: 2230f07aa1c272a47aac96e4fc2a94e5, type: 3}
-  - {fileID: 21300000, guid: 786372cee012ab84a902db0af66b57ab, type: 3}
+  building: {fileID: 0}
+  BackgroundBuildings: []
 --- !u!1001 &8227464169588406438
 PrefabInstance:
   m_ObjectHideFlags: 0
