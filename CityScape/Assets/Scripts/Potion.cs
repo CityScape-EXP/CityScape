@@ -20,18 +20,6 @@ public class Potion : MonoBehaviour
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
     }
 
-    
-    // [포션, 플레이어] 충돌 시 비활성화
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            this.gameObject.SetActive(false);
-            Debug.Log("충돌 + " + gameObject);
-        }
-    }
-    
-
     // potionHP를 반환하는 함수
     public int getPotionHP()
     {

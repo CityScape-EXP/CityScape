@@ -167,6 +167,7 @@ public class Player : MonoBehaviour
         {   // 플레이어 체력 3 회복
             playerCurrentHp += collision.gameObject.GetComponent<Potion>().getPotionHP();
             Debug.Log("포션 획득, 체력 3 회복 // 플레이어 현재 체력 : " + playerCurrentHp);
+            Destroy(collision.gameObject);
         }
     }
 

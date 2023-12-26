@@ -14,6 +14,8 @@ TagManager:
   - popupGameObject
   - Coin5
   - Coin10
+  - Undefined
+  - Potion
   layers:
   - Default
   - TransparentFX
