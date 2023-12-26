@@ -10,8 +10,6 @@ public class TitleUI : UI_Base
 {
     enum Texts
     {
-        StartText,
-        TitleText,
     }
     enum Buttons
     {

@@ -10,9 +10,6 @@ public class MainMenuUI : UI_Base , IPointerClickHandler
 {
     enum Texts
     {
-        Stage1_Text, 
-        Stage2_Text, 
-        Stage3_Text,
         Stage1_HighScore, 
         Stage2_HighScore,
         Stage3_HighScore
