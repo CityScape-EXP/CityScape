@@ -1218,9 +1218,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: a951f9e0e58034c80ae554eecdc68a8d, type: 3}
         m_TargetAssemblyTypeName: GRManager, Assembly-CSharp
-        m_MethodName: OnRestartButton
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

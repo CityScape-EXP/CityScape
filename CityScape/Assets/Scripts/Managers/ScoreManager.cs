@@ -34,11 +34,4 @@ public class ScoreManager : MonoBehaviour //Score&Money 상태 관리
         textComponent.text = "Score : " + Score.ToString();
     }
 
-    private void MonsterRule(){ //몬스터 처치에 따른 점수부여
-
-    }
-    private void MoneyRule(){ //재화 규칙
-
-    }
-
 }

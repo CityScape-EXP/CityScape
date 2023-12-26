@@ -41,7 +41,7 @@ public class UI_Base : MonoBehaviour
 
             if (ui_objects[i] == null)
             {
-                Debug.LogError($"{typeof(T).Name} 타입의 {typenames[i]} 을 찾을 수 없음");
+                Debug.Log($"{typeof(T).Name} 타입의 {typenames[i]} 을 찾을 수 없음");
             }
             else if(typeof(T) == typeof(TMP_Text))
             {
