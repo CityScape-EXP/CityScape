@@ -61,7 +61,7 @@ public class MapBuilder : MonoBehaviour
             else Debug.Log("게임 클리어");
 
             int patternNum = Random.Range(0, 4);
-            Debug.Log($"패턴 {patternNum}번 생성!");
+            Debug.Log($"페이즈 : {nowPhase} // 패턴 : {patternNum}");
             PatternData nowPattern = GameManager.instance.dm.GetPatternData(0, nowPhase, patternNum);
             DrawPattern(nowPattern);
 
@@ -86,7 +86,7 @@ public class MapBuilder : MonoBehaviour
         // Platform 생성
         foreach (var platform in pd.p_Data)
         {
-            GameObject platformObject = PoolManager.GetObject(5);
+            GameObject platformObject = PoolManager.GetObject(5 + platform.type);
             Vector3 platformPos;
             platformObject.SetActive(true);
             if(platform.type == 0)
@@ -95,7 +95,7 @@ public class MapBuilder : MonoBehaviour
             }
             else
             {
-                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(2000, 445, 10));
+                platformPos = Camera.main.ScreenToWorldPoint(new Vector3(1600, 445, 10));
             }
             platformObject.transform.position = new Vector3(platform.pos + platformPos.x + 20, platformPos.y, 0);
             Debug.Log(platformObject.transform.position);
