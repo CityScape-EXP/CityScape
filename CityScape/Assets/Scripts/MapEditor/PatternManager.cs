@@ -62,15 +62,25 @@ public class PatternManager : MonoBehaviour
     {
         if (patternList.Count == 0) return;
         float platformFix = Camera.main.ScreenToWorldPoint(new Vector3(1200, 0, 0)).x -
-            Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x; ;
+            Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
+        float platformFixB = Camera.main.ScreenToWorldPoint(new Vector3(800, 0, 0)).x -
+            Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
         float enemyFix = Camera.main.ScreenToWorldPoint(new Vector3(80, 0, 0)).x -
             Camera.main.ScreenToWorldPoint(new Vector3(0,0,0)).x;
         float startPos_x = 0f;
         float endPos_x = 0f;
         if (patternList[0].name == "Platform")
         {
-            startPos_x = patternList[0].transform.position.x - platformFix;
-            endPos_x = patternList[0].transform.position.x + platformFix;
+            if (typeList[0] == 0) // 긴 플랫폼
+            {
+                startPos_x = patternList[0].transform.position.x - platformFix;
+                endPos_x = patternList[0].transform.position.x + platformFix;
+            }
+            else // 짧은 플랫폼
+            {
+                startPos_x = patternList[0].transform.position.x - platformFixB;
+                endPos_x = patternList[0].transform.position.x + platformFixB;
+            }
         }
         else if (patternList[0].name == "Enemey")
         {

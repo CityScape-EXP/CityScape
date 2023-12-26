@@ -145,15 +145,17 @@ public class Player : MonoBehaviour
         yield break;
     }
 
-    public void OnCollisionEnter2D(Collision2D other){ //충돌 감지 => 
+    
+    private void OnTriggerEnter2D(Collider2D collision) // 트리거 감지
+    {
         // 코인
-        if(other.gameObject.tag == "Coin5")
+        if (collision.gameObject.tag == "Coin5")
         {   // 5코인 획득
             Debug.Log("5코인 획득");
             ScoreManager.Score += 20;
             GetMoney.getMoney += 5;
         }
-        else if (other.gameObject.tag == "Coin10")
+        else if (collision.gameObject.tag == "Coin10")
         {   // 10코인 획득
             Debug.Log("10코인 획득");
             ScoreManager.Score += 20;
@@ -161,9 +163,9 @@ public class Player : MonoBehaviour
         }
 
         // 포션
-        else if (other.gameObject.tag == "Potion3")
+        else if (collision.gameObject.tag == "Potion")
         {   // 플레이어 체력 3 회복
-            playerCurrentHp += other.gameObject.GetComponent<Potion>().getPotionHP();
+            playerCurrentHp += collision.gameObject.GetComponent<Potion>().getPotionHP();
             Debug.Log("포션 획득, 체력 3 회복 // 플레이어 현재 체력 : " + playerCurrentHp);
         }
     }

@@ -6,7 +6,7 @@ public class Potion : MonoBehaviour
 {
     CircleCollider2D coll;
     float moveSpeed = 5f;   // 배경 이동 속도와 동일
-    public int potionHP;    // 포션 회복량
+    private int potionHP = 1;    // 포션 회복량
 
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class Potion : MonoBehaviour
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
     }
 
+    
     // [포션, 플레이어] 충돌 시 비활성화
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,6 +30,7 @@ public class Potion : MonoBehaviour
             Debug.Log("충돌 + " + gameObject);
         }
     }
+    
 
     // potionHP를 반환하는 함수
     public int getPotionHP()
