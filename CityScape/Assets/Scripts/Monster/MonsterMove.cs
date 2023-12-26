@@ -10,13 +10,12 @@ public class MonsterMove : MonoBehaviour
     public float maxX;
     float appearTime = 0f; // 몬스터가 등장하고 흐른 시간
     private float targetX; // 이동할 목표 위치
-    SpriteRenderer targetRenderer;
+    SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        if(targetRenderer == null)
-            targetRenderer = GetComponent<SpriteRenderer>();
         targetX = 10;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -26,7 +25,7 @@ public class MonsterMove : MonoBehaviour
         if (appearTime > 7) // 생성 후 10초가 지나면 ? -> 퇴장 액션
         {
             this.GetComponent<MonsterBulletSpawner>().enabled = false; // 총알 생성 로직 멈춤
-            targetRenderer.material.SetColor("_Color", new Color(255, 255, 255, 0.5f));
+            spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             transform.Translate(Vector3.left * Time.deltaTime * 10);
             if(transform.position.x < -15)
                 Destroy(gameObject);
