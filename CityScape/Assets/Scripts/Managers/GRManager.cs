@@ -48,7 +48,7 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
     void Update()
     {
         if(Player.instance.isLive == false){
-            GRManager.instance.popupGameOver.SetActive(true);
+            GRManager.instance.popupGameOver.SetActive(true);     // 자동화 UI는 Player.getDamaged()에 있음
             //Debug.Log("게임오버");
             Time.timeScale = 0f; //인게임일시정지
         }
@@ -68,7 +68,8 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
 
             if(sliderTimer <= 0){
                 stopTimer = true;
-                GRManager.instance.popupGameClear.SetActive(true);
+                GRManager.instance.popupGameClear.SetActive(true);     
+                //UIManager.LoadUI(Define.UI_Type.ClearUI);             //자동화 UI문
                 Time.timeScale = 0f; //인게임일시정지
                 gameData.isStageOpen[1] = true; //다음 스테이지 열기
             }

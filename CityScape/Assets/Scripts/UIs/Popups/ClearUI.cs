@@ -4,21 +4,18 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_GameOver : UI_Base
+public class ClearUI : UI_Base
 {
-    enum Texts 
+    enum Texts
     {
         Result
     }
-    enum Buttons 
-    { 
+    enum Buttons
+    {
         RestartButton,
         GoToMenuButton,
     }
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         Bind<TMP_Text>(typeof(Texts));
@@ -28,11 +25,10 @@ public class UI_GameOver : UI_Base
         BindEvent(Get<Button>((int)Buttons.RestartButton).gameObject, Restart);
         BindEvent(Get<Button>((int)Buttons.GoToMenuButton).gameObject, GoToMenuButton);
         ShowResult();
-
     }
     public void ShowResult()
     {
-        
+
     }
 
     void Restart(PointerEventData evt)

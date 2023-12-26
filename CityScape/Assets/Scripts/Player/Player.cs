@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         if (playerCurrentHp <= 0)
         {
             isLive = false;
+            //UIManager.LoadUI(Define.UI_Type.GameOverUI);     //자동화 UI
             GameManager.Sound.Play(Define.SFX.Char_death_1128);
             Debug.Log("플레이어 사망");
             gameObject.SetActive(false);

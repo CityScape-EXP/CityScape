@@ -103,6 +103,7 @@ public class UIManager : MonoBehaviour
         MapBuilder.instance.Init_var();
         GameManager.instance.stageTime = 0; //시간 초기화
         pauseOnclicked = false;
+        Player.instance.isLive = true;
         SceneManager.LoadScene("TestScene");
     }
 

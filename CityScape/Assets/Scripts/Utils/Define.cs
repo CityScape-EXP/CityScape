@@ -69,6 +69,8 @@ public class Define
         CreditUI,
         SettingUI,
         PauseUI,
+        GameOverUI,
+        ClearUI,
     }
 
 

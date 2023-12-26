@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 258667860761300917}
   - component: {fileID: 258667860761300918}
   m_Layer: 0
-  m_Name: BtnReplay
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 258667861028611361}
   - component: {fileID: 258667861028611362}
   - component: {fileID: 258667861028611363}
+  - component: {fileID: 7647226303287989286}
   m_Layer: 0
   m_Name: ClearUI
   m_TagString: Untagged
@@ -260,7 +261,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &258667861028611362
 MonoBehaviour:
@@ -302,6 +303,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7647226303287989286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258667861028611372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7cbc4b27ac2374291adba47604bb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &258667861200390656
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +462,7 @@ GameObject:
   - component: {fileID: 258667861508435773}
   - component: {fileID: 258667861508435774}
   m_Layer: 0
-  m_Name: BtnGotoMain
+  m_Name: GoToMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,6 +729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData:
+    isStageOpen: 010000
+    stageHighScore: 000000000000000000000000
+    money: 0
 --- !u!1 &258667861913488025
 GameObject:
   m_ObjectHideFlags: 0
