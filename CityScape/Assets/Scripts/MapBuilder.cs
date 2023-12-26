@@ -73,7 +73,7 @@ public class MapBuilder : MonoBehaviour
         if(Time.time - buildingTime > 5)
         {
             int buildingNum = Random.Range(0, 3);
-            GameObject newBuilding = Instantiate(building, new Vector3(30, 4.4f, 0), Quaternion.identity);
+            GameObject newBuilding = Instantiate(building, new Vector3(20, 4.4f, 0), Quaternion.identity);
             newBuilding.GetComponent<SpriteRenderer>().sprite = BackgroundBuildings[buildingNum];
             Debug.Log("건물 생성");
             buildingTime = Time.time;

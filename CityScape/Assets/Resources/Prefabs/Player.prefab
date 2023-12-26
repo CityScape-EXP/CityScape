@@ -157,14 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb21a6c009fbd543ba63eee05e08623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 20
   playerHp: 0
   playerCurrentHp: 0
-  playerOffence: 0
   isLive: 0
   totalMoney: 0
   currentMoney: 0
   isGround: 1
+  jumpPower: 19
   canRoll: 0
   isRolling: 0
   rollingTime: 1
@@ -196,6 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaitForFirstSpawn: 0.2
-  BulletSpawnTime: 1
+  BulletSpawnTime: 0.7
   FixPos: {x: 0, y: 0, z: 0}
   isPlayerLive: 0

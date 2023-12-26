@@ -154,20 +154,6 @@ Transform:
   m_Father: {fileID: 387947341}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2007508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6011a186522f2284bb8616e5f0d46189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  posValue: 80.12
 --- !u!212 &2007509
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2293,20 +2279,6 @@ Transform:
   m_Father: {fileID: 1518481054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &955984979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955984977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6011a186522f2284bb8616e5f0d46189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  posValue: 80.12
 --- !u!212 &955984980
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3494,16 +3466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2320ec85b3151e4fa123689f26547df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingCanvas: {fileID: 1821582603}
-  settingPanel: {fileID: 1538197174}
-  offSettingPanelButton: {fileID: 1872973870}
-  creditPanelButton: {fileID: 1872973869}
-  exitButton: {fileID: 1872973868}
-  settingText: {fileID: 1872973867}
-  pauseText: {fileID: 1872973866}
-  continueButton: {fileID: 1872973865}
-  restartButton: {fileID: 1872973864}
-  goToMenuButton: {fileID: 1872973862}
 --- !u!1 &1543420420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,20 +3497,6 @@ Transform:
   m_Father: {fileID: 949417949}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1543420422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543420420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6011a186522f2284bb8616e5f0d46189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  posValue: 80.12
 --- !u!212 &1543420423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4575,7 +4523,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063464479
 GameObject:

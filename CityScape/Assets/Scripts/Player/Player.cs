@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     public int playerHp; // 플레이어의 최대 hp
     public int playerCurrentHp; // 플레이어의 인게임상에서의 hp를 나타내기위한 변수
-    public float playerOffence;
+    //public float playerOffence;
     public bool isLive;
 
     // 코인 관련
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         isLive = true;
         isRolling = false;
         playerHp = GameManager.instance.upgradeData.hpLevel + 2;
-        playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
+        //playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
         playerCurrentHp = playerHp;
         MapBuilder.instance.Init_var();
         anim.SetBool("isRolling", false);
