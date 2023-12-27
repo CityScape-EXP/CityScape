@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Collider2D coll;
 
+    //속도 관련
+    const float speed = 5.8f;
+
     public int playerHp; // 플레이어의 최대 hp
     public int playerCurrentHp; // 플레이어의 인게임상에서의 hp를 나타내기위한 변수
     //public float playerOffence;
@@ -56,13 +59,30 @@ public class Player : MonoBehaviour
 
     public void JumpUp()
     {
-        if (isGround)
+        if (isGround && !isRolling)
         {
             GameManager.Sound.Play(Define.SFX.Char_jump_1);
             isGround = false;
             coll.isTrigger = true;
 
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+    }
+
+
+    void JumpDown()
+    {
+
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
+            Vector2.down * 0.45f, Vector3.down, 1, LayerMask.GetMask("Platform"));
+
+
+        if (isGround && rayHit.collider.CompareTag("Platform") && !isRolling)
+        {
+            isGround = false;
+            coll.isTrigger = true;
+
+            rayHit.collider.gameObject.GetComponent<Platform>().TemporaryDisable();
         }
     }
     private void Update()
@@ -76,15 +96,18 @@ public class Player : MonoBehaviour
             JumpUp();
         }
         // 하방 점프 (조건 : Platform일것, 땅에 닿아있을것, 구르고 있지 않을것)
-        if (Input.GetKeyDown(KeyCode.DownArrow) && isGround
-            && rayHit.collider.CompareTag("Platform") && !isRolling)
+        //if (Input.GetKeyDown(KeyCode.DownArrow) && isGround
+        //    && rayHit.collider.CompareTag("Platform") && !isRolling)
+        //{
+        //    isGround = false;
+        //    coll.isTrigger = true;
+        //
+        //    rayHit.collider.gameObject.GetComponent<Platform>().TemporaryDisable();
+        //}
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            isGround = false;
-            coll.isTrigger = true;
-
-            rayHit.collider.gameObject.GetComponent<Platform>().TemporaryDisable();
+            JumpDown();
         }
-
         // 낙하중일때 DownRay 실행
         if (rigid.velocity.y < 0)
             GroundCheck(rayHit);
@@ -96,6 +119,8 @@ public class Player : MonoBehaviour
             StartCoroutine(Rolling());
         }
     }
+
+
 
     private void GroundCheck(RaycastHit2D rayHit)
     {
@@ -116,7 +141,7 @@ public class Player : MonoBehaviour
         GameManager.Sound.Play(Define.SFX.Char_hit_1);
 
         playerCurrentHp -= damage;
-        //ScoreManager.Score -= 1000; //피격 시 데미지
+        ScoreManager.Score -= 1000; //피격 시 데미지
         Debug.Log($"플레이어 체력 : {playerCurrentHp}");
         if (playerCurrentHp <= 0)
         {
@@ -179,6 +204,57 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// x y z... y/x = tan
+    /// </summary>
+    /// <param name="direction"></param>
+    public void SetDirectionMove(Vector3 direction)
+    {
+        //탄젠트 값 기반
+        float Tan = direction.y/ (float)(Mathf.Abs(direction.x) >=0.001 ? direction.x : 0.001);
+        Debug.Log($"Tan : {Tan} ");
+        if(Mathf.Abs(Tan) <= Mathf.Tan(30 * Mathf.Deg2Rad))
+        {
+            RunHorizon(direction.x);
+        }
+
+        else if (Mathf.Abs(Tan) <= Mathf.Tan(60 * Mathf.Deg2Rad))
+        {
+
+            RunHorizon(direction.x);
+            JumpUpDown(direction.y);
+        }
+        else
+        {
+            JumpUpDown(direction.y);
+        }
+
+    }
+    void RunHorizon(float x)
+    {
+        if (x > 0)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * speed);
+        }
+        else
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+
+        }
+    }
+    void JumpUpDown(float y)
+    {
+
+        if (y > 0)
+        {
+            JumpUp();
+        }
+        else
+        {
+
+            JumpDown();
+        }
+    }
 
 }
 
