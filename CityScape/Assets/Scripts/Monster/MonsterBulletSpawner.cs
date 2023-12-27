@@ -11,6 +11,7 @@ public class MonsterBulletSpawner : MonoBehaviour
     /* 몬스터 관련 */
     GameObject MyMonster;
     public bool isMonsterLive;
+    private bool isMonsterExit;
 
     /* 초기화 */
     private void Awake()
@@ -22,6 +23,7 @@ public class MonsterBulletSpawner : MonoBehaviour
     private void Start()
     {
         isMonsterLive = true;
+        isMonsterExit = false;
 
         StartCoroutine(CheckMonsterPosit());
     }
@@ -59,7 +61,7 @@ public class MonsterBulletSpawner : MonoBehaviour
     IEnumerator SpawnRoutine()
     {
         StopCoroutine(CheckMonsterPosit());
-        while (isMonsterLive) // 몬스터 생존 경우만 총알 생성
+        while (isMonsterLive && !isMonsterExit) // 몬스터 생존 & 퇴장중이 아닐 경우만 총알 생성
         {
             // PoolManager에서 Bullet 가져 옴 ( 1 : 몬스터의 Bullet )
             GameObject Bullet = PoolManager.GetObject(1);
@@ -75,5 +77,7 @@ public class MonsterBulletSpawner : MonoBehaviour
             yield return new WaitForSeconds(BulletSpawnTime); // SpawnColltime초 만큼 대기 후 실행
         }
     }
+
+    public void MonsterExit() { isMonsterExit = true; }
 
 }

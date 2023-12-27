@@ -24,7 +24,7 @@ public class MonsterMove : MonoBehaviour
             appearTime += Time.deltaTime;
         if (appearTime > 7) // 생성 후 10초가 지나면 ? -> 퇴장 액션
         {
-            this.GetComponent<MonsterBulletSpawner>().enabled = false; // 총알 생성 로직 멈춤
+            this.GetComponent<MonsterBulletSpawner>().MonsterExit();
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             transform.Translate(Vector3.left * Time.deltaTime * 10);
             if(transform.position.x < -15)

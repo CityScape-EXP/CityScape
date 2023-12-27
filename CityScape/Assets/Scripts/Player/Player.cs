@@ -155,7 +155,6 @@ public class Player : MonoBehaviour
         // 코인
         if (collision.gameObject.tag == "Coin5")
         {   // 5코인 획득
-            Debug.Log("5코인 획득");
             collision.gameObject.SetActive(false); //동전 없어지게
             GameManager.instance.gameData.money += 5;
             GameManager.instance.dm.SaveGameData(GameManager.instance.gameData);
@@ -164,7 +163,6 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Coin10")
         {   // 10코인 획득
-            Debug.Log("10코인 획득");
             collision.gameObject.SetActive(false); //동전 없어지게
             GameManager.instance.gameData.money += 10;
             GameManager.instance.dm.SaveGameData(GameManager.instance.gameData);

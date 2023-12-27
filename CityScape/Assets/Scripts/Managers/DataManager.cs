@@ -91,14 +91,7 @@ public class DataManager : MonoBehaviour
 
     // GameData.json 파일을 GameData 클래스 정보로 변경하는 함수
     // 왜???????? 싱글톤으로 만들었나요????????????????????????
-    public GameData GetGameData()
-    {
-        //GameData data = new GameData();
-        //string path = savePath + $"/Resources/Data/GameData.json";
-        //string jsonData = File.ReadAllText(path);
-        //data = JsonUtility.FromJson<GameData>(jsonData);
-        return MainGameData;
-    }
+    public GameData GetGameData() { return MainGameData; }
 
 
     /*
@@ -106,23 +99,14 @@ public class DataManager : MonoBehaviour
      *  -> 일어난 변화를 적용시켜줘야 한다
      */
     // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
-    public void SaveGameData(GameData gdata)
-    {
-         
-        //string data = JsonUtility.ToJson(gdata);
-        //Debug.Log("저장 데이터 : " + data);
-        //File.WriteAllText(savePath + "/Resources/Data/GameData.json", data);
-        //GameManager.instance.gameData = GetGameData();
-
-        MainGameData = gdata;
-
-    }
+    public void SaveGameData(GameData gdata) { mainGameData = gdata; }
 
     void SaveGameDataUsePlayerPrefs(GameData gdata)
     {
-
-
-
+        string savePath = Application.dataPath;
+        string data = JsonUtility.ToJson(gdata);
+        File.WriteAllText(savePath + "/Resources/Data/GameData.json", data);
+        GameManager.instance.gameData = GetGameData();
     }
 
     // UpgradeData 클래스 정보를 받아 UpgradeData.json에 저장하는 함수
@@ -130,7 +114,6 @@ public class DataManager : MonoBehaviour
     {
          
         string data = JsonUtility.ToJson(udata);
-        Debug.Log("저장 데이터 : " + data);
         File.WriteAllText(savePath + "/Resources/Data/UpgradeData.json", data);
         GameManager.instance.upgradeData = GetUpgradeData();
     }
