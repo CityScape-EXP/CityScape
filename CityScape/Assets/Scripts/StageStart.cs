@@ -44,20 +44,7 @@ public class StageStart : MonoBehaviour
 
         //StartCoroutine(LoadMainMenuScene());     //다른 씬이 로드되는 시점 게임 오브젝트가 파괴되면 과연 코루틴은 작동을 할까요?
     }
-    IEnumerator LoadMainMenuScene()
-    {
-        // AsyncOperation을 통해 Scene Load 정도를 알 수 있다.
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(roadStage1);
-        // Scene을 불러오는 것이 완료되면, AsyncOperation은 isDone 상태가 된다.
-        while (!asyncLoad.isDone)
-        {
-            GameManager.instance.stageNum = 1;
-            Time.timeScale = 1;
-            GameManager.instance.stageTime = 0; //stageTime 초기화
-            UIManager.pauseOnclicked = false; //static변수는 instance 안써도 됨
-            yield return null;
-        }
-    }
+
     public void StartStage2(){
         DataManager.NowStage = Define.Stages.Stage2;
 

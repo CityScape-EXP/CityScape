@@ -106,7 +106,12 @@ public class GameUI : UI_Base
     }
     void PauseButton(PointerEventData evt)
     {
-        UIManager.LoadUI(Define.UI_Type.PauseUI);
+        if(GameManager.instance.stageNum==1)
+            UIManager.LoadUI(Define.UI_Type.PauseUI1);
+        else if (GameManager.instance.stageNum == 2)
+            UIManager.LoadUI(Define.UI_Type.PauseUI2);
+        else
+            UIManager.LoadUI(Define.UI_Type.PauseUI3);
         Time.timeScale = 0f;
         UIManager.pauseOnclicked = true;
         GameManager.Sound.Play(Define.SFX.UI_select_1);

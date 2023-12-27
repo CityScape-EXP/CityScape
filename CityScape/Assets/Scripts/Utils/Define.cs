@@ -67,7 +67,9 @@ public class Define
         TitleUI,
         CreditUI,
         SettingUI,
-        PauseUI,
+        PauseUI1,
+        PauseUI2,
+        PauseUI3,
         GameOverUI,
         ClearUI,
     }
