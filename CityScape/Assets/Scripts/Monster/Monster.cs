@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour
 
     public float health;
     public float power;
-    public bool isLive; // ���� Instantiate�� isLive = true
+    public bool isLive; 
 
     public GameObject coin5Prefab;
     public GameObject coin10Prefab;

@@ -631,6 +631,7 @@ MonoBehaviour:
   - {fileID: 8715609804402053396, guid: 6203043e917a6ce448248ad5a3ba38e2, type: 3}
   - {fileID: 6792495905665241148, guid: 46be4fb2571ebff46b4297d0a4019e90, type: 3}
   - {fileID: 6792495905665241148, guid: 4073ec0742d0b114cbe4e89f8422a518, type: 3}
+  - {fileID: 5423309729123810911, guid: d2cd7b8b5753c32489762794afd17a61, type: 3}
 --- !u!4 &224447627
 Transform:
   m_ObjectHideFlags: 0
@@ -759,6 +760,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb21a6c009fbd543ba63eee05e08623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &507408844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507408845}
+  - component: {fileID: 507408846}
+  m_Layer: 0
+  m_Name: PotionSpawner
+  m_TagString: Respawn
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &507408845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507408844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.08, y: 0.77, z: -10.123489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507408846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507408844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10982068104edf946911685d7dcfcedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaitForFirstSpawn: 3
+  PotionSpawnTime: 10
 --- !u!1 &509038723
 GameObject:
   m_ObjectHideFlags: 0

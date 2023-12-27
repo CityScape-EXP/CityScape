@@ -78,6 +78,4 @@ public class PoolManager : MonoBehaviour
         obj.transform.SetParent(Instance.transform);
         Instance.poolingObjectQueueList[prefebID].Enqueue(obj);
     }
-
-
 }
