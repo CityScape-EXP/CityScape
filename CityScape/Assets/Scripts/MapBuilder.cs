@@ -56,8 +56,7 @@ public class MapBuilder : MonoBehaviour
         // 할당된 패턴 시간이 지났을 경우 (패턴 사이 시간 간격은 3초이다)
         if(Time.time - patternStartTime > nowPatternTime + 2)
         {
-            // 초반 5패턴 & 중반 8패턴 & 후반 6패턴
-            if (ingameTime < 30) nowPhase = 0;
+            if (ingameTime < 35) nowPhase = 0;
             else if (ingameTime < 85) nowPhase = 1;
             else if (ingameTime < 120) nowPhase = 2;
             else Debug.Log("게임 클리어");
