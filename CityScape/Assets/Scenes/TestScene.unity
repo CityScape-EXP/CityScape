@@ -5023,11 +5023,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8441720574574615089, guid: 6bbefb01e6a73ce4ea804fe78544fd12, type: 3}
       propertyPath: FixPos.x
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8441720574574615089, guid: 6bbefb01e6a73ce4ea804fe78544fd12, type: 3}
       propertyPath: FixPos.y
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441720574574615091, guid: 6bbefb01e6a73ce4ea804fe78544fd12, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8441720574574615093, guid: 6bbefb01e6a73ce4ea804fe78544fd12, type: 3}
       propertyPath: m_RootOrder

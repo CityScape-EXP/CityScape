@@ -11,7 +11,7 @@ using UnityEngine.UI;
  */
 public class Reinforcement : MonoBehaviour
 {
-    // 변경한다면 HUI의 upgradeMoneyData도 같이 변경할것
+    // 변경한다면 HUI.cs의 upgradeMoneyData도 같이 변경할것
     // 강화에 필요한 재화 데이타
     int[,] upgradeMoneyData = new int[3, 4]
         { {10, 20, 30, 50 }, 

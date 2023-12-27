@@ -126,6 +126,12 @@ MonoBehaviour:
   moveSpeed: 13
   id: 0
   prefabID: 0
+  animatorController:
+  - {fileID: 9100000, guid: 2b4b9f1923fb63c41aec8e1f01708fb4, type: 2}
+  - {fileID: 9100000, guid: ee13378d51981ea4ba99a9c6ee0d38ba, type: 2}
+  - {fileID: 9100000, guid: 90b113e0994748d40a5be4bb1061bcf7, type: 2}
+  - {fileID: 9100000, guid: 3cf97ac10afafc44ead4cfc7dc79c10e, type: 2}
+  - {fileID: 9100000, guid: 6de073aebebc664469215158cf02eae6, type: 2}
 --- !u!95 &1182428420542883283
 Animator:
   serializedVersion: 5
