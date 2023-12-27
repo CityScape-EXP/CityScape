@@ -172,9 +172,9 @@ public class Player : MonoBehaviour
 
         // 포션
         else if (collision.gameObject.tag == "Potion")
-        {   // 플레이어 체력 3 회복
-            playerCurrentHp += collision.gameObject.GetComponent<Potion>().getPotionHP();
-            Debug.Log("포션 획득, 체력 3 회복 // 플레이어 현재 체력 : " + playerCurrentHp);
+        {   // 플레이어 체력 회복
+            playerCurrentHp = Mathf.Min(playerHp, playerCurrentHp + collision.gameObject.GetComponent<Potion>().getPotionHP());
+            Debug.Log("포션 획득, 체력 1 회복 // 플레이어 현재 체력 : " + playerCurrentHp);
             Destroy(collision.gameObject);
         }
     }
