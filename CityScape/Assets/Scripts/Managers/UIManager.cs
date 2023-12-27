@@ -94,6 +94,7 @@ public class UIManager : MonoBehaviour
     }
     public void GoMenuButton()  // init_var작동문제로 async로 변경
     {
+        ScoreManager.instance.GameOverDataSave();
         UIManager.isStart = false;
         SceneManager.LoadScene("MainPopUp");
     }
