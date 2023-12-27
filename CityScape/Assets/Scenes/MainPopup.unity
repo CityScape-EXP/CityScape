@@ -701,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingCanvas: {fileID: 1581500106}
   settingPanel: {fileID: 1325097805}
+  creditPanel: {fileID: 7521004783199561082, guid: 8173ff0ce77037c4a91d07408d6fad1b, type: 3}
 --- !u!4 &833163381
 Transform:
   m_ObjectHideFlags: 0

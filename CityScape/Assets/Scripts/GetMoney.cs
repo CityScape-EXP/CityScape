@@ -34,6 +34,6 @@ public class GetMoney : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textComponent.text = "Coin X " + getMoney.ToString();
+        textComponent.text = "X " + getMoney.ToString();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
@@ -9,26 +10,36 @@ public class PlayerBullet : MonoBehaviour
     private float damage;
     public float id;
     public float prefabID;
+    private Animator anim;
+    [SerializeField]
+    private AnimatorController[] animatorController;
+    private int offenceLevel;
 
     void Start()
     {
-        int offenceLevel = GameManager.instance.upgradeData.offenceLevel;
+        offenceLevel = GameManager.instance.upgradeData.offenceLevel;
+        gameObject.GetComponent<Animator>().runtimeAnimatorController = animatorController[offenceLevel - 1];
         damage = 1f + 1f * (offenceLevel - 1);
+        anim = GetComponent<Animator>();
         //coll = GetComponent<BoxCollider2D>();
+    }
+    private void OnEnable()
+    {
+        gameObject.GetComponent<Animator>().runtimeAnimatorController = animatorController[offenceLevel - 1];
     }
 
     private void FixedUpdate()
     { 
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); // ºÒ·¿ ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); // ë¶ˆë › ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
 
-        if (transform.position.x > 12) // ÃÑ¾ËÀÌ È­¸é ¹ÛÀ¸·Î ¹ş¾î³¯ ½Ã
+        if (transform.position.x > 12) // ì´ì•Œì´ í™”ë©´ ë°–ìœ¼ë¡œ ë²—ì–´ë‚  ì‹œ
         {
             PoolManager.ReturnObject(this.gameObject, 0);
             gameObject.SetActive(false);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // Ãæµ¹ °¨Áö
+    private void OnTriggerEnter2D(Collider2D collision) // ì¶©ëŒ ê°ì§€
     {
         if (collision.CompareTag("Monster")){
             collision.gameObject.GetComponent<Monster>().getDamage(damage);

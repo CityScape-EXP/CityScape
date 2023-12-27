@@ -58,10 +58,12 @@ public class Monster : MonoBehaviour
         float randomValue = Random.value; //0에서 1사이의 랜덤값
 
         if (randomValue <= 0.7f){// 70%의 확률로 5코인생성
-        Instantiate(coin5Prefab, transform.position, Quaternion.identity);
+            GameObject coin5 = Instantiate(coin5Prefab, transform.position, Quaternion.identity);
+            Destroy(coin5, 6.0f); //6초 후 파괴
         }
         else{ // 10코인 생성
-        Instantiate(coin10Prefab, transform.position, Quaternion.identity);
+            GameObject coin10 = Instantiate(coin10Prefab, transform.position, Quaternion.identity);
+            Destroy(coin10, 6.0f);
         }
     }
 }
