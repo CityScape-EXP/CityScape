@@ -30,6 +30,8 @@ public class StageStart : MonoBehaviour
     public string roadStage1 = "TestScene";
     public void StartStage1() 
     {
+
+        DataManager.NowStage = Define.Stages.Stage1;
         Debug.Log("Get");
 
         GameManager.Sound.Play(Define.BGM.St_1);
@@ -57,9 +59,13 @@ public class StageStart : MonoBehaviour
         }
     }
     public void StartStage2(){
+        DataManager.NowStage = Define.Stages.Stage2;
+
         SceneManager.LoadScene("Stage2Scene");
     }
     public void StartStage3(){
+        DataManager.NowStage = Define.Stages.Stage3;
+
         SceneManager.LoadScene("Stage3Scene");
     }
 }

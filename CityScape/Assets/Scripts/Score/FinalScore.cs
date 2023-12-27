@@ -30,12 +30,7 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
         textComponent.text = "Final Score : " + finalScore.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+  
     public void StageAdvRule(){ //스테이지 진행도에 따라 점수 추가부여
         double timeP = (GameManager.instance.stageTime / GRManager.instance.gameTime) * 100; // 게임시간 테스트용 변동 가능 => /0.12
         float timeR = (float)Math.Truncate(timeP*10)/10; //소수점 첫째자리 이하 버림

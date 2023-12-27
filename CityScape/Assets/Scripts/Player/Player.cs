@@ -116,13 +116,15 @@ public class Player : MonoBehaviour
         GameManager.Sound.Play(Define.SFX.Char_hit_1128);
 
         playerCurrentHp -= damage;
-        ScoreManager.Score -= 1000; //피격 시 데미지
+        //ScoreManager.Score -= 1000; //피격 시 데미지
         Debug.Log($"플레이어 체력 : {playerCurrentHp}");
         if (playerCurrentHp <= 0)
         {
+            ScoreManager.instance.GameOverDataSave();
             isLive = false;
             //UIManager.LoadUI(Define.UI_Type.GameOverUI);     //자동화 UI
             GameManager.Sound.Play(Define.SFX.Char_death_1128);
+
             Debug.Log("플레이어 사망");
             gameObject.SetActive(false);
         }

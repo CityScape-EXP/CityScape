@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Playables;
 
 public class ScoreManager : MonoBehaviour //Score&Money 상태 관리
 {    
     [Header("Data")]
-    [SerializeField] public GameData gameData; //Money와 HighScore은 DataManager에서 가져오기
+    GameData gameData; //Money와 HighScore은 DataManager에서 가져오기???????????????????????????????
 
-    public static int Score; //현재 스코어 선언
+    public static int Score { get; set; } //현재 스코어 선언
     TextMeshProUGUI textComponent;
     
     //싱글톤 적용
@@ -22,6 +23,18 @@ public class ScoreManager : MonoBehaviour //Score&Money 상태 관리
             instance = this;
         }
     }
+
+    public void GameOverDataSave()
+    {
+        gameData = DataManager.MainGameData;
+        if(Score > gameData.stageHighScore[(int)DataManager.NowStage])
+        {
+            gameData.stageHighScore[(int)DataManager.NowStage] = Score;
+            DataManager.instance.SaveGameData(gameData);
+        }
+
+    }
+
 
     // Start is called before the first frame update
     void Start()

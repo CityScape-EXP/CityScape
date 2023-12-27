@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     public float surviveTime; //초기부터진행시간
     public float stageTime; //스테이지시작 후부터 진행시간
     public int stageNum; //선택한 스테이지의 번호
-    public bool isGameover;
-    public DataManager dm;
+    public bool isGameover { get; set; }
+    public DataManager dm { get; set; }
 
     SoundManager soundManager = new SoundManager();
     public static SoundManager Sound { get { return instance.soundManager; } } 
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
                 gm.AddComponent<MapBuilder>();
 
                 _instance.dm = _instance.GetComponent<DataManager>();
+                _instance.dm.Init();
 
                 _instance.gameData = _instance.dm.GetGameData();
                 _instance.upgradeData = _instance.dm.GetUpgradeData();

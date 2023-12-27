@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Text;
+using System.Reflection;
 
 /*  DataManager.cs
  *  각종 json 파일을 관리하는 스크립트
@@ -12,16 +13,54 @@ using System.Text;
 
 public class DataManager : MonoBehaviour
 {
-    //싱글톤
-    public static DataManager instance;
-    
-    private void Awake(){
-        /* 싱글톤 적용 */
-        if (instance == null)
+    public static DataManager instance { get { return GameManager.instance.dm; } set { GameManager.instance.dm = value; } }
+    string _savePath = null;
+    string savePath { get { if (_savePath == null) Init(); return _savePath; } }
+    public static Define.Stages NowStage { get; set; }
+
+    private void Awake()
+    {
+        Init();
+    }
+    public void Init()
+    {
+#if UNITY_EDITOR
+        _savePath = Application.dataPath;
+#elif UNITY_ANDROID
+        _savePath = = Application.persistentDataPath;
+#endif
+    }
+
+    GameData mainGameData = new GameData();
+    public static GameData MainGameData { 
+        get { return instance.mainGameData; }
+        set 
         {
-            instance = this;
+            instance.mainGameData.money = value.money;
+            PlayerPrefs.SetInt("Money", instance.mainGameData.money);
+
+            instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] = value.isStageOpen[(int)Define.Stages.Stage1];
+            PlayerPrefs.SetInt ($"IsStageOpen{Define.Stages.Stage1}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] ? 1 : 0);
+
+            instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] = value.isStageOpen[(int)Define.Stages.Stage2];
+            PlayerPrefs.SetInt ($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] ? 1 : 0);
+
+            instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] = value.isStageOpen[(int)Define.Stages.Stage3];
+            PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] ? 1 : 0);
+
+
+            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1] = value.stageHighScore[(int)Define.Stages.Stage1];
+            PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage1}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1]);
+
+            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2] = value.stageHighScore[(int)Define.Stages.Stage2];
+            PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage2}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2]);
+
+            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = value.stageHighScore[(int)Define.Stages.Stage3];
+            PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage3}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3]);
+
         }
     }
+
 
 #if UNITY_ANDROID
     // 안드로이드 빌드 떄 사용
@@ -31,7 +70,7 @@ public class DataManager : MonoBehaviour
     // Json 파일의 이름 규칙은 다음과 같다. (예) St0_Phase2_Pattern0
     public PatternData GetPatternData(int stage, int phase, int pattern)
     {
-        string savePath = Application.dataPath;
+         
         PatternData data = new PatternData();
         string path = savePath + $"/Resources/Patterns/St{stage}_Phase{phase}_Pattern{pattern}.json" ;
         string jsonData = File.ReadAllText(path);
@@ -42,7 +81,7 @@ public class DataManager : MonoBehaviour
     // UpgradeData.json 파일을 UpgradeData 클래스 정보로 변경하는 함수
     public UpgradeData GetUpgradeData()
     {
-        string savePath = Application.dataPath;
+         
         UpgradeData data = new UpgradeData();
         string path = savePath + $"/Resources/Data/UpgradeData.json";
         string jsonData = File.ReadAllText(path);
@@ -51,14 +90,14 @@ public class DataManager : MonoBehaviour
     }
 
     // GameData.json 파일을 GameData 클래스 정보로 변경하는 함수
+    // 왜???????? 싱글톤으로 만들었나요????????????????????????
     public GameData GetGameData()
     {
-        string savePath = Application.dataPath;
-        GameData data = new GameData();
-        string path = savePath + $"/Resources/Data/GameData.json";
-        string jsonData = File.ReadAllText(path);
-        data = JsonUtility.FromJson<GameData>(jsonData);
-        return data;
+        //GameData data = new GameData();
+        //string path = savePath + $"/Resources/Data/GameData.json";
+        //string jsonData = File.ReadAllText(path);
+        //data = JsonUtility.FromJson<GameData>(jsonData);
+        return MainGameData;
     }
 
 
@@ -69,17 +108,27 @@ public class DataManager : MonoBehaviour
     // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
     public void SaveGameData(GameData gdata)
     {
-        string savePath = Application.dataPath;
-        string data = JsonUtility.ToJson(gdata);
-        Debug.Log("저장 데이터 : " + data);
-        File.WriteAllText(savePath + "/Resources/Data/GameData.json", data);
-        GameManager.instance.gameData = GetGameData();
+         
+        //string data = JsonUtility.ToJson(gdata);
+        //Debug.Log("저장 데이터 : " + data);
+        //File.WriteAllText(savePath + "/Resources/Data/GameData.json", data);
+        //GameManager.instance.gameData = GetGameData();
+
+        MainGameData = gdata;
+
+    }
+
+    void SaveGameDataUsePlayerPrefs(GameData gdata)
+    {
+
+
+
     }
 
     // UpgradeData 클래스 정보를 받아 UpgradeData.json에 저장하는 함수
     public void SaveUpgradeData(UpgradeData udata)
     {
-        string savePath = Application.dataPath;
+         
         string data = JsonUtility.ToJson(udata);
         Debug.Log("저장 데이터 : " + data);
         File.WriteAllText(savePath + "/Resources/Data/UpgradeData.json", data);
@@ -88,7 +137,7 @@ public class DataManager : MonoBehaviour
 
     public void SavePatternData(PatternData patternData, int stage, int phase, int pattern)
     {
-        string savePath = Application.dataPath;
+         
         string data = JsonUtility.ToJson(patternData);
         Debug.Log(data);
         string filePath = savePath + $"/Resources/Patterns/St{stage}_Phase{phase}_Pattern{pattern}.json";
@@ -148,6 +197,30 @@ public class GameData
         stageHighScore = new List<int>() { 0, 0, 0 };
         money = 0;
     }
+
+
+    /// <summary>
+    /// GameData newGameData = new GameData();
+    /// int num = newGameData[Define.Stages.Stage1] 는 이제 하이스코어가 출력됩니다.
+    /// newGameData[Define.Stages.Stage1] = (int) _intnum 는 이제 하이스코어가 저장됩니다.(PlayerPrebs 기반)
+    /// 
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public int this [Define.Stages index]
+    {
+        get
+        {
+            return stageHighScore[(int)index];
+        }
+
+        set
+        {
+            stageHighScore[(int)index] = value;
+            PlayerPrefs.SetInt($"StageHighScore{index}", stageHighScore[(int)index]);
+        }
+    }
+
 }
 
 

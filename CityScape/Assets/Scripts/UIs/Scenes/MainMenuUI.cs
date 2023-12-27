@@ -28,6 +28,12 @@ public class MainMenuUI : UI_Base , IPointerClickHandler
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 
+
+        Get<TMP_Text>((int)Texts.Stage1_HighScore).text = DataManager.MainGameData.stageHighScore[(int)Define.Stages.Stage1].ToString();
+        Get<TMP_Text>((int)Texts.Stage2_HighScore).text = DataManager.MainGameData.stageHighScore[(int)Define.Stages.Stage2].ToString();
+        Get<TMP_Text>((int)Texts.Stage3_HighScore).text = DataManager.MainGameData.stageHighScore[(int)Define.Stages.Stage3].ToString();
+
+
         BindEvent(Get<Button>((int)Buttons.Stage1_Button).gameObject, Stage1Btn);
         BindEvent(Get<Button>((int)Buttons.Stage2_Button).gameObject, Stage2Btn);
         BindEvent(Get<Button>((int)Buttons.Stage3_Button).gameObject, Stage3Btn);
