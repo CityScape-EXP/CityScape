@@ -14,8 +14,19 @@ using System.Reflection;
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance { get { return GameManager.instance.dm; } set { GameManager.instance.dm = value; } }
-    string _savePath = null;
-    string savePath { get { if (instance._savePath == null) Init(); return instance._savePath; } }
+    string _savePath = "";
+    string savePath { get 
+        { 
+            if (instance._savePath == "") 
+            {
+
+#if UNITY_EDITOR
+                instance._savePath = Application.dataPath;
+#elif UNITY_ANDROID
+                instance._savePath = = Application.persistentDataPath;
+#endif
+            }
+            return instance._savePath; } }
     public static Define.Stages NowStage { get; set; }
 
    
@@ -25,11 +36,6 @@ public class DataManager : MonoBehaviour
         {
             Debug.Log("3");
 
-#if UNITY_EDITOR
-            instance._savePath = Application.dataPath;
-#elif UNITY_ANDROID
-            instance._savePath = = Application.persistentDataPath;
-#endif
             instance.mainGameData.money = PlayerPrefs.GetInt("Money", 0);
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage1}", 1) != 0 ? true : false;
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage2}", 0) != 0 ? true : false;
@@ -40,37 +46,43 @@ public class DataManager : MonoBehaviour
             instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = PlayerPrefs.GetInt($"StageHighScore{Define.Stages.Stage3}", 0);
 
         }
-
-
     }
+
+
 
     GameData mainGameData = new GameData();
     public static GameData MainGameData { 
         get { return instance.mainGameData; }
-        set 
+        set
         {
             instance.mainGameData.money = value.money;
             PlayerPrefs.SetInt("Money", instance.mainGameData.money);
 
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] = value.isStageOpen[(int)Define.Stages.Stage1];
-            PlayerPrefs.SetInt ($"IsStageOpen{Define.Stages.Stage1}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] ? 1 : 0);
+            PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage1}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] ? 1 : 0);
 
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] = value.isStageOpen[(int)Define.Stages.Stage2];
-            PlayerPrefs.SetInt ($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] ? 1 : 0);
+            PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] ? 1 : 0);
 
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] = value.isStageOpen[(int)Define.Stages.Stage3];
             PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] ? 1 : 0);
 
+            if (instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1] < value.stageHighScore[(int)Define.Stages.Stage1])
+            {
+                instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1] = value.stageHighScore[(int)Define.Stages.Stage1];
+                PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage1}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1]);
+            }
 
-            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1] = value.stageHighScore[(int)Define.Stages.Stage1];
-            PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage1}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1]);
-
-            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2] = value.stageHighScore[(int)Define.Stages.Stage2];
-            PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage2}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2]);
-
-            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = value.stageHighScore[(int)Define.Stages.Stage3];
-            PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage3}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3]);
-
+            if (instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2] < value.stageHighScore[(int)Define.Stages.Stage2])
+            {
+                instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2] = value.stageHighScore[(int)Define.Stages.Stage2];
+                PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage2}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2]);
+            }
+            if (instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] < value.stageHighScore[(int)Define.Stages.Stage3])
+            {
+                instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = value.stageHighScore[(int)Define.Stages.Stage3];
+                PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage3}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3]);
+            }
         }
     }
 

@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UI_Base : MonoBehaviour
 {
@@ -17,11 +18,20 @@ public class UI_Base : MonoBehaviour
     /// TMP_Text의 폰트 사이즈 조정용 비율
     /// </summary>
     static float ratio = 1f;
-
+    private CanvasScaler canvasScaler;
+    float setWidth = 2400; // 사용자 설정 너비
+    float setHeight = 1080; // 사용자 설정 높이
     /// <summary>
     /// UI 오브젝트를 캐싱
     /// </summary>
     protected Dictionary<Type, UnityEngine.Object[]> typecache = new Dictionary<Type, UnityEngine.Object[]>();
+
+    protected void Init()
+    {
+        canvasScaler = GetComponent<CanvasScaler>();
+        SetResolution();
+    }
+
 
     /// <summary>
     /// 오브젝트 바인딩 (enum 기반)
@@ -36,7 +46,13 @@ public class UI_Base : MonoBehaviour
 
         for(int i = 0;i < typenames.Length; i++)
         {
-            ui_objects[i] = Utils.FindChild<T>(gameObject, typenames[i], true);
+
+            if (typeof(T) == typeof(GameObject))
+                ui_objects[i] = Utils.FindChild(gameObject, typenames[i], true);
+            else
+            {
+                ui_objects[i] = Utils.FindChild<T>(gameObject, typenames[i], true);
+            }
 
 
             if (ui_objects[i] == null)
@@ -94,5 +110,24 @@ public class UI_Base : MonoBehaviour
         return objects[idx] as T;
     }
 
+    public void SetResolution()
+    {
 
+        float deviceWidth = Screen.width; // 기기 너비 저장
+        float deviceHeight = Screen.height; // 기기 높이 저장
+
+
+        canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        canvasScaler.referenceResolution = new Vector2(setWidth, setHeight);
+        canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+
+        if (setWidth / setHeight < deviceWidth / deviceHeight)
+        {
+            canvasScaler.matchWidthOrHeight = 1f;
+        }
+        else
+        {
+            canvasScaler.matchWidthOrHeight = 0f;
+        }
+    }
 }

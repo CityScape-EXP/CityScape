@@ -41,6 +41,7 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
         else{
             ScoreManager.Score += Mathf.RoundToInt(timeR * 100);
         }
+
         finalScore = ScoreManager.Score;
     }
 }

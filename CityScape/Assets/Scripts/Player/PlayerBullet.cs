@@ -15,17 +15,18 @@ public class PlayerBullet : MonoBehaviour
     private AnimatorController[] animatorController;
     private int offenceLevel;
 
-    void Start()
+    void Awake()
     {
         offenceLevel = GameManager.instance.upgradeData.offenceLevel;
-        gameObject.GetComponent<Animator>().runtimeAnimatorController = animatorController[offenceLevel - 1];
-        damage = 1f + 1f * (offenceLevel - 1);
         anim = GetComponent<Animator>();
+        anim.runtimeAnimatorController = animatorController[offenceLevel - 1];
+        damage = 1f + 1f * (offenceLevel - 1);
+        
         //coll = GetComponent<BoxCollider2D>();
     }
     private void OnEnable()
     {
-        gameObject.GetComponent<Animator>().runtimeAnimatorController = animatorController[offenceLevel - 1];
+        anim.runtimeAnimatorController = animatorController[offenceLevel - 1];
     }
 
     private void FixedUpdate()
