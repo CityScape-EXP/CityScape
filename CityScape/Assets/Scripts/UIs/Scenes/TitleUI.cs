@@ -41,6 +41,6 @@ public class TitleUI : UI_Base
     void GetMainMenu(PointerEventData evt)
     {
         UIManager.LoadUI(Define.UI_Type.MainMenuUI);
-        GameManager.Sound.Play(Define.SFX.UI_title_1128);
+        GameManager.Sound.Play(Define.SFX.UI_title_1);
     }
 }

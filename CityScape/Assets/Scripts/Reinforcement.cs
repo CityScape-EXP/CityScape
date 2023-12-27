@@ -53,10 +53,10 @@ public class Reinforcement : MonoBehaviour
         if(nowMoney < upgradeMoneyData[field, nowLevel-1]) 
         {
             Debug.Log("돈이 부족합니다");
-            GameManager.Sound.Play(Define.SFX.UI_upgrade_fail_1128);
+            GameManager.Sound.Play(Define.SFX.UI_upgrade_fail_1);
             return;
         }
-        GameManager.Sound.Play(Define.SFX.UI_upgrade_1128);
+        GameManager.Sound.Play(Define.SFX.UI_upgrade_1);
         // 강화 & json에 정보 Save
         nowMoney -= upgradeMoneyData[field, nowLevel-1];
         gameManager.gameData.money = nowMoney;

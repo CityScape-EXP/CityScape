@@ -50,12 +50,12 @@ public class SettingUI : UI_Base , IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.Sound.Play(Define.SFX.UI_touch_1128);
+        GameManager.Sound.Play(Define.SFX.UI_touch_1);
     }
     void CreditButton (PointerEventData evt) 
     {
         UIManager.LoadUI(Define.UI_Type.CreditUI);
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void ExitButton (PointerEventData evt) 
     {
@@ -64,7 +64,7 @@ public class SettingUI : UI_Base , IPointerClickHandler
     void OffSettingButton(PointerEventData evt) 
     {
         Destroy(this.gameObject);
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
 
 

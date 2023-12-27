@@ -43,32 +43,32 @@ public class MainMenuUI : UI_Base , IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.Sound.Play(Define.SFX.UI_touch_1128);
+        GameManager.Sound.Play(Define.SFX.UI_touch_1);
     }
     void Stage1Btn(PointerEventData evt)
     {
         StageStart.instance.StartStage1();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void Stage2Btn(PointerEventData evt)
     {
         StageStart.instance.StartStage2();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void Stage3Btn(PointerEventData evt)
     {
         StageStart.instance.StartStage3();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void SettingBtn(PointerEventData evt)
     {
         UIManager.LoadUI(Define.UI_Type.SettingUI);
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void ReinforceBtn(PointerEventData evt)
     {
         UIManager.LoadUI(Define.UI_Type.ReinforcementUI);
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
 
 

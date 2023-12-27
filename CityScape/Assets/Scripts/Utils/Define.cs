@@ -35,21 +35,21 @@ public class Define
     }
     public enum SFX
     {
-        Chac_roll_1128,
-        Char_death_1128,
-        Char_gunfire_1128,
-        Char_hit_1128,
-        Char_jump_1128,
-        Char_land_1128,
-        Enemy_death_1_1128,
-        Enemy_death_2_1128,
-        Enemy_gunfire_1128,
-        Enemy_hit_1128,
-        UI_select_1128,
-        UI_title_1128,
-        UI_touch_1128,
-        UI_upgrade_1128,
-        UI_upgrade_fail_1128,
+        Chac_roll_1,
+        Char_death_1,
+        Char_gunfire_1,
+        Char_hit_1,
+        Char_jump_1,
+        Char_land_1,
+        Enemy_death_1,
+        Enemy_death_2,
+        Enemy_gunfire_1,
+        Enemy_hit_1,
+        UI_select_1,
+        UI_title_1,
+        UI_touch_1,
+        UI_upgrade_1,
+        UI_upgrade_fail_1,
 
 
         MaxCount

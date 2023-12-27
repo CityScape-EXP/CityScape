@@ -31,6 +31,6 @@ public class Reinforcement_UI : UI_Base , IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.Sound.Play(Define.SFX.UI_touch_1128);
+        GameManager.Sound.Play(Define.SFX.UI_touch_1);
     }
 }

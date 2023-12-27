@@ -35,11 +35,11 @@ public class Monster : MonoBehaviour
             {
                 case 0: // 일반몬스터 처치
                     ScoreManager.Score += 100;
-                    GameManager.Sound.Play(Define.SFX.Enemy_death_1_1128);
+                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
                 case 1: // 날몹 처치
                     ScoreManager.Score += 200;
-                    GameManager.Sound.Play(Define.SFX.Enemy_death_2_1128);
+                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
                 case 2:
                     ScoreManager.Score += 150;
@@ -50,7 +50,7 @@ public class Monster : MonoBehaviour
         }
         else
         {
-            GameManager.Sound.Play(Define.SFX.Enemy_hit_1128);
+            GameManager.Sound.Play(Define.SFX.Enemy_hit_1);
         }
     }
 

@@ -34,13 +34,13 @@ public class ClearUI : UI_Base
     void Restart(PointerEventData evt)
     {
         UIManager.instance.OnRestartButton();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
 
     void GoToMenuButton(PointerEventData evt)
     {
         UIManager.instance.GoMenuButton();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
 
 

@@ -48,7 +48,7 @@ public class PlayerBulletSpawner : MonoBehaviour
             {
                 // 풀 가져오기, 사운드
                 GameObject obj = PoolManager.GetObject(0);
-                GameManager.Sound.Play(Define.SFX.Char_gunfire_1128);
+                GameManager.Sound.Play(Define.SFX.Char_gunfire_1);
 
                 // 총알 발사 위치 세부 조정
                 obj.transform.position = Player.transform.position + FixPos;

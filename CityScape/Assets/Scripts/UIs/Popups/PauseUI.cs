@@ -46,19 +46,19 @@ public class PauseUI : UI_Base
     void RestartButton(PointerEventData evt)
     {
         UIManager.instance.OnRestartButton();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void ContinueButton(PointerEventData evt)
     {
         Destroy(this.gameObject);
         Time.timeScale = 1f;
         UIManager.pauseOnclicked = false;
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
     void GoToMenuButton(PointerEventData evt)
     {
         UIManager.instance.GoMenuButton();
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
 
     #region Slider_Event

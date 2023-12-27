@@ -40,6 +40,6 @@ public class GameUI : UI_Base
         UIManager.LoadUI(Define.UI_Type.PauseUI);
         Time.timeScale = 0f;
         UIManager.pauseOnclicked = true;
-        GameManager.Sound.Play(Define.SFX.UI_select_1128);
+        GameManager.Sound.Play(Define.SFX.UI_select_1);
     }
 }

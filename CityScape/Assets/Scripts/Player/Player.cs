@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     {
         if (isGround)
         {
-            GameManager.Sound.Play(Define.SFX.Char_jump_1128);
+            GameManager.Sound.Play(Define.SFX.Char_jump_1);
             isGround = false;
             coll.isTrigger = true;
 
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
     public void getDamage(int damage)
     {
         if (isRolling) return;
-        GameManager.Sound.Play(Define.SFX.Char_hit_1128);
+        GameManager.Sound.Play(Define.SFX.Char_hit_1);
 
         playerCurrentHp -= damage;
         //ScoreManager.Score -= 1000; //피격 시 데미지
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
             ScoreManager.instance.GameOverDataSave();
             isLive = false;
             //UIManager.LoadUI(Define.UI_Type.GameOverUI);     //자동화 UI
-            GameManager.Sound.Play(Define.SFX.Char_death_1128);
+            GameManager.Sound.Play(Define.SFX.Char_death_1);
 
             Debug.Log("플레이어 사망");
             gameObject.SetActive(false);
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         isRolling = true;
         Debug.Log("=> 구르기 ON, 현재 체력 : " + playerCurrentHp);
         anim.SetBool("isRolling", true);
-        GameManager.Sound.Play(Define.SFX.Chac_roll_1128);
+        GameManager.Sound.Play(Define.SFX.Chac_roll_1);
 
         // ~ 구르기 지속 시간 ~
         yield return new WaitForSeconds(rollingTime);

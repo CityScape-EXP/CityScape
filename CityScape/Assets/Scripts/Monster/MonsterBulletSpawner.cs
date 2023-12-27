@@ -72,7 +72,7 @@ public class MonsterBulletSpawner : MonoBehaviour
                 - gameObject.transform.position).normalized;
             // Pool의 1번째 프리펩(총알)을 가져옴. 나중에 해당 부분 수정 가능성 있음
             MonsterBullet.transform.position = MyMonster.transform.position + FixPos; // 총알 생성 위치 조정
-            GameManager.Sound.Play(Define.SFX.Enemy_gunfire_1128);
+            GameManager.Sound.Play(Define.SFX.Enemy_gunfire_1);
 
             yield return new WaitForSeconds(BulletSpawnTime); // SpawnColltime초 만큼 대기 후 실행
         }
