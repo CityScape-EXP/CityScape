@@ -15,19 +15,20 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance { get { return GameManager.instance.dm; } set { GameManager.instance.dm = value; } }
     string _savePath = null;
-    string savePath { get { if (_savePath == null) Init(); return _savePath; } }
+    string savePath { get { if (instance._savePath == null) Init(); return instance._savePath; } }
     public static Define.Stages NowStage { get; set; }
 
    
     public void Init()
     {
-        if(_savePath == null)
+        if(instance._savePath == null)
         {
+            Debug.Log("3");
 
 #if UNITY_EDITOR
-            _savePath = Application.dataPath;
+            instance._savePath = Application.dataPath;
 #elif UNITY_ANDROID
-        _savePath = = Application.persistentDataPath;
+            instance._savePath = = Application.persistentDataPath;
 #endif
             instance.mainGameData.money = PlayerPrefs.GetInt("Money", 0);
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage1}", 1) != 0 ? true : false;

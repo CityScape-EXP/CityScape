@@ -62,8 +62,12 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+
+                Debug.Log("1");
                 _instance = gm.GetComponent<GameManager>();
                 _instance.dm = _instance.GetComponent<DataManager>();
+                Debug.Log("2");
+
                 _instance.dm.Init();
 
                 _instance.gameData = _instance.dm.GetGameData();
