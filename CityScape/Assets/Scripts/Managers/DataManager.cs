@@ -29,10 +29,11 @@ public class DataManager : MonoBehaviour
             return instance._savePath; } }
     public static Define.Stages NowStage { get; set; }
 
-   
+    GameData mainGameData = new GameData();
+
     public void Init()
     {
-        if(instance._savePath == null)
+        if(instance._savePath == "")
         {
             Debug.Log("3");
 
@@ -50,7 +51,6 @@ public class DataManager : MonoBehaviour
 
 
 
-    GameData mainGameData = new GameData();
     public static GameData MainGameData { 
         get { return instance.mainGameData; }
         set
@@ -217,8 +217,11 @@ public class GameData
 
         set
         {
-            stageHighScore[(int)index] = value;
-            PlayerPrefs.SetInt($"StageHighScore{index}", stageHighScore[(int)index]);
+            if(stageHighScore[(int)index] < value)
+            {
+                stageHighScore[(int)index] = value;
+                PlayerPrefs.SetInt($"StageHighScore{index}", stageHighScore[(int)index]);
+            }
         }
     }
 
