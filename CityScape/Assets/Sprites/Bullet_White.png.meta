@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 6d401000edd685b40829f4f4bd49ded3
+guid: 5b92ffcde563cd146996caa903fe5276
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -462999659910306037
-    second: Player_Roll_0
+      213: -7309121362432211450
+    second: Bullet_White_0
   - first:
-      213: 6385356526697221979
-    second: Player_Roll_1
+      213: 2528657050733725543
+    second: Bullet_White_1
   - first:
-      213: 3703259466282617875
-    second: Player_Roll_2
+      213: 1996943232151311343
+    second: Bullet_White_2
   - first:
-      213: 2728975346641338092
-    second: Player_Roll_3
+      213: 9011121134761533310
+    second: Bullet_White_3
   - first:
-      213: -4362454536461382906
-    second: Player_Roll_4
+      213: -2892657247201538754
+    second: Bullet_White_4
   - first:
-      213: 6353303952965744977
-    second: Player_Roll_5
+      213: 2085613182251653260
+    second: Bullet_White_5
   - first:
-      213: -1687535856415035108
-    second: Player_Roll_6
+      213: 8771929700066619491
+    second: Bullet_White_6
   - first:
-      213: 9079239055874304725
-    second: Player_Roll_7
+      213: 4071831205386626977
+    second: Bullet_White_7
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -140,169 +140,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Roll_0
+      name: Bullet_White_0
       rect:
         serializedVersion: 2
         x: 10
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b076beb23481399f0800000000000000
-      internalID: -462999659910306037
+      spriteID: 6064204a8d8c09a90800000000000000
+      internalID: -7309121362432211450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Roll_1
+      name: Bullet_White_1
       rect:
         serializedVersion: 2
-        x: 210
+        x: 70
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5f82021ee75d9850800000000000000
-      internalID: 6385356526697221979
+      spriteID: 76745c3b038971320800000000000000
+      internalID: 2528657050733725543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Roll_2
+      name: Bullet_White_2
       rect:
         serializedVersion: 2
-        x: 410
-        y: 6
-        width: 180
-        height: 180
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31cc0e62dde946330800000000000000
-      internalID: 3703259466282617875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Roll_3
-      rect:
-        serializedVersion: 2
-        x: 610
+        x: 130
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceefa597e944fd520800000000000000
-      internalID: 2728975346641338092
+      spriteID: fe3dff41a4196bb10800000000000000
+      internalID: 1996943232151311343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Roll_4
+      name: Bullet_White_3
       rect:
         serializedVersion: 2
-        x: 810
+        x: 190
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60b8d6d56b27573c0800000000000000
-      internalID: -4362454536461382906
+      spriteID: e7fd979ddeeed0d70800000000000000
+      internalID: 9011121134761533310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Roll_5
+      name: Bullet_White_4
       rect:
         serializedVersion: 2
-        x: 1010
+        x: 250
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 159bb92b8487b2850800000000000000
-      internalID: 6353303952965744977
+      spriteID: e3dc7934f873bd7d0800000000000000
+      internalID: -2892657247201538754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Roll_6
+      name: Bullet_White_5
       rect:
         serializedVersion: 2
-        x: 1210
+        x: 310
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c11b5ac541ba498e0800000000000000
-      internalID: -1687535856415035108
+      spriteID: c885bf2a32691fc10800000000000000
+      internalID: 2085613182251653260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Roll_7
+      name: Bullet_White_6
       rect:
         serializedVersion: 2
-        x: 1410
+        x: 370
         y: 10
-        width: 180
-        height: 180
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5daad3441dfeffd70800000000000000
-      internalID: 9079239055874304725
+      spriteID: 3607b2726972cb970800000000000000
+      internalID: 8771929700066619491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullet_White_7
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 10
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7ab6668ec028830800000000000000
+      internalID: 4071831205386626977
       vertices: []
       indices: 
       edges: []
