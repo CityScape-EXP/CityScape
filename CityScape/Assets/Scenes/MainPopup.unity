@@ -1547,8 +1547,6 @@ MonoBehaviour:
   surviveTime: 0
   stageTime: 0
   stageNum: 0
-  isGameover: 0
-  dm: {fileID: 5838595156536576948}
 --- !u!1 &5838595156536576947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,7 +1604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec128cbd78802e45b2da006bb81a87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acmPattern: 0
   building: {fileID: 1897897975567796766, guid: b1f02087eb9e6cd4e8be9c5556adf67c, type: 3}
   BackgroundBuildings:
   - {fileID: 21300000, guid: a67f6096ea4061e49b76a9157f9ca6ad, type: 3}

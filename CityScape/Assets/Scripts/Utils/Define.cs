@@ -42,7 +42,6 @@ public class Define
         Char_jump_1,
         Char_land_1,
         Enemy_death_1,
-        Enemy_death_2,
         Enemy_gunfire_1,
         Enemy_hit_1,
         UI_select_1,
