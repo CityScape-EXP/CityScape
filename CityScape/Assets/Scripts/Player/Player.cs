@@ -70,13 +70,14 @@ public class Player : MonoBehaviour
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
             Vector2.down * 0.45f, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
-        // 상방 점프
-        if (Input.GetButton("Jump"))
+        // 상방 점프 (조건 : 구르고 있지 않을것)
+        if (Input.GetButton("Jump") && !isRolling)
         {
             JumpUp();
         }
-        // 하방 점프 (조건 : Platform일것, 땅에 닿아있을것)
-        if (Input.GetKeyDown(KeyCode.DownArrow) && isGround && rayHit.collider.CompareTag("Platform"))
+        // 하방 점프 (조건 : Platform일것, 땅에 닿아있을것, 구르고 있지 않을것)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && isGround
+            && rayHit.collider.CompareTag("Platform") && !isRolling)
         {
             isGround = false;
             coll.isTrigger = true;
