@@ -113,6 +113,6 @@ public class GameUI : UI_Base
     void Roll(PointerEventData evt)
     {
         //if (Input.GetButtonDown("Lshift") && Player.isGround && !Player.isRolling)
-            Player.instance.StartRolling();
+           // Player.instance.StartRolling();
     }
 }
