@@ -65,6 +65,10 @@ public class Player : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
+    public void StartRolling()
+    {
+        StartCoroutine(Rolling());
+    }
     private void Update()
     {
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
@@ -96,7 +100,6 @@ public class Player : MonoBehaviour
             StartCoroutine(Rolling());
         }
     }
-
     private void GroundCheck(RaycastHit2D rayHit)
     {
         if (rayHit.collider != null)

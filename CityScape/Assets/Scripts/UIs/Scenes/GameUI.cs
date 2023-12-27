@@ -14,6 +14,7 @@ public class GameUI : UI_Base
     {
         Jump,
         PauseButton,
+        Roll,
     }
 
 
@@ -27,7 +28,7 @@ public class GameUI : UI_Base
 
         BindEvent(Get<Button>((int)Buttons.Jump).gameObject, Jump);
         BindEvent(Get<Button>((int)Buttons.PauseButton).gameObject, PauseButton);
-
+        BindEvent(Get<Button>((int)Buttons.Roll).gameObject, Roll);
 
     }
 
@@ -41,5 +42,10 @@ public class GameUI : UI_Base
         Time.timeScale = 0f;
         UIManager.pauseOnclicked = true;
         GameManager.Sound.Play(Define.SFX.UI_select_1);
+    }
+    void Roll(PointerEventData evt)
+    {
+        //if (Input.GetButtonDown("Lshift") && Player.isGround && !Player.isRolling)
+            Player.instance.StartRolling();
     }
 }
