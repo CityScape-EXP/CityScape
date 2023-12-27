@@ -43,5 +43,7 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
         }
 
         finalScore = ScoreManager.Score;
+
+        DataManager.MainGameData[DataManager.NowStage] = finalScore;
     }
 }
