@@ -14,10 +14,7 @@ public class UIManager : MonoBehaviour
 
     public static bool pauseOnclicked = false;
     public static bool isStart = true;
-    [Header("settingCanvas")]
-    [SerializeField] public GameObject settingCanvas;
-    [Header("MainUI")]
-    [SerializeField] public GameObject settingPanel;
+
 
     GameObject _root;
     public static GameObject Root
@@ -72,26 +69,10 @@ public class UIManager : MonoBehaviour
     }
     public void OnPausePanel()
     {
-        UIManager._instance.settingPanel.SetActive(true);
         Time.timeScale = 0f;
         pauseOnclicked = true;
     }
 
-    public void OffPausePanel()
-    {
-        UIManager._instance.settingPanel.SetActive(false);
-        Time.timeScale = 1f;
-        pauseOnclicked = false;
-    }
-    public void OnSettingPanel()
-    {
-        UIManager._instance.settingPanel.SetActive(true);
-    }
-
-    public void OffSettingPanel()
-    {
-        UIManager._instance.settingPanel.SetActive(false);
-    }
     public void GoMenuButton()  // init_var작동문제로 async로 변경
     {
         ScoreManager.instance.GameOverDataSave();
@@ -107,23 +88,6 @@ public class UIManager : MonoBehaviour
         Player.instance.isLive = true;
         SceneManager.LoadScene("TestScene");
     }
-
-    IEnumerator RestartStage()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        while(!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-        Debug.Log("다음 씬으로 로드 완료");
-        settingPanel.SetActive(false);
-        Time.timeScale = 1f;
-        MapBuilder.instance.Init_var();
-        GameManager.instance.stageTime = 0; //시간 초기화
-        pauseOnclicked = false;
-    }
-
-
     static public GameObject LoadUI(Define.UI_Type uI_Type)
     {
         GameObject ui;
@@ -138,10 +102,6 @@ public class UIManager : MonoBehaviour
             Debug.LogError($"UI Load 문제 발생 Prefabs/UIs/{uI_Type.ToString()} 확인 바람");
             return null;
         }
-
-
-
-
     }
     static public GameObject LoadUI(string uI_Type)
     {

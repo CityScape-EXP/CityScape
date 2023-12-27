@@ -113,13 +113,19 @@ public class Player : MonoBehaviour
             GroundCheck(rayHit);
 
         // 구르기 (조건: 땅에 있을 것, 구르고 있지 않을 것)
-        if (Input.GetButtonDown("Lshift") && isGround && !isRolling)
+        if (Input.GetButtonDown("Lshift"))
+        {
+            StartRolling();
+        }
+    }
+    public void StartRolling()
+    {
+        if(isGround && !isRolling)
         {
             canRoll = true;
             StartCoroutine(Rolling());
         }
     }
-
 
 
     private void GroundCheck(RaycastHit2D rayHit)

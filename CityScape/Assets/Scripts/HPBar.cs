@@ -6,15 +6,10 @@ using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
     [SerializeField] private Image[] hpPointers;
-    [SerializeField] private Image[] upHpBars;
     private int hpUpgrade;
     private void Start()
     {
         hpUpgrade = Player.instance.playerHp - 3; // hpUpgrade 변수를 내 hp 업그레이드 횟수와 같게 초기화
-        for (int i = 4; i>hpUpgrade; i--) // 업그레이드에 따라 체력바의 길이를 조절하는 for문
-        {
-            upHpBars[i-1].enabled = false;
-        }
     }
 
     private void Update()
