@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerBulletSpawner : MonoBehaviour
 {
+    // 플레이어 생존시 총알 스폰 시작
+    // 구르기시 총알 스폰 중지
+
     /* 총알 관련 */
     public float WaitForFirstSpawn;
     public float BulletSpawnTime;
@@ -12,6 +15,7 @@ public class PlayerBulletSpawner : MonoBehaviour
     /* 플레이어 관련 */
     private GameObject Player;
     public bool isPlayerLive;
+    public bool isPlayerRolling;
 
     /* 초기화 */
     private void Awake()
@@ -23,6 +27,7 @@ public class PlayerBulletSpawner : MonoBehaviour
     private void Start()
     {
         isPlayerLive = true;
+        isPlayerRolling = false;
 
         StartCoroutine(SpawnRoutine());
 
@@ -34,21 +39,32 @@ public class PlayerBulletSpawner : MonoBehaviour
     /* 총알 생성 루틴 함수 */
     IEnumerator SpawnRoutine()
     {
+        // 발사 시작 전 잠시 대기
         yield return new WaitForSeconds(WaitForFirstSpawn);
-        // WaitForFirstSpawn 초 이후 총알 스폰 시작
 
         while (true)
         {
-            GameObject obj = PoolManager.GetObject(0);
-            GameManager.Sound.Play(Define.SFX.Char_gunfire_1128);
-            // Pool의 0번째 프리펩(총알)을 가져옴. 나중에 해당 부분 수정 가능성 있음
-            obj.transform.position = Player.transform.position + FixPos;
-            
-            yield return new WaitForSeconds(BulletSpawnTime); // BulletSpawnTime 초 만큼 대기 후 실행
+            if (!isPlayerRolling) // 플레이어가 구르기 중이 아닌 경우에만 실행
+            {
+                // 풀 가져오기, 사운드
+                GameObject obj = PoolManager.GetObject(0);
+                GameManager.Sound.Play(Define.SFX.Char_gunfire_1128);
+
+                // 총알 발사 위치 세부 조정
+                obj.transform.position = Player.transform.position + FixPos;
+
+                // 총알 스폰 시간만큼 대기
+                yield return new WaitForSeconds(BulletSpawnTime);
+            }
+            else
+            {
+                yield return null; // 플레이어가 구르기 중이면 한 프레임 대기 후 다시 확인
+            }
         }
+
     }
 
-    /* 플레이어 사망 여부 체크 */
+    /* 플레이어 사망, 구르기 여부 체크 */
     private void Update()
     {
         if (Player != null)
@@ -57,7 +73,8 @@ public class PlayerBulletSpawner : MonoBehaviour
 
             if (PlayerObj != null)
             {
-                isPlayerLive = PlayerObj.isLive; // Monster 오브젝트의 isLive 변수 가져오기
+                isPlayerLive = PlayerObj.isLive;
+                isPlayerRolling = PlayerObj.isRolling;
             }
         }
     }
