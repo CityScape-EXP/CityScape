@@ -18,17 +18,29 @@ public class DataManager : MonoBehaviour
     string savePath { get { if (_savePath == null) Init(); return _savePath; } }
     public static Define.Stages NowStage { get; set; }
 
-    private void Awake()
-    {
-        Init();
-    }
+   
     public void Init()
     {
+        if(_savePath == null)
+        {
+
 #if UNITY_EDITOR
-        _savePath = Application.dataPath;
+            _savePath = Application.dataPath;
 #elif UNITY_ANDROID
         _savePath = = Application.persistentDataPath;
 #endif
+            instance.mainGameData.money = PlayerPrefs.GetInt("Money", 0);
+            instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage1}", 1) != 0 ? true : false;
+            instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage2}", 0) != 0 ? true : false;
+            instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage3}", 0) != 0 ? true : false;
+
+            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1] = PlayerPrefs.GetInt($"StageHighScore{Define.Stages.Stage1}", 0);
+            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2] = PlayerPrefs.GetInt($"StageHighScore{Define.Stages.Stage2}", 0);
+            instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = PlayerPrefs.GetInt($"StageHighScore{Define.Stages.Stage3}", 0);
+
+        }
+
+
     }
 
     GameData mainGameData = new GameData();
@@ -90,7 +102,7 @@ public class DataManager : MonoBehaviour
     }
 
     // GameData.json 파일을 GameData 클래스 정보로 변경하는 함수
-    // 왜???????? 싱글톤으로 만들었나요????????????????????????
+   
     public GameData GetGameData() { return MainGameData; }
 
 
@@ -141,13 +153,6 @@ public class DataManager : MonoBehaviour
         SaveUpgradeData(p_temp);
     }
 
-    // 게임 첫 시작시 GameData를 초기화하는 함수
-    public void InitGameData()
-    {
-        Debug.Log("게임 데이터 초기화");
-        GameData g_temp = new GameData();
-        SaveGameData(g_temp);
-    }
 }
 
 // UpgradeData 클래스
