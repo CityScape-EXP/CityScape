@@ -31,6 +31,6 @@ public class FinalMoney : MonoBehaviour //초기화 방지를 위한 새로운 �
     // Update is called once per frame
     void Update()
     {
-        textComponent.text = "X " + finalMoney.ToString();
+        textComponent.text = finalMoney.ToString();
     }
 }

@@ -27,7 +27,7 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
         textComponent = GetComponent<TextMeshProUGUI>(); 
         finalScore = 0; //초기화
         StageAdvRule();
-        textComponent.text = "Final Score : " + finalScore.ToString();
+        textComponent.text = finalScore.ToString();
     }
 
   
