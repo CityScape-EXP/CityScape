@@ -11,8 +11,6 @@ public class CreditUI : UI_Base
 
     enum Texts
     {
-        Tutorial,
-        Tutorial_text,
     }
     enum Buttons
     {
