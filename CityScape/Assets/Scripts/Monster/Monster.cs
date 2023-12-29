@@ -14,6 +14,9 @@ public class Monster : MonoBehaviour
     public GameObject coin5Prefab;
     public GameObject coin10Prefab;
 
+    [SerializeField]
+    Define.MonsterType monsterType;
+
     Rigidbody2D rigid;
     CapsuleCollider2D coll;
 
@@ -31,18 +34,18 @@ public class Monster : MonoBehaviour
         {
             isLive = false;
 
-            switch(id)
+            switch(monsterType)
             {
-                case 0: // 일반몬스터 처치
-                    ScoreManager.Score += 100;
+                case Define.MonsterType.NorEnemy: // 일반몬스터 처치
+                    ScoreManager.ObjectScore += 100;
                     GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
-                case 1: // 날몹 처치
-                    ScoreManager.Score += 200;
+                case Define.MonsterType.FlyEnemy: // 날몹 처치
+                    ScoreManager.ObjectScore += 200;
                     GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
-                case 2:
-                    ScoreManager.Score += 150;
+                case Define.MonsterType.ReinEnemy:
+                    ScoreManager.ObjectScore += 150;
                     break;
             }
             this.DropCoin(); //오브젝트가 사라지기 전 매서드 달아주기

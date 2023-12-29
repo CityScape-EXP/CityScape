@@ -107,6 +107,7 @@ MonoBehaviour:
   isLive: 1
   coin5Prefab: {fileID: 3453482804788463098, guid: a85fada33dfdf4de091631090fd8a366, type: 3}
   coin10Prefab: {fileID: 3453482804788463098, guid: 9c503d4041148ed45a85ae3596bc77f6, type: 3}
+  monsterType: 2
 --- !u!114 &-6436606435897560896
 MonoBehaviour:
   m_ObjectHideFlags: 0

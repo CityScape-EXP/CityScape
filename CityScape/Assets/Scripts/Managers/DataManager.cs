@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
 #if UNITY_EDITOR
                 instance._savePath = Application.dataPath;
 #elif UNITY_ANDROID
-                instance._savePath = = Application.persistentDataPath;
+                instance._savePath = Application.persistentDataPath;
 #endif
             }
             return instance._savePath; } }
@@ -125,8 +125,13 @@ public class DataManager : MonoBehaviour
      */
     // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
     public void SaveGameData(GameData gdata) { 
-        mainGameData = gdata; 
-        PlayerPrefs.SetInt("Money", mainGameData.money);
+        MainGameData = gdata; 
+        //PlayerPrefs.SetInt("Money", mainGameData.money);
+    }
+    public void SaveGameData()
+    {
+        ScoreManager.instance.GameOverDataSave();
+        //PlayerPrefs.SetInt("Money", mainGameData.money);
     }
 
     void SaveGameDataUsePlayerPrefs(GameData gdata)

@@ -12,7 +12,6 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
 
     [Header("GameClear")]
     [SerializeField] private GameObject popupGameClear;
-    public Slider timerSlider;
     public float gameTime; //슬라이더에 사용할 게임플레이시간(초단위)
     private bool stopTimer;
     [Header("GameOver")]
@@ -38,22 +37,38 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
         gameData = DataManager.instance.GetGameData();
 
         stopTimer = false;
-        timerSlider.maxValue = gameTime; //슬라이더가 나타내는 최대시간
-        timerSlider.value = gameTime;       
         StartTimer();
         
     }
 
+
     // Update is called once per frame
-    void Update()
+    //void Update()
+    //{
+        //if(Player.instance.isLive == false){
+        //    //GRManager.instance.popupGameOver.SetActive(true);     // 자동화 UI는 Player.getDamaged()에 있음
+        //    UIManager.LoadUI(Define.UI_Type.GameOverUI);
+        //
+        //    //Debug.Log("게임오버");
+        //    Time.timeScale = 0f; //인게임일시정지
+        //}
+    //}
+
+
+
+    /// <summary>
+    /// 초당 60번씩 GameOver을 확인하는 것 보다는 플레이어 피격 판정시 GameOver을 판단하는것이 더 논리적입니다. 
+    /// GameOver 판정이 어디있을까? 궁금했을 때 피격위치를 볼 확률이 GRManager의 Updata부분을 확인할 확률보다 높음
+    /// </summary>
+    public void GameOver()
     {
+
         if(Player.instance.isLive == false){
-            GRManager.instance.popupGameOver.SetActive(true);     // 자동화 UI는 Player.getDamaged()에 있음
-            //Debug.Log("게임오버");
+            UIManager.LoadUI(Define.UI_Type.GameOverUI);
+        
             Time.timeScale = 0f; //인게임일시정지
         }
     }
-
     public void StartTimer()
     {
         StartCoroutine(StartTheTimerTicker());
@@ -71,14 +86,11 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
             if (sliderTimer >= gameTime) // 지정한 시간(120초)에 도달하면
             {
                 stopTimer = true;
-                GRManager.instance.popupGameClear.SetActive(true);     
+                //GRManager.instance.popupGameClear.SetActive(true);     
+
+                UIManager.LoadUI(Define.UI_Type.ClearUI);
                 Time.timeScale = 0f; // 인게임 일시 정지
                 gameData.isStageOpen[1] = true; // 다음 스테이지 열기
-            }
-
-            if (timerSlider != null) // 슬라이더 값 업데이트
-            {
-                timerSlider.value = sliderTimer;
             }
 
             // 게임오버 창이 활성화되면 타이머가 멈춤

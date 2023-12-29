@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
@@ -12,21 +12,21 @@ public class PlayerBullet : MonoBehaviour
     public float prefabID;
     private Animator anim;
     [SerializeField]
-    private AnimatorController[] animatorController;
+    private Animator[] animatorController;
     private int offenceLevel;
 
     void Awake()
     {
         offenceLevel = GameManager.instance.upgradeData.offenceLevel;
         anim = GetComponent<Animator>();
-        anim.runtimeAnimatorController = animatorController[offenceLevel - 1];
+        anim = animatorController[offenceLevel - 1];
         damage = 1f + 1f * (offenceLevel - 1);
         
         //coll = GetComponent<BoxCollider2D>();
     }
     private void OnEnable()
     {
-        anim.runtimeAnimatorController = animatorController[offenceLevel - 1];
+        anim = animatorController[offenceLevel - 1];
     }
 
     private void FixedUpdate()

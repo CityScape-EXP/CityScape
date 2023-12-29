@@ -8,7 +8,9 @@ public class ClearUI : UI_Base
 {
     enum Texts
     {
-        Result
+        Score,
+        HighScore,
+        GainCoin,
     }
     enum Buttons
     {
@@ -28,6 +30,9 @@ public class ClearUI : UI_Base
     }
     public void ShowResult()
     {
+        Get<TMP_Text>((int)Texts.Score).text = ScoreManager. instance.Score.ToString();
+        Get<TMP_Text>((int)Texts.HighScore).text = DataManager.MainGameData.stageHighScore[(int)DataManager.NowStage].ToString();
+        Get<TMP_Text>((int)Texts.GainCoin).text = GetMoney.getMoney.ToString();
 
     }
 

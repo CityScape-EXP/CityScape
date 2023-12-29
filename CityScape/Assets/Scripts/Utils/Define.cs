@@ -81,6 +81,14 @@ public class Define
         Stage2,
         Stage3
     }
-    
+
+
+    public enum MonsterType 
+    {
+        NorEnemy,
+        ReinEnemy,
+        FlyEnemy,
+    }
+
 
 }

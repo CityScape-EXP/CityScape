@@ -283,7 +283,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &258667861028611363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,19 +432,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 258667861508435773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
-        m_MethodName: GameStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &258667861825523126
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +444,6 @@ GameObject:
   - component: {fileID: 258667861825523125}
   - component: {fileID: 258667861825520203}
   - component: {fileID: 258667861825523124}
-  - component: {fileID: 7480215618805245569}
   m_Layer: 0
   m_Name: HighScore
   m_TagString: Untagged
@@ -580,22 +567,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7480215618805245569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258667861825523126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &258667862438897837
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +712,6 @@ GameObject:
   - component: {fileID: 1218982132816358263}
   - component: {fileID: 2416171901070227516}
   - component: {fileID: 2500520226226334807}
-  - component: {fileID: 2541129453789407306}
   m_Layer: 5
   m_Name: GainCoin
   m_TagString: Untagged
@@ -865,22 +835,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2541129453789407306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555895930370914318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c1e7963a1934d659e5388ac5780f0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &9186234558764853732
 GameObject:
   m_ObjectHideFlags: 0

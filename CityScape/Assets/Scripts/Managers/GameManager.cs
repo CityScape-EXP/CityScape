@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Accessibility;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -84,50 +82,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Init();
-        /*
-        if (_instance == null)
-        {
-            GameObject gm = GameObject.Find("GameManager");
-            if (gm == null)
-            {
-                gm = new GameObject("GameManager");
-                gm.AddComponent<GameManager>();
-                gm.AddComponent<DataManager>();
-                gm.AddComponent<MapBuilder>();
-
-                _instance.dm = _instance.GetComponent<DataManager>();
-
-                _instance.gameData = _instance.dm.GetGameData();
-                _instance.upgradeData = _instance.dm.GetUpgradeData();
-                DontDestroyOnLoad(gm);
-
-            }
-            else
-            {
-                _instance = gm.GetComponent<GameManager>();
-                _instance.dm = _instance.GetComponent<DataManager>();
-                _instance.gameData = _instance.dm.GetGameData();
-                _instance.upgradeData = _instance.dm.GetUpgradeData();
-                DontDestroyOnLoad(gm);
-            }
-
-        }
-        */
-        /*
-        dm = GetComponent<DataManager>();
-        gameData = dm.GetGameData();
-        upgradeData = dm.GetUpgradeData();
-        if (instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        */
-
+        
     }
 
     private void Start()

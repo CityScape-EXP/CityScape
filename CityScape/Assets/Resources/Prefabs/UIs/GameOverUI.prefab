@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8887179507740802073}
   - component: {fileID: 8867978033188666258}
   - component: {fileID: 4033542773121110682}
-  - component: {fileID: 2221512196943272914}
   m_Layer: 5
   m_Name: GainCoin
   m_TagString: Untagged
@@ -135,22 +134,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2221512196943272914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539113621137750217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c1e7963a1934d659e5388ac5780f0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &6778164591265802783
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +145,6 @@ GameObject:
   - component: {fileID: 6778164591265802782}
   - component: {fileID: 6778164591265802768}
   - component: {fileID: 6778164591265802769}
-  - component: {fileID: 222001170}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -286,18 +268,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &222001170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6778164591265802783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cd621abda0584415a8420246d8a86af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6778164591845576452
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +279,6 @@ GameObject:
   - component: {fileID: 6778164591845576455}
   - component: {fileID: 6778164591845572857}
   - component: {fileID: 6778164591845576454}
-  - component: {fileID: 222001169}
   m_Layer: 0
   m_Name: HighScore
   m_TagString: Untagged
@@ -433,22 +402,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &222001169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6778164591845576452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ec6adb265af4e8db1aee77dcdb899f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData:
-    isStageOpen: 010000
-    stageHighScore: 000000000000000000000000
-    money: 0
 --- !u!1 &6778164592095309194
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,19 +521,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6778164592095309199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GRManager, Assembly-CSharp
-        m_MethodName: GoMenuButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6778164592676054942
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,19 +754,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6778164592943123719}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: a951f9e0e58034c80ae554eecdc68a8d, type: 3}
-        m_TargetAssemblyTypeName: GRManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6778164592958163964
 GameObject:
   m_ObjectHideFlags: 0

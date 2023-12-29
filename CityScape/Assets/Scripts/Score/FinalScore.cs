@@ -31,19 +31,7 @@ public class FinalScore : MonoBehaviour //결과UI에 최종 스코어를 띄우
     }
 
   
-    public void StageAdvRule(){ //스테이지 진행도에 따라 점수 추가부여
-        double timeP = (GameManager.instance.stageTime / GRManager.instance.gameTime) * 100; // 게임시간 테스트용 변동 가능 => /0.12
-        float timeR = (float)Math.Truncate(timeP*10)/10; //소수점 첫째자리 이하 버림
-        
-        if(timeP >= 100){ //100%면 10000점 추가
-            ScoreManager.Score += 10000;
-        }
-        else{
-            ScoreManager.Score += Mathf.RoundToInt(timeR * 100);
-        }
-
-        finalScore = ScoreManager.Score;
-
-        DataManager.MainGameData[DataManager.NowStage] = finalScore;
+    public void StageAdvRule(){ //게임 중 계속 바뀌므로 통폐합 이제 안씀
+        ScoreManager.instance.TimeScore();
     }
 }

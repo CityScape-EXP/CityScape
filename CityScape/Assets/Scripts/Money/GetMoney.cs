@@ -7,7 +7,7 @@ using TMPro;
 public class GetMoney : MonoBehaviour
 {
     //public GameData gameData;
-    public static int getMoney = 0; //얻은 돈(누적x)
+    public static int getMoney { get; set; } = 0; //얻은 돈(누적x)
 
     private TextMeshProUGUI textComponent;
 

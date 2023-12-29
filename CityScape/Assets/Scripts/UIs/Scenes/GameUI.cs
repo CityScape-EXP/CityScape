@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameUI : UI_Base
 {
@@ -14,6 +14,12 @@ public class GameUI : UI_Base
         joystickBG,
         joystickHandle,
     }
+
+    enum Sliders 
+    { 
+        TimeSlider 
+    }
+
 
     enum Texts
     {
@@ -33,13 +39,20 @@ public class GameUI : UI_Base
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
-        Debug.Log("??");
+        Bind<Slider>(typeof(Sliders));
+
         BindEvent(Get<Button>((int)Buttons.Jump).gameObject, Jump);
         BindEvent(Get<Button>((int)Buttons.PauseButton).gameObject, PauseButton);
         BindEvent(Get<Button>((int)Buttons.Roll).gameObject, Roll);
         JoystickBind();
 
     }
+
+    void Update()
+    {
+        Get<Slider>((int)Sliders.TimeSlider).value = GameManager.instance.stageTime / GRManager.instance.gameTime;
+    }
+
     #region Joystick
     /// <summary>
     /// joystick handle 기본 위치

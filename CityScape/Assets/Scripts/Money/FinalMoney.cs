@@ -7,9 +7,7 @@ using TMPro;
 public class FinalMoney : MonoBehaviour //초기화 방지를 위한 새로운 코인관련 스크립트
 {
     public GameData gameData;
-    public static int finalMoney; //얻은 돈(누적x)
-
-    private TextMeshProUGUI textComponent;
+    public static int finalMoney { get; set; } = 0; //얻은 돈(누적x)
 
     //싱글톤 적용
     public static FinalMoney instance;
@@ -25,12 +23,6 @@ public class FinalMoney : MonoBehaviour //초기화 방지를 위한 새로운 �
     void Start()
     {
         finalMoney = GetMoney.getMoney;
-        textComponent = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        textComponent.text = finalMoney.ToString();
-    }
 }

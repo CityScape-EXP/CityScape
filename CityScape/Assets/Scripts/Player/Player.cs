@@ -147,8 +147,10 @@ public class Player : MonoBehaviour
         GameManager.Sound.Play(Define.SFX.Char_hit_1);
 
         playerCurrentHp -= damage;
-        ScoreManager.Score -= 1000; //피격 시 데미지
+        ScoreManager.ObjectScore -= 1000; //피격 시 데미지
         Debug.Log($"플레이어 체력 : {playerCurrentHp}");
+        
+        
         if (playerCurrentHp <= 0)
         {
             ScoreManager.instance.GameOverDataSave();
@@ -156,6 +158,7 @@ public class Player : MonoBehaviour
             //UIManager.LoadUI(Define.UI_Type.GameOverUI);     //자동화 UI
             GameManager.Sound.Play(Define.SFX.Char_death_1);
 
+            GRManager.instance.GameOver();
             Debug.Log("플레이어 사망");
             gameObject.SetActive(false);
         }
@@ -189,7 +192,7 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false); //동전 없어지게
             GameManager.instance.gameData.money += 5;
             GameManager.instance.dm.SaveGameData(GameManager.instance.gameData);
-            ScoreManager.Score += 20;
+            ScoreManager.ObjectScore += 100;
             GetMoney.getMoney += 5;
         }
         else if (collision.gameObject.tag == "Coin10")
@@ -197,7 +200,7 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false); //동전 없어지게
             GameManager.instance.gameData.money += 10;
             GameManager.instance.dm.SaveGameData(GameManager.instance.gameData);
-            ScoreManager.Score += 20;
+            ScoreManager.ObjectScore += 200;
             GetMoney.getMoney += 10;
         }
 
@@ -218,7 +221,7 @@ public class Player : MonoBehaviour
     {
         //탄젠트 값 기반
         float Tan = direction.y/ (float)(Mathf.Abs(direction.x) >=0.001 ? direction.x : 0.001);
-        Debug.Log($"Tan : {Tan} ");
+        
         if(Mathf.Abs(Tan) <= Mathf.Tan(30 * Mathf.Deg2Rad))
         {
             RunHorizon(direction.x);
