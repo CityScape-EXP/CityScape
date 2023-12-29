@@ -13,7 +13,7 @@ public class ReinforceUI : MonoBehaviour
         { {10, 20, 30, 50 },
           {10, 20, 30, 50 },
           {10, 20, 30, 50 } };
-    public enum InfoType { Level, UpInfo, Money, UpCost }
+    public enum InfoType { Level, UpInfo, Money, UpCost1,UpCost2 }
     public int field;
     public InfoType type;
     TMP_Text myText;
@@ -49,30 +49,30 @@ public class ReinforceUI : MonoBehaviour
                         if (level == 5)
                             myText.text = "7";
                         else
-                            myText.text = $"{3 + level - 1} > <color=#00ff00>{3 + level}</color>";
+                            myText.text = $"{3 + level - 1} > <color=#336699>{3 + level}</color>";
                         break;
                     case 1:
                         if (level == 5)
                             myText.text = $"{100 + (level - 1) * 5}";
                         else
-                            myText.text = $"{100 + (level - 1) * 5}% > <color=#00ff00>{100 + level * 5}%</color>";
+                            myText.text = $"{100 + (level - 1) * 5}% > <color=#336699>{100 + level * 5}%</color>";
                         break;
                     case 2:
                         if (level == 5)
                             myText.text = $"{100 + (level - 1) * 25}";
                         else
-                            myText.text = $"{100 + (level - 1) * 25}% > <color=#00ff00>{100 + level * 25}%</color>";
+                            myText.text = $"{100 + (level - 1) * 25}% > <color=#336699>{100 + level * 25}%</color>";
                         break;
                 }
                 break;
 
             // 현재 소유 재화 정보 텍스트 (우측 상단에 위치) ex) ◎ : 999 ..
             case InfoType.Money:
-                myText.text = $"◎ : {GameManager.instance.gameData.money}";
+                myText.text = $"{GameManager.instance.gameData.money}";
                 break;
 
             // 업그레이드 필요 재화 정보 텍스트 (패널별 우측에 위치) ex) Lv.3 50필요
-            case InfoType.UpCost:
+            case InfoType.UpCost1:
                 string lv;
                 if (level == 5) // 만렙일경우 -> 소모 재화량 표시 X
                 {
@@ -80,11 +80,18 @@ public class ReinforceUI : MonoBehaviour
                     myText.text = lv;
                     break;
                 }
-                lv = $"Lv.{level}";
+                else
+                {
+                    lv = $"Lv.{level}";
+                    myText.text = $"{lv}";
+                }
+                break;
+            case InfoType.UpCost2:
+                
                 int cost = upgradeMoneyData[field, level - 1];
                 if (GameManager.instance.gameData.money < cost) // 돈이 부족할경우 빨간색으로
-                    myText.text = $"{lv}\n<color=#ff0000>{cost}필요</color>";
-                else myText.text = $"{lv}\n{cost}필요";
+                    myText.text = $"<color=#cc0000>{cost}</color>";
+                else myText.text = $"{cost}";
                 break;
         }
     }
