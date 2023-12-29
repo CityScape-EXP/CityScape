@@ -101,7 +101,7 @@ public class ReinforceUI : MonoBehaviour
                 int cost = upgradeMoneyData[field, level - 1];
                 if (GameManager.instance.gameData.money < cost) // 돈이 부족할경우 빨간색으로
                     myText.text = $"<color=#cc0000>{cost}</color>";
-                else myText.text = $"{cost}";
+                else myText.text = $"<color=#336699>{cost}</color>";
                 break;
         }
     }
