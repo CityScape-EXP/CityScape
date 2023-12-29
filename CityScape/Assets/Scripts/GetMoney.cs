@@ -28,12 +28,12 @@ public class GetMoney : MonoBehaviour
         getMoney = 0; //초기화
         gameData = DataManager.instance.GetGameData();
         textComponent = GetComponent<TextMeshProUGUI>();
-        gameData.money += getMoney;
+        DataManager.MainGameData.money += getMoney; //코인 누적
     }
 
     // Update is called once per frame
     void Update()
     {
-        textComponent.text = "X " + getMoney.ToString();
+        textComponent.text = getMoney.ToString();
     }
 }

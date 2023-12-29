@@ -17,6 +17,16 @@ public class ReinforceUI : MonoBehaviour
     public int field;
     public InfoType type;
     TMP_Text myText;
+    
+    private TextMeshProUGUI textComponent;
+
+    void Start(){
+        textComponent = GetComponent<TextMeshProUGUI>();
+    }
+
+    void Update(){
+        textComponent.text = "◎ :  " + DataManager.MainGameData.money.ToString();
+    }
 
     void Awake()
     {
