@@ -37,7 +37,7 @@ public class DataManager : MonoBehaviour
         {
             Debug.Log("3");
 
-            instance.mainGameData.money = PlayerPrefs.GetInt("Money", 0);
+            instance.mainGameData.money = PlayerPrefs.GetInt("Money", 0); //Money 초기화
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage1}", 1) != 0 ? true : false;
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage2}", 0) != 0 ? true : false;
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] = PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage3}", 0) != 0 ? true : false;
@@ -124,7 +124,10 @@ public class DataManager : MonoBehaviour
      *  -> 일어난 변화를 적용시켜줘야 한다
      */
     // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
-    public void SaveGameData(GameData gdata) { mainGameData = gdata; }
+    public void SaveGameData(GameData gdata) { 
+        mainGameData = gdata; 
+        PlayerPrefs.SetInt("Money", mainGameData.money);
+    }
 
     void SaveGameDataUsePlayerPrefs(GameData gdata)
     {
