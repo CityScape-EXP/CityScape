@@ -91,16 +91,27 @@ public class DataManager : MonoBehaviour
     // 안드로이드 빌드 떄 사용
     // savePath = Application.persistantDataPath;
 #endif
+
+    PatternData PatternData = null;
+    public void PatternDataClear() 
+    {
+        PatternData = null;
+    }
     // Json 파일을 통해 PatternData를 가져오는 과정
     // Json 파일의 이름 규칙은 다음과 같다. (예) St0_Phase2_Pattern0
     public PatternData GetPatternData(int stage, int phase, int pattern)
     {
-         
-        PatternData data = new PatternData();
-        string path = savePath + $"/Resources/Patterns/St{stage}_Phase{phase}_Pattern{pattern}.json" ;
-        string jsonData = File.ReadAllText(path);
-        data = JsonUtility.FromJson<PatternData>(jsonData);
-        return data;
+
+        TextAsset textAsset = Resources.Load<TextAsset>($"Patterns/St{stage}_Phase{phase}_Pattern{pattern}");
+        if (textAsset == null)
+        {
+            Debug.Log("null__");
+        }
+        string jsonData = textAsset.text;
+
+        PatternData = JsonUtility.FromJson<PatternData>(jsonData);
+
+        return PatternData;
     }
 
     // UpgradeData.json 파일을 UpgradeData 클래스 정보로 변경하는 함수
@@ -108,8 +119,15 @@ public class DataManager : MonoBehaviour
     {
          
         UpgradeData data = new UpgradeData();
-        string path = savePath + $"/Resources/Data/UpgradeData.json";
-        string jsonData = File.ReadAllText(path);
+        //string path = savePath + $"/Resources/Data/UpgradeData.json";
+        //string jsonData = File.ReadAllText(path);
+        TextAsset textAsset = Resources.Load<TextAsset>($"Data/UpgradeData");
+        if(textAsset == null)
+        {
+            Debug.Log("null");
+        }
+        string jsonData = textAsset.text;
+
         data = JsonUtility.FromJson<UpgradeData>(jsonData);
         return data;
     }
@@ -125,8 +143,8 @@ public class DataManager : MonoBehaviour
      */
     // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
     public void SaveGameData(GameData gdata) { 
-        MainGameData = gdata; 
-        //PlayerPrefs.SetInt("Money", mainGameData.money);
+        MainGameData = gdata;
+        PatternDataClear();
     }
     public void SaveGameData()
     {

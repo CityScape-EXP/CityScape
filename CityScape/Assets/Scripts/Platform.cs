@@ -17,7 +17,7 @@ public class Platform : MonoBehaviour
         coll = GetComponent<Collider2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
     }
