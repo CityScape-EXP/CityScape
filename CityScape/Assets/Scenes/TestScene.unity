@@ -1715,7 +1715,7 @@ MonoBehaviour:
   roadMainMenu: MainPopup
   popupGameClear: {fileID: 181949535}
   timerSlider: {fileID: 8333210264237385061}
-  gameTime: 20
+  gameTime: 120
   popupGameOver: {fileID: 629611211}
 --- !u!4 &1108462267
 Transform:
@@ -1977,6 +1977,10 @@ PrefabInstance:
     - target: {fileID: 258667862438897836, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 258667862438897836, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.0444946
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7480215618805245569, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
