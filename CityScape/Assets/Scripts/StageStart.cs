@@ -29,29 +29,32 @@ public class StageStart : MonoBehaviour
     public string roadStage1 = "TestScene";
     public void StartStage1() 
     {
-
         DataManager.NowStage = Define.Stages.Stage1;
-        Debug.Log("Get");
-
-        GameManager.Sound.Play(Define.BGM.St_1);
         GameManager.instance.stageNum = 1;
+        GameManager.Sound.Play(Define.BGM.St_1);
+        StartStage();
+    }
+
+    public void StartStage2(){
+        DataManager.NowStage = Define.Stages.Stage2;
+        GameManager.instance.stageNum = 2;
+        GameManager.Sound.Play(Define.BGM.St_2);
+        StartStage();
+    }
+    public void StartStage3(){
+        DataManager.NowStage = Define.Stages.Stage3;
+        GameManager.instance.stageNum = 3;
+        GameManager.Sound.Play(Define.BGM.St_3);
+        StartStage();
+    }
+
+    public void StartStage()
+    { 
+        Debug.Log("Get");
         Time.timeScale = 1;
         GameManager.instance.stageTime = 0; //stageTime 초기화
         UIManager.pauseOnclicked = false; //static변수는 instance 안써도 됨
         MapBuilder.instance.Init_var();
         SceneManager.LoadScene("TestScene");
-
-        //StartCoroutine(LoadMainMenuScene());     //다른 씬이 로드되는 시점 게임 오브젝트가 파괴되면 과연 코루틴은 작동을 할까요?
-    }
-
-    public void StartStage2(){
-        DataManager.NowStage = Define.Stages.Stage2;
-
-        SceneManager.LoadScene("Stage2Scene");
-    }
-    public void StartStage3(){
-        DataManager.NowStage = Define.Stages.Stage3;
-
-        SceneManager.LoadScene("Stage3Scene");
     }
 }

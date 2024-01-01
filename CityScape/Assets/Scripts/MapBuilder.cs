@@ -67,7 +67,7 @@ public class MapBuilder : MonoBehaviour
             else
                 nowPattern = Random.Range(0, 4);
             Debug.Log($"페이즈 : {nowPhase} // 패턴 : {nowPattern}");
-            PatternData patterndata = GameManager.instance.dm.GetPatternData(0, nowPhase, nowPattern);
+            PatternData patterndata = GameManager.instance.dm.GetPatternData(GameManager.instance.stageNum - 1, nowPhase, nowPattern);
             DrawPattern(patterndata);
 
             nowPatternTime = patterndata.patternTime;
@@ -78,7 +78,8 @@ public class MapBuilder : MonoBehaviour
         {
             int buildingNum = Random.Range(0, 3);
             GameObject newBuilding = Instantiate(building, new Vector3(30, 4.4f, 0), Quaternion.identity);
-            newBuilding.GetComponent<SpriteRenderer>().sprite = BackgroundBuildings[buildingNum];
+            Sprite newBuildingSprite = Resources.Load<Sprite>($"Sprites/Stage0{GameManager.instance.stageNum}/building{buildingNum}");
+            newBuilding.GetComponent<SpriteRenderer>().sprite = newBuildingSprite;
             buildingTime = Time.time;
         }
     }

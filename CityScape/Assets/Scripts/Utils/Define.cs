@@ -29,6 +29,8 @@ public class Define
     {
         main_BGM,
         St_1,
+        St_2,
+        St_3,
 
 
         MaxCount
