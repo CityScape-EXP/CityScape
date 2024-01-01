@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   prefabID: 0
-  health: 4
+  health: 8
   power: 1
   isLive: 1
   coin5Prefab: {fileID: 3453482804788463098, guid: a85fada33dfdf4de091631090fd8a366, type: 3}
