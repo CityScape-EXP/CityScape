@@ -64,8 +64,13 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
     {
 
         if(Player.instance.isLive == false){
+            if(ScoreManager.instance.Score < 0){
+                //Debug.Log("0이하");
+                ScoreManager.ObjectScore = 0;
+                ScoreManager.instance.timeScore = 0;
+                //Debug.Log("초기화성공"+ScoreManager.instance.Score);
+            }
             UIManager.LoadUI(Define.UI_Type.GameOverUI);
-        
             Time.timeScale = 0f; //인게임일시정지
         }
     }
