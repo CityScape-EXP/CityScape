@@ -31,7 +31,8 @@ public class Player : MonoBehaviour
 
     // 구르기 관련
     public bool canRoll;
-    public bool isRolling;
+    public bool isRolling; // 플레이어 구르기 상태
+    public bool RollingOn; // 플레이어 구르기 판정 ON
     public float rollingTime;
     private void Awake()
     {
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour
 
     public void getDamage(int damage)
     {
-        if (isRolling) return;
+        if (RollingOn) return;
         GameManager.Sound.Play(Define.SFX.Char_hit_1);
 
         playerCurrentHp -= damage;
@@ -173,11 +174,16 @@ public class Player : MonoBehaviour
         anim.SetBool("isRolling", true);
         GameManager.Sound.Play(Define.SFX.Chac_roll_1);
 
+        yield return new WaitForSeconds(0.1f);
+        RollingOn = true;
+
         // ~ 구르기 지속 시간 ~
         yield return new WaitForSeconds(rollingTime);
 
         // 구르기 상태 OFF
         isRolling = false;
+        RollingOn = false;
+
         Debug.Log("=> 구르기 OFF, 현재 체력 : " + playerCurrentHp);
         anim.SetBool("isRolling", false);
         yield break;
