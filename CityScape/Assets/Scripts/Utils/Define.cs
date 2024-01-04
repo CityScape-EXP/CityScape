@@ -84,6 +84,13 @@ public class Define
         Stage3
     }
 
+    public enum Reinforcement
+    {
+        AttackSpeed,
+        Health,
+        Power,
+    }
+
 
     public enum MonsterType 
     {

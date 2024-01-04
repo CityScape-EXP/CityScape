@@ -17,7 +17,7 @@ public class PlayerBullet : MonoBehaviour
 
     void Awake()
     {
-        offenceLevel = GameManager.instance.upgradeData.offenceLevel;
+        offenceLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; // 수정 요망
         anim = GetComponent<Animator>();
         anim = animatorController[offenceLevel - 1];
         damage = 1f + 1f * (offenceLevel - 1);

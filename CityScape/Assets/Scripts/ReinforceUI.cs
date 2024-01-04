@@ -39,9 +39,9 @@ public class ReinforceUI : MonoBehaviour
         int level = 0;
         switch (field)
         {
-            case 0: level = GameManager.instance.upgradeData.hpLevel; break;
-            case 1: level = GameManager.instance.upgradeData.offenceLevel; break;
-            case 2: level = GameManager.instance.upgradeData.asLevel; break;
+            case 0: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]; break;
+            case 1: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; break;
+            case 2: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]; break;
         }
         switch (type)
         {
@@ -78,7 +78,7 @@ public class ReinforceUI : MonoBehaviour
 
             // 현재 소유 재화 정보 텍스트 (우측 상단에 위치) ex) ◎ : 999 ..
             case InfoType.Money:
-                myText.text = $"{GameManager.instance.gameData.money}";
+                myText.text = $"{PlayerPrefs.GetInt("Money")}";
                 break;
 
             // 업그레이드 필요 재화 정보 텍스트 (패널별 우측에 위치) ex) Lv.3 50필요
@@ -97,9 +97,13 @@ public class ReinforceUI : MonoBehaviour
                 }
                 break;
             case InfoType.UpCost2:
-                
+                if(level == 5)
+                {
+                    myText.text = "";
+                    break;
+                }
                 int cost = upgradeMoneyData[field, level - 1];
-                if (GameManager.instance.gameData.money < cost) // 돈이 부족할경우 빨간색으로
+                if (PlayerPrefs.GetInt("Money") < cost) // 돈이 부족할경우 빨간색으로
                     myText.text = $"<color=#cc0000>{cost}</color>";
                 else myText.text = $"<color=#336699>{cost}</color>";
                 break;

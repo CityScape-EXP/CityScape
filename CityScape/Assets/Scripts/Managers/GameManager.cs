@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] public GameData gameData;
-    [SerializeField] public UpgradeData upgradeData;
 
     public Player player;
     public float surviveTime; //초기부터진행시간
@@ -32,9 +31,17 @@ public class GameManager : MonoBehaviour
     SoundManager soundManager = new SoundManager();
     public static SoundManager Sound { get { return instance.soundManager; } } 
 
+    void InitKey()
+    {
+        PlayerPrefs.DeleteKey("AttackSpeed");
+        PlayerPrefs.DeleteKey("Health");
+        PlayerPrefs.DeleteKey("Power");
+    }
+
     static void Init()
     {
-
+        
+        
         if (_instance == null)
         {
             GameObject gm = GameObject.Find("GameManager");
@@ -51,7 +58,6 @@ public class GameManager : MonoBehaviour
 
 
                 _instance.gameData = _instance.dm.GetGameData();
-                _instance.upgradeData = _instance.dm.GetUpgradeData();
                 _instance.soundManager.Init();
 
                 DontDestroyOnLoad(gm);
@@ -69,7 +75,6 @@ public class GameManager : MonoBehaviour
                 _instance.dm.Init();
 
                 _instance.gameData = _instance.dm.GetGameData();
-                _instance.upgradeData = _instance.dm.GetUpgradeData();
                 _instance.soundManager.Init();
 
                 DontDestroyOnLoad(gm);

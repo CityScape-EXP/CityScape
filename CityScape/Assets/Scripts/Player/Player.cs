@@ -51,8 +51,7 @@ public class Player : MonoBehaviour
         GameManager.instance.player = this;
         isLive = true;
         isRolling = false;
-        playerHp = GameManager.instance.upgradeData.hpLevel + 2;
-        //playerOffence = GameManager.instance.upgradeData.offenceLevel * 1;
+        playerHp = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health] + 2;
         playerCurrentHp = playerHp;
         MapBuilder.instance.Init_var();
         anim.SetBool("isRolling", false);

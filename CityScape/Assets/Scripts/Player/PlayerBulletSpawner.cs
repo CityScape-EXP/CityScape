@@ -32,7 +32,7 @@ public class PlayerBulletSpawner : MonoBehaviour
         StartCoroutine(SpawnRoutine());
 
         // 레벨에 따른 총알 쿨타임 조정
-        int asLevel = GameManager.instance.upgradeData.asLevel;
+        int asLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]; // 수정 요망
         BulletSpawnTime = BulletSpawnTime / (1.00f + (asLevel - 1) * 0.25f);
     }
 

@@ -1511,10 +1511,7 @@ MonoBehaviour:
     isStageOpen: 000000
     stageHighScore: 000000000000000000000000
     money: 0
-  upgradeData:
-    hpLevel: 0
-    offenceLevel: 0
-    asLevel: 0
+    reinforceLevel: 
   player: {fileID: 0}
   surviveTime: 0
   stageTime: 0

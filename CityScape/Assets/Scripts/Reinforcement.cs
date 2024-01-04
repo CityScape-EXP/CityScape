@@ -29,26 +29,19 @@ public class Reinforcement : MonoBehaviour
         // 레벨 가져오기
         switch (field)
         {
-            case 0: nowLevel = gameManager.upgradeData.hpLevel; break;
-            case 1: nowLevel = gameManager.upgradeData.offenceLevel; break;
-            case 2: nowLevel = gameManager.upgradeData.asLevel; break;
+            case 0: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]; break;
+            case 1: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; break;
+            case 2: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]; break;
         }
         if (nowLevel == 5)
             thisButton.interactable = false;
         Debug.Log($"필드 : {field}, 레벨 : {nowLevel}");
     }
 
-    // 테스트용 함수 : 돈 100 증가
-    public void Cheat()
-    {
-        gameManager.gameData.money += 100;
-        gameManager.dm.SaveGameData(gameManager.gameData);
-    }
-
     // Upgrade 함수
     public void GetUpgrade()
     {
-        int nowMoney = gameManager.gameData.money;
+        int nowMoney = PlayerPrefs.GetInt("Money");
         // 돈이 부족하면 Error 출력 후 종료
         if(nowMoney < upgradeMoneyData[field, nowLevel-1]) 
         {
@@ -59,15 +52,22 @@ public class Reinforcement : MonoBehaviour
         GameManager.Sound.Play(Define.SFX.UI_upgrade_1);
         // 강화 & json에 정보 Save
         nowMoney -= upgradeMoneyData[field, nowLevel-1];
-        gameManager.gameData.money = nowMoney;
+        PlayerPrefs.SetInt("Money", nowMoney);
         switch(field)
         {
-            case 0: gameManager.upgradeData.hpLevel = nowLevel + 1; break;
-            case 1: gameManager.upgradeData.offenceLevel = nowLevel + 1; break;
-            case 2: gameManager.upgradeData.asLevel = nowLevel + 1; break;
+            case 0: 
+                PlayerPrefs.SetInt("Health", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]+1);
+                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health] = PlayerPrefs.GetInt("Health");
+                break;
+            case 1: 
+                PlayerPrefs.SetInt("Power", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]+1);
+                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power] = PlayerPrefs.GetInt("Power");
+                break;
+            case 2: 
+                PlayerPrefs.SetInt("AttackSpeed", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]+1); 
+                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed] = PlayerPrefs.GetInt("AttackSpeed");
+                break;
         }
-        gameManager.dm.SaveUpgradeData(gameManager.upgradeData);
-        gameManager.dm.SaveGameData(gameManager.gameData);
         Debug.Log($"필드 {field}번 강화에 성공하셨습니다! Lv.{nowLevel} -> Lv.{nowLevel + 1}");
         nowLevel++;
 

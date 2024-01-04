@@ -46,6 +46,10 @@ public class DataManager : MonoBehaviour
             instance.mainGameData.stageHighScore[(int)Define.Stages.Stage2] = PlayerPrefs.GetInt($"StageHighScore{Define.Stages.Stage2}", 0);
             instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = PlayerPrefs.GetInt($"StageHighScore{Define.Stages.Stage3}", 0);
 
+            instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed] = PlayerPrefs.GetInt("AttackSpeed", 1);
+            instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.Health] = PlayerPrefs.GetInt("Health", 1);
+            instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.Power] = PlayerPrefs.GetInt("Power", 1);
+
         }
     }
 
@@ -83,6 +87,22 @@ public class DataManager : MonoBehaviour
                 instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3] = value.stageHighScore[(int)Define.Stages.Stage3];
                 PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage3}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3]);
             }
+
+            /*초기화 함수
+             * 
+             */
+            PlayerPrefs.DeleteKey("AttackSpeed");
+            PlayerPrefs.DeleteKey("Health");
+            PlayerPrefs.DeleteKey("Power");
+
+            instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed] = value.reinforceLevel[(int)Define.Reinforcement.AttackSpeed];
+            PlayerPrefs.SetInt("AttackSpeed", instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]);
+
+            instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.Health] = value.reinforceLevel[(int)Define.Reinforcement.Health];
+            PlayerPrefs.SetInt("Health", instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.Health]);
+            
+            instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.Power] = value.reinforceLevel[(int)Define.Reinforcement.Power];
+            PlayerPrefs.SetInt("Power", instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.Power]);
         }
     }
 
@@ -114,24 +134,6 @@ public class DataManager : MonoBehaviour
         return PatternData;
     }
 
-    // UpgradeData.json 파일을 UpgradeData 클래스 정보로 변경하는 함수
-    public UpgradeData GetUpgradeData()
-    {
-         
-        UpgradeData data = new UpgradeData();
-        //string path = savePath + $"/Resources/Data/UpgradeData.json";
-        //string jsonData = File.ReadAllText(path);
-        TextAsset textAsset = Resources.Load<TextAsset>($"Data/UpgradeData");
-        if(textAsset == null)
-        {
-            Debug.Log("null");
-        }
-        string jsonData = textAsset.text;
-
-        data = JsonUtility.FromJson<UpgradeData>(jsonData);
-        return data;
-    }
-
     // GameData.json 파일을 GameData 클래스 정보로 변경하는 함수
    
     public GameData GetGameData() { return MainGameData; }
@@ -160,15 +162,6 @@ public class DataManager : MonoBehaviour
         GameManager.instance.gameData = GetGameData();
     }
 
-    // UpgradeData 클래스 정보를 받아 UpgradeData.json에 저장하는 함수
-    public void SaveUpgradeData(UpgradeData udata)
-    {
-         
-        string data = JsonUtility.ToJson(udata);
-        File.WriteAllText(savePath + "/Resources/Data/UpgradeData.json", data);
-        GameManager.instance.upgradeData = GetUpgradeData();
-    }
-
     public void SavePatternData(PatternData patternData, int stage, int phase, int pattern)
     {
          
@@ -184,30 +177,8 @@ public class DataManager : MonoBehaviour
         Debug.Log("테스트 데이터 저장 완료");
     }
 
-    // 게임 첫 시작시 UpgradeData를 초기화하는 함수
-    public void InitUpgradeData()
-    {
-        Debug.Log("강화 수치 초기화");
-        UpgradeData p_temp = new UpgradeData();
-        SaveUpgradeData(p_temp);
-    }
-
 }
 
-// UpgradeData 클래스
-[System.Serializable]
-public class UpgradeData
-{
-    public int hpLevel;
-    public int offenceLevel;
-    public int asLevel;
-    
-    // 초기화를 위한 생성자
-    public UpgradeData(int hp = 1, int atk = 1, int atks = 1)
-    {
-        hpLevel = hp; offenceLevel = atk; asLevel = atks;
-    }
-}
 
 // GameData 클래스
 [System.Serializable]
@@ -216,10 +187,13 @@ public class GameData
     public List<bool> isStageOpen;
     public List<int> stageHighScore;
     public int money;
+
+    public List<int> reinforceLevel;
     
     // 초기화를 위한 생성자
     public GameData()
     {
+        reinforceLevel = new List<int>() { 1,1,1 };
         isStageOpen = new List<bool>() { true, false, false};
         stageHighScore = new List<int>() { 0, 0, 0 };
         money = 0;
