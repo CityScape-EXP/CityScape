@@ -12,9 +12,11 @@ public class ScoreManager : MonoBehaviour //Score&Money 상태 관리
     [Header("Data")]
     GameData gameData; //Money와 HighScore은 DataManager에서 가져오기???????????????????????????????
 
+    public int decreasedScore;
+
     private int _score;
     public int Score { 
-        get { return ObjectScore + _timeScore; } 
+        get { return ObjectScore + _timeScore - decreasedScore; } 
         set {
             _score = value;
         }

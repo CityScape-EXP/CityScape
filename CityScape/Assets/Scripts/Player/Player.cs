@@ -147,7 +147,17 @@ public class Player : MonoBehaviour
         GameManager.Sound.Play(Define.SFX.Char_hit_1);
 
         playerCurrentHp -= damage;
-        ScoreManager.ObjectScore -= 1000; //피격 시 데미지
+
+        int pointLostHit = 1000;
+        int nowScore = ScoreManager.instance.Score;
+        if(nowScore <= pointLostHit)
+        {
+            ScoreManager.instance.decreasedScore += nowScore;
+        }
+        else
+        {
+            ScoreManager.instance.decreasedScore += pointLostHit; 
+        }
         Debug.Log($"플레이어 체력 : {playerCurrentHp}");
         
         

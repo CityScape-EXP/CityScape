@@ -68,7 +68,8 @@ public class MapBuilder : MonoBehaviour
                 nowPattern = Random.Range(0, 4);
 
             
-            PatternData patterndata = GameManager.instance.dm.GetPatternData(GameManager.instance.stageNum - 1, nowPhase, nowPattern);
+            //PatternData patterndata = GameManager.instance.dm.GetPatternData(GameManager.instance.stageNum - 1, nowPhase, nowPattern);
+            PatternData patterndata = GameManager.instance.dm.GetPatternData(GameManager.instance.stageNum - 1, 2, nowPattern);
             Debug.Log($"페이즈 : {nowPhase} // 패턴 : {nowPattern}");
             DrawPattern(patterndata);
 

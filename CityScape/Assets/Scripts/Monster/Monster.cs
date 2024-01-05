@@ -22,6 +22,7 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
+        health = health * (1 + (GameManager.instance.stageNum - 1) * 0.5f) ;
         isLive = true;
         coll = GetComponent<CapsuleCollider2D>();
         rigid = GetComponent<Rigidbody2D>();

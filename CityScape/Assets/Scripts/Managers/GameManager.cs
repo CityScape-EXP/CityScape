@@ -31,17 +31,9 @@ public class GameManager : MonoBehaviour
     SoundManager soundManager = new SoundManager();
     public static SoundManager Sound { get { return instance.soundManager; } } 
 
-    void InitKey()
-    {
-        PlayerPrefs.DeleteKey("AttackSpeed");
-        PlayerPrefs.DeleteKey("Health");
-        PlayerPrefs.DeleteKey("Power");
-    }
-
     static void Init()
     {
-        
-        
+
         if (_instance == null)
         {
             GameObject gm = GameObject.Find("GameManager");

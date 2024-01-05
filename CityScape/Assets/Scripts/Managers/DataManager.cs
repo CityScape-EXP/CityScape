@@ -88,12 +88,7 @@ public class DataManager : MonoBehaviour
                 PlayerPrefs.SetInt($"StageHighScore{Define.Stages.Stage3}", instance.mainGameData.stageHighScore[(int)Define.Stages.Stage3]);
             }
 
-            /*초기화 함수
-             * 
-             */
-            PlayerPrefs.DeleteKey("AttackSpeed");
-            PlayerPrefs.DeleteKey("Health");
-            PlayerPrefs.DeleteKey("Power");
+            
 
             instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed] = value.reinforceLevel[(int)Define.Reinforcement.AttackSpeed];
             PlayerPrefs.SetInt("AttackSpeed", instance.mainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]);

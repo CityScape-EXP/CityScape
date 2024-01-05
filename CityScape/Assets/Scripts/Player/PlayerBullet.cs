@@ -20,7 +20,7 @@ public class PlayerBullet : MonoBehaviour
         offenceLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; // 수정 요망
         anim = GetComponent<Animator>();
         anim = animatorController[offenceLevel - 1];
-        damage = 1f + 1f * (offenceLevel - 1);
+        damage = 1f + 0.5f * (offenceLevel - 1);
         
         //coll = GetComponent<BoxCollider2D>();
     }
@@ -33,7 +33,7 @@ public class PlayerBullet : MonoBehaviour
     { 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); // 불렛 오른쪽으로 이동
 
-        if (transform.position.x > 12) // 총알이 화면 밖으로 벗어날 시
+        if (transform.position.x > 11) // 총알이 화면 밖으로 벗어날 시
         {
             PoolManager.ReturnObject(this.gameObject, 0);
             gameObject.SetActive(false);

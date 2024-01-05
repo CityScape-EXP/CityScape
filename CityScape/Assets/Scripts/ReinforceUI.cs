@@ -55,19 +55,19 @@ public class ReinforceUI : MonoBehaviour
             case InfoType.UpInfo:
                 switch(field)
                 {
-                    case 0:
+                    case 0: // HP
                         if (level == 5)
                             myText.text = "7";
                         else
                             myText.text = $"{3 + level - 1} > <color=#336699>{3 + level}</color>";
                         break;
-                    case 1:
+                    case 1: // ATK
                         if (level == 5)
-                            myText.text = $"{100 + (level - 1) * 5}";
+                            myText.text = $"{100 + (level - 1) * 25}";
                         else
-                            myText.text = $"{100 + (level - 1) * 5}% > <color=#336699>{100 + level * 5}%</color>";
+                            myText.text = $"{100 + (level - 1) * 25}% > <color=#336699>{100 + level * 25}%</color>";
                         break;
-                    case 2:
+                    case 2: // AS
                         if (level == 5)
                             myText.text = $"{100 + (level - 1) * 25}";
                         else
@@ -82,7 +82,7 @@ public class ReinforceUI : MonoBehaviour
                 break;
 
             // 업그레이드 필요 재화 정보 텍스트 (패널별 우측에 위치) ex) Lv.3 50필요
-            case InfoType.UpCost1:
+            case InfoType.UpCost1: // 레벨 표시
                 string lv;
                 if (level == 5) // 만렙일경우 -> 소모 재화량 표시 X
                 {
@@ -96,7 +96,7 @@ public class ReinforceUI : MonoBehaviour
                     myText.text = $"{lv}";
                 }
                 break;
-            case InfoType.UpCost2:
+            case InfoType.UpCost2: // 재화 표시
                 if(level == 5)
                 {
                     myText.text = "";
