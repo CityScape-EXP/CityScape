@@ -29,8 +29,8 @@ public class Reinforcement : MonoBehaviour
         // 레벨 가져오기
         switch (field)
         {
-            case 0: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]; break;
-            case 1: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; break;
+            case 0: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; break;
+            case 1: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]; break; 
             case 2: nowLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]; break;
         }
         if (nowLevel == 5)
@@ -55,13 +55,13 @@ public class Reinforcement : MonoBehaviour
         PlayerPrefs.SetInt("Money", nowMoney);
         switch(field)
         {
-            case 0: 
-                PlayerPrefs.SetInt("Health", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]+1);
-                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health] = PlayerPrefs.GetInt("Health");
+            case 0:
+                PlayerPrefs.SetInt("Power", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power] + 1);
+                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power] = PlayerPrefs.GetInt("Power");
                 break;
             case 1: 
-                PlayerPrefs.SetInt("Power", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]+1);
-                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power] = PlayerPrefs.GetInt("Power");
+                PlayerPrefs.SetInt("Health", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health] + 1);
+                DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health] = PlayerPrefs.GetInt("Health");
                 break;
             case 2: 
                 PlayerPrefs.SetInt("AttackSpeed", DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]+1); 

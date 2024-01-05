@@ -39,8 +39,8 @@ public class ReinforceUI : MonoBehaviour
         int level = 0;
         switch (field)
         {
-            case 0: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]; break;
-            case 1: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; break;
+            case 0: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; break;
+            case 1: level =  DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Health]; break;
             case 2: level = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.AttackSpeed]; break;
         }
         switch (type)
@@ -57,15 +57,15 @@ public class ReinforceUI : MonoBehaviour
                 {
                     case 0: // HP
                         if (level == 5)
-                            myText.text = "7";
-                        else
-                            myText.text = $"{3 + level - 1} > <color=#336699>{3 + level}</color>";
-                        break;
-                    case 1: // ATK
-                        if (level == 5)
                             myText.text = $"{100 + (level - 1) * 25}";
                         else
                             myText.text = $"{100 + (level - 1) * 25}% > <color=#336699>{100 + level * 25}%</color>";
+                        break;
+                    case 1: // ATK
+                        if (level == 5)
+                            myText.text = "7";
+                        else
+                            myText.text = $"{3 + level - 1} > <color=#336699>{3 + level}</color>";
                         break;
                     case 2: // AS
                         if (level == 5)
