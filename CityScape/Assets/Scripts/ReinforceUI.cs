@@ -10,9 +10,9 @@ public class ReinforceUI : MonoBehaviour
 {
     // 변경한다면 Reinforcement의 upgradeMoneyData도 같이 변경할것
     int[,] upgradeMoneyData = new int[3, 4]
-        { {10, 20, 30, 50 },
-          {10, 20, 30, 50 },
-          {10, 20, 30, 50 } };
+        { {50, 70, 90, 110 },
+          {50, 70, 90, 110 },
+          {50, 70, 90, 110} };
     public enum InfoType { Level, UpInfo, Money, UpCost1,UpCost2 }
     public int field;
     public InfoType type;
