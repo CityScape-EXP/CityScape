@@ -14,9 +14,9 @@ public class Reinforcement : MonoBehaviour
     // 변경한다면 HUI.cs의 upgradeMoneyData도 같이 변경할것
     // 강화에 필요한 재화 데이타
     int[,] upgradeMoneyData = new int[3, 4]
-        { {50, 70, 90, 110 },
-          {50, 70, 90, 110 },
-          {50, 70, 90, 110} };
+        { {40, 100, 200, 400 },
+          {40, 100, 200, 400 },
+          {40, 100, 200, 400 } };
     Button thisButton;
     int nowLevel;
     public int field;  // 강화하는 항목에 대한 정보 => 0 = Hp, 1 = Atk, 2 = AS

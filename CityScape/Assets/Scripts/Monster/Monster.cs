@@ -38,15 +38,15 @@ public class Monster : MonoBehaviour
             switch(monsterType)
             {
                 case Define.MonsterType.NorEnemy: // 일반몬스터 처치
-                    ScoreManager.ObjectScore += 100;
-                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
-                    break;
-                case Define.MonsterType.FlyEnemy: // 날몹 처치
                     ScoreManager.ObjectScore += 200;
                     GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
+                case Define.MonsterType.FlyEnemy: // 날몹 처치
+                    ScoreManager.ObjectScore += 500;
+                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
+                    break;
                 case Define.MonsterType.ReinEnemy:
-                    ScoreManager.ObjectScore += 150;
+                    ScoreManager.ObjectScore += 350;
                     break;
             }
             this.DropCoin(); //오브젝트가 사라지기 전 매서드 달아주기
