@@ -47,6 +47,7 @@ public class Monster : MonoBehaviour
                     break;
                 case Define.MonsterType.ReinEnemy:
                     ScoreManager.ObjectScore += 350;
+                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
             }
             this.DropCoin(); //오브젝트가 사라지기 전 매서드 달아주기
@@ -61,7 +62,7 @@ public class Monster : MonoBehaviour
     public void DropCoin(){
         float randomValue = Random.value; //0에서 1사이의 랜덤값
 
-        if (randomValue <= 0.7f){// 70%의 확률로 5코인생성
+        if (randomValue <= 0.8f){// 80%의 확률로 5코인생성
             GameObject coin5 = Instantiate(coin5Prefab, transform.position, Quaternion.identity);
             Destroy(coin5, 6.0f); //6초 후 파괴
         }
