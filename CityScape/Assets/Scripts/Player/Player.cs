@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
             isGround = false;
             coll.isTrigger = true;
 
+            rigid.velocity = new Vector2(rigid.velocity.x, 0f);
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
