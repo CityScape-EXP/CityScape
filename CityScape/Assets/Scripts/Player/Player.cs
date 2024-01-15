@@ -225,7 +225,7 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false); //동전 없어지게
             GameManager.instance.gameData.money += 10;
             GameManager.instance.dm.SaveGameData(GameManager.instance.gameData);
-            ScoreManager.ObjectScore += 200;
+            ScoreManager.ObjectScore += 500;
             GetMoney.getMoney += 10;
         }
 

@@ -38,15 +38,15 @@ public class Monster : MonoBehaviour
             switch(monsterType)
             {
                 case Define.MonsterType.NorEnemy: // 일반몬스터 처치
-                    ScoreManager.ObjectScore += 100;
-                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
-                    break;
-                case Define.MonsterType.FlyEnemy: // 날몹 처치
                     ScoreManager.ObjectScore += 200;
                     GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
+                case Define.MonsterType.FlyEnemy: // 날몹 처치
+                    ScoreManager.ObjectScore += 500;
+                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
+                    break;
                 case Define.MonsterType.ReinEnemy:
-                    ScoreManager.ObjectScore += 150;
+                    ScoreManager.ObjectScore += 350;
                     GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
             }
@@ -62,7 +62,7 @@ public class Monster : MonoBehaviour
     public void DropCoin(){
         float randomValue = Random.value; //0에서 1사이의 랜덤값
 
-        if (randomValue <= 0.7f){// 70%의 확률로 5코인생성
+        if (randomValue <= 0.8f){// 80%의 확률로 5코인생성
             GameObject coin5 = Instantiate(coin5Prefab, transform.position, Quaternion.identity);
             Destroy(coin5, 6.0f); //6초 후 파괴
         }

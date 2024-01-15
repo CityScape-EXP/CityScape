@@ -33,6 +33,18 @@ public class GameManager : MonoBehaviour
 
     static void Init()
     {
+        Screen.SetResolution(2400, 1080, true);
+        /* PlayerPrefs 초기화
+        PlayerPrefs.SetInt("AttackSpeed", 1);
+        PlayerPrefs.SetInt("Health", 1);
+        PlayerPrefs.SetInt("Power", 1);
+
+        PlayerPrefs.SetInt("Money", 0);
+
+        PlayerPrefs.SetInt("StageHighScore0", 0);
+        PlayerPrefs.SetInt("StageHighScore1", 0);
+        PlayerPrefs.SetInt("StageHighScore2", 0);
+        */
 
         if (_instance == null)
         {

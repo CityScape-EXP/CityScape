@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.08, y: 0, z: 0}
+  m_LocalPosition: {x: -80, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 387947341}
@@ -337,10 +337,7 @@ MonoBehaviour:
     isStageOpen: 
     stageHighScore: 
     money: 0
-  upgradeData:
-    hpLevel: 0
-    offenceLevel: 0
-    asLevel: 0
+    reinforceLevel: 010000000100000001000000
   player: {fileID: 394994606}
   surviveTime: 0
   stageTime: 0
@@ -1895,6 +1892,7 @@ MonoBehaviour:
     isStageOpen: 000000
     stageHighScore: 000000000000000000000000
     money: 0
+    reinforceLevel: 010000000100000001000000
   roadMainMenu: MainPopup
   popupGameClear: {fileID: 181949535}
   gameTime: 120
@@ -2197,6 +2195,7 @@ MonoBehaviour:
     isStageOpen: 010000
     stageHighScore: 000000000000000000000000
     money: 0
+    reinforceLevel: 010000000100000001000000
 --- !u!1 &1492098929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 258667862438897837, guid: f2c5f6d386e364762b497dd02760751e, type: 3}
@@ -2355,7 +2354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543420420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.12, y: 0, z: 0}
+  m_LocalPosition: {x: -80, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 949417949}

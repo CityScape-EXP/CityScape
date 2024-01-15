@@ -11,27 +11,22 @@ public class PlayerBullet : MonoBehaviour
     public float id;
     public float prefabID;
     private Animator anim;
-    [SerializeField]
-    private Animator[] animatorController;
     private int offenceLevel;
 
     void Awake()
     {
         offenceLevel = DataManager.MainGameData.reinforceLevel[(int)Define.Reinforcement.Power]; // 수정 요망
         anim = GetComponent<Animator>();
-        anim = animatorController[offenceLevel - 1];
         damage = 1f + 0.5f * (offenceLevel - 1);
         
         //coll = GetComponent<BoxCollider2D>();
-    }
-    private void OnEnable()
-    {
-        anim = animatorController[offenceLevel - 1];
     }
 
     private void FixedUpdate()
     { 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime); // 불렛 오른쪽으로 이동
+
+        anim.SetInteger("Enhanced", offenceLevel);
 
         if (transform.position.x > 11) // 총알이 화면 밖으로 벗어날 시
         {
