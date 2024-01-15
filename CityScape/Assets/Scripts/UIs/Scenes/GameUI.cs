@@ -36,6 +36,7 @@ public class GameUI : UI_Base
     // Start is called before the first frame update
     void Start()
     {
+        Init();
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));

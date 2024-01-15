@@ -25,6 +25,7 @@ public class MainMenuUI : UI_Base , IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
+        Init();
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 

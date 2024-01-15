@@ -47,6 +47,7 @@ public class Monster : MonoBehaviour
                     break;
                 case Define.MonsterType.ReinEnemy:
                     ScoreManager.ObjectScore += 150;
+                    GameManager.Sound.Play(Define.SFX.Enemy_death_1);
                     break;
             }
             this.DropCoin(); //오브젝트가 사라지기 전 매서드 달아주기

@@ -20,6 +20,7 @@ public class ClearUI : UI_Base
 
     void Start()
     {
+        Init();
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 

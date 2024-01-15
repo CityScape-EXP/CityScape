@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     {
         if (isGround && !isRolling)
         {
-            GameManager.Sound.Play(Define.SFX.Char_jump_1);
+            StartCoroutine(JumpSound());
             isGround = false;
             coll.isTrigger = true;
 
@@ -70,6 +70,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private IEnumerator JumpSound()
+    {
+        while(true)
+        {
+            GameManager.Sound.Play(Define.SFX.Char_jump_1);
+            yield return new WaitForSeconds(0.5f);
+            yield break;
+        }
+    }
 
     void JumpDown()
     {
