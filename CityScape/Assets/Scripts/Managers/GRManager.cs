@@ -95,7 +95,16 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
 
                 UIManager.LoadUI(Define.UI_Type.ClearUI);
                 Time.timeScale = 0f; // 인게임 일시 정지
-                gameData.isStageOpen[1] = true; // 다음 스테이지 열기
+                if(GameManager.instance.stageNum == 1)
+                {
+                    Debug.Log("스테이지 2 오픈합니다");
+                    DataManager.MainGameData.isStageOpen[1] = true;
+                }
+                else if (GameManager.instance.stageNum == 2)
+                {
+                    Debug.Log("스테이지 3 오픈합니다");
+                    DataManager.MainGameData.isStageOpen[2] = true;
+                }
             }
 
             // 게임오버 창이 활성화되면 타이머가 멈춤
