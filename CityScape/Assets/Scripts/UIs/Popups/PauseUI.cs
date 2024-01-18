@@ -24,7 +24,7 @@ public class PauseUI : UI_Base
     }
     void Start()
     {
-        Init();
+        //Init();
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
         Bind<Slider>(typeof(Sliders));

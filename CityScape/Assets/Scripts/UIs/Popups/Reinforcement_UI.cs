@@ -18,7 +18,7 @@ public class Reinforcement_UI : UI_Base , IPointerClickHandler
 
     private void Start()
     {
-        Init();
+        //Init();
         Bind<TMP_Text>(typeof(Texts));
         Bind<Button>(typeof(Buttons));
 
