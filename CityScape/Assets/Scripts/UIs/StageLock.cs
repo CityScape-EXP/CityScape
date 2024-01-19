@@ -10,8 +10,6 @@ public class StageLock : MonoBehaviour
 
     private void Update()
     {
-        bool stage2Opened = DataManager.MainGameData.isStageOpen[1];
-        Debug.Log(stage2Opened);
 
         for(int i = 0; i < StageButtons.Length; i++)
         {

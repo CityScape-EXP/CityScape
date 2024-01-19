@@ -99,11 +99,14 @@ public class GRManager : MonoBehaviour //GameResult(Clear, Over)매니저 스크
                 {
                     Debug.Log("스테이지 2 오픈합니다");
                     DataManager.MainGameData.isStageOpen[1] = true;
+                    PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", 1);
+                    //ebug.Log(PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage2}"));
                 }
                 else if (GameManager.instance.stageNum == 2)
                 {
                     Debug.Log("스테이지 3 오픈합니다");
                     DataManager.MainGameData.isStageOpen[2] = true;
+                    PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage3}", 1);
                 }
             }
 

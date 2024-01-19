@@ -48,7 +48,6 @@ public class ScoreManager : MonoBehaviour //Score&Money 상태 관리
         if(Score > gameData.stageHighScore[(int)DataManager.NowStage])
         {
             gameData[DataManager.NowStage] = Score;
-            
         }
         DataManager.instance.SaveGameData(gameData);
     }

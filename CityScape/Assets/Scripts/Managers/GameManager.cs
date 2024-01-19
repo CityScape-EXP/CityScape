@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 
     static void Init()
     {
+        
+        
+
         Screen.SetResolution(2400, 1080, true);
 
         if (_instance == null)

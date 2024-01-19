@@ -66,10 +66,10 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage1}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage1] ? 1 : 0);
 
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] = value.isStageOpen[(int)Define.Stages.Stage2];
-            PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] ? 1 : 0);
+            //PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage2] ? 1 : 0);
 
             instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] = value.isStageOpen[(int)Define.Stages.Stage3];
-            PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] ? 1 : 0);
+            //PlayerPrefs.SetInt($"IsStageOpen{Define.Stages.Stage2}", instance.mainGameData.isStageOpen[(int)Define.Stages.Stage3] ? 1 : 0);
 
             if (instance.mainGameData.stageHighScore[(int)Define.Stages.Stage1] < value.stageHighScore[(int)Define.Stages.Stage1])
             {
@@ -139,8 +139,12 @@ public class DataManager : MonoBehaviour
      *  -> 일어난 변화를 적용시켜줘야 한다
      */
     // GameData 클래스 정보를 받아 GameData.json에 저장하는 함수
-    public void SaveGameData(GameData gdata) { 
+    public void SaveGameData(GameData gdata) {
+        Debug.Log(gdata.isStageOpen[1]);
+        Debug.Log(PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage2}"));
         MainGameData = gdata;
+        Debug.Log(gdata.isStageOpen[1]);
+        Debug.Log(PlayerPrefs.GetInt($"IsStageOpen{Define.Stages.Stage2}"));
         PatternDataClear();
     }
     public void SaveGameData()
