@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     // 점프 관련
     public bool isGround = true;
     public float jumpPower;
+    private float topSurface;
 
     // 구르기 관련
     public bool canRoll;
@@ -97,23 +98,29 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (transform.position.y < topSurface && topSurface > 0)
+        {
+            transform.position = new Vector3(transform.position.x, topSurface, transform.position.z);
+        }
+
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position +
             Vector2.down * 0.45f, Vector3.down, 1, LayerMask.GetMask("Platform"));
+
+        if(rayHit)
+        {
+            topSurface = GetPlatformSurfaceLocation(rayHit);
+        }
+        else
+        {
+            topSurface = 0f;
+        }
 
         // 상방 점프 (조건 : 구르고 있지 않을것)
         if (Input.GetButton("Jump") && !isRolling)
         {
             JumpUp();
         }
-        // 하방 점프 (조건 : Platform일것, 땅에 닿아있을것, 구르고 있지 않을것)
-        //if (Input.GetKeyDown(KeyCode.DownArrow) && isGround
-        //    && rayHit.collider.CompareTag("Platform") && !isRolling)
-        //{
-        //    isGround = false;
-        //    coll.isTrigger = true;
-        //
-        //    rayHit.collider.gameObject.GetComponent<Platform>().TemporaryDisable();
-        //}
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             JumpDown();
@@ -137,6 +144,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private float GetPlatformSurfaceLocation(RaycastHit2D rayHit)
+    {
+        GameObject platform = rayHit.collider.gameObject;
+        Collider2D coll = platform.GetComponent<Collider2D>();
+        if (coll == null)
+        {
+            Debug.LogError("Platform의 Collider 찾아지지 않음");
+            return 0f;
+        }
+
+        Bounds bounds = coll.bounds;
+        float topY = bounds.center.y + bounds.extents.y;
+
+        return topY + 0.9f;
+    }
 
     private void GroundCheck(RaycastHit2D rayHit)
     {

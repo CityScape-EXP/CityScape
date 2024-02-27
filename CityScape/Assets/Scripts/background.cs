@@ -27,7 +27,7 @@ public class background : MonoBehaviour
     {
         if (backgroundDepth <= 0)
             return;
-        Debug.Log("이미지 변경");
+        //Debug.Log("이미지 변경");
         spriteRenderer.sprite = backgroundStageImage[GameManager.instance.stageNum - 1];
     }
 
